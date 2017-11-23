@@ -19,7 +19,7 @@
 
 =====Pushing Up=====
 
-1. Type "git add ." to add all files to staging area
+1. Type "git add *.h" to add all header files to staging area, Type "git add *.cpp" to add all .cpp files to the staging area
 2. Type "git commit -m"Commit Message"   The commit message is for saying what functionality you added/debugged etc...
 3. Type "git push origin" to push up the changed files, along with you commit message.
 

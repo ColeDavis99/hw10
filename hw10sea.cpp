@@ -27,7 +27,6 @@ void Sea::clear()
      {
        m_seaGrid[i][q] = 'S';
      }
-     cout<<endl;
    }
 }
 
