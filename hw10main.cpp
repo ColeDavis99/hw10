@@ -12,6 +12,7 @@
 #include "hw10sea.h"
 
 
+
 int main()
 {
   srand(time(NULL));
@@ -25,6 +26,9 @@ int main()
 
   Penguin Mumble;
   Mumble.move();// move() is incomplete
+
+  //Testing fish movement
+  fish frank;
 
 
 

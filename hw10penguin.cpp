@@ -25,6 +25,7 @@ Penguin::Penguin()
 ==================*/
 bool Penguin::move()
 {
+  short moveAmmount = 0;
   bool can_move = false;// Assume penguin is going to move to an invalid
                         // location (either occupied or out of bounds)
 
