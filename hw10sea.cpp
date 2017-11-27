@@ -1,15 +1,35 @@
 #include "hw10headder.h"
 #include "hw10sea.h"
+#include "hw10killerwhale.h"
 
 /*==================
     CONSTRUCTOR
 ==================*/
-Sea::Sea(const short seaspace)
+Sea::Sea(Penguin penguinArr[],
+         Fish fishArr[],
+         const short seaspace)
 {
   m_seaSpace = seaspace;//Default argument of SEA_MAX
 
+  // Fill m_seaGrid[][] with x's
+  drawBorder();
 
-  //Border Drawing
+
+  // Clear m_seaGrid[][]
+   clear();
+
+
+  // Place fish, pengs, and killers into m_seaGrid[][]
+  populate(penguinArr, fishArr);
+}
+
+
+/*==================
+    FUNCTIONALITY
+==================*/
+
+void Sea::drawBorder()
+{
   for(short i = m_seaSpace+1; i >= 0; i--)
   {
     for(short q = 0; q <=m_seaSpace+1; q++)
@@ -17,18 +37,9 @@ Sea::Sea(const short seaspace)
       m_seaGrid[i][q] = 'x';
     }
   }
-
-  // Clear m_seaGrid[][]
-   clear();
-
-  // Place fish, pengs, and killers into m_seaGrid[][]
-  populate();
 }
 
 
-/*==================
-    FUNCTIONALITY
-==================*/
 void Sea::clear()
 {
   for(short i = m_seaSpace; i > 0; i--)
@@ -42,12 +53,28 @@ void Sea::clear()
 
 
 
-void Sea::populate()
+//Eventually will pass whale array as well
+void Sea::populate(Penguin penguinArr[],
+                   Fish fishArr[])
 {
-  //Code goes here for m_seaGrid[][] population
+  //Randomly generate penguin's valid x&y values and set their member vars.
+  short peng_x;
+  short peng_y;
 
-  m_seaGrid[1][1] = 'A';
+  for(short i=0; i<PENG_SPAWN_NUM; i++)
+  {
+    //Generate random number between 1 & 17 inclusive
+    peng_x = rand() % m_seaSpace + 1;
+    peng_y = rand() % m_seaSpace + 1;
+    cout<<"Penguin's Random X: "<<peng_x<<endl;
+    cout<<"Penguin's Random Y: "<<peng_y<<endl;
+
+  }
 }
+
+
+
+
 
 
 
@@ -84,7 +111,7 @@ ostream & operator <<(ostream &os, const Sea &sea)
   {
     for(short q = 0; q <=sea.m_seaSpace+1; q++)
     {
-      os<<sea.m_seaGrid[i][q];
+      os<<' '<<sea.m_seaGrid[i][q]<<' ';
     }
     os<<endl;
   }

@@ -17,18 +17,15 @@ int main()
 {
   srand(time(NULL));
 
+  Penguin penguinArr[MAX_PENGUINS];
+  Fish fishArr[MAX_FISH];
 
-  Sea Arctic(17);
-
+  Sea Arctic(penguinArr, fishArr, 17);
   cout<<Arctic;
 
 
-  Penguin Mumble;
-  Mumble.move();// move() is incomplete
 
 
-  //Testing fish movement
-  Fish frank;
 
 
 

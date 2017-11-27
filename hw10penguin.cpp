@@ -6,9 +6,10 @@
 ==================*/
 Penguin::Penguin()
 {
-  //Calculate starting energy level
-  float r = static_cast<float>(rand()) / RAND_MAX;
-  m_energy = PENG_HEALTH_MIN + r * (PENG_HEALTH_MAX - PENG_HEALTH_MIN);
+  //Calculate starting energy level;
+  short range = (PENG_HEALTH_MAX - PENG_HEALTH_MIN + 1);
+  m_energy = rand() % range + PENG_HEALTH_MIN;
+
 
   //Penguins spawn "dead" (Instructions said to)
   m_alive = false;
@@ -25,13 +26,6 @@ Penguin::Penguin()
 ==================*/
 bool Penguin::move()
 {
-  //HARDCODED COORDS
-  m_X = 3;
-  m_Y = 7;
-
-  
-
-
 
   short moveAmmount = 0;
   bool can_move = false;// Assume penguin is going to move to an invalid
