@@ -27,3 +27,11 @@ bool Fish::move()
 
 
 }
+
+
+void Fish::setFishPos(const short posX, const short posY)
+{
+  m_posX = posX;
+  m_posY = posY;
+  return;
+}

@@ -18,7 +18,7 @@ int main()
   srand(time(NULL));
 
 
-  Sea Arctic(17);
+  Sea Arctic(PLAYABLE_SPACE);
 
   cout<<Arctic;
 
@@ -30,6 +30,14 @@ int main()
   //Testing fish movement
   Fish frank;
 
+
+
+
+  for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
+  {
+
+
+  }
 
 
   return 0;

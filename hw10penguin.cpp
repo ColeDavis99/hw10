@@ -88,3 +88,15 @@ bool Penguin::move()
 
   return can_move;
 }//End of Penguin::move()
+
+
+void Penguin::setAliveState(const bool p_state)
+{
+  m_alive = p_state;
+  return;
+}
+
+bool Penguin::getAliveState()const
+{
+  return m_alive;
+}

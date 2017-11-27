@@ -12,6 +12,11 @@ using namespace std;
     GLOBAL CONSTANTS
 ========================*/
 const short SEA_MAX = 25;
+const short PLAYABLE_SPACE = 17;
+const short SIMULATION_ITTERATIONS = 1;
+
+//DO NOT CHANGE THIS!!! I WILL HUNT YOU DOWN IF YOU DO!!!!
+const short BORDERS_OF_PLAY_SPACE = PLAYABLE_SPACE + 2;
 
 //Penguins
 const short PENG_HEALTH_MIN = 60;
