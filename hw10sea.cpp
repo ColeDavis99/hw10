@@ -10,9 +10,9 @@ Sea::Sea(const short seaspace)
 
 
   //Border Drawing
-  for (short i = SEA_MAX - 1; i > 0; i--)
+  for (short i = m_seaSpace - 1; i > 0; i--)
   {
-    for (short p = 0; p < SEA_MAX; p++)
+    for (short p = 0; p < m_seaSpace; p++)
     {
       m_seaGrid[i][p] = 'x';
     }
@@ -31,9 +31,9 @@ Sea::Sea(const short seaspace)
 ==================*/
 void Sea::clear()
 {
-  for (short i = SEA_MAX - 2; i > 1; i--)
+  for (short i = m_seaSpace - 2; i > 1; i--)
   {
-    for (short q = 1; q < SEA_MAX - 1; q++)
+    for (short q = 1; q < m_seaSpace - 1; q++)
     {
       m_seaGrid[i][q] = ' ';
     }
@@ -59,9 +59,9 @@ void Sea::populate()
 
 ostream & operator <<(ostream &os, const Sea &sea)
 {
-  for (short i = SEA_MAX - 1; i > 0; i--)
+  for (short i = sea.m_seaSpace - 1; i > 0; i--)
   {
-    for (short q = 0; q < SEA_MAX; q++)
+    for (short q = 0; q < sea.m_seaSpace; q++)
     {
       os << sea.m_seaGrid[i][q];
     }
