@@ -18,6 +18,16 @@ class Penguin
     //Pre:
     //Post: Returns can_move. If true, call addToGrid(). Else, return false.
     bool move();
+
+    //
+    //pre:
+    //Post:
+    void setAliveState(const bool p_state);
+
+    //
+    //Pre:
+    //Post:
+    bool getAliveState()const;
 };
 
 #endif

@@ -15,6 +15,11 @@ public:
 
   bool move();
 
+  //
+  //Pre:
+  //Post:
+  void setFishPos(const short posX, const short posY);
+
 
 };
 
