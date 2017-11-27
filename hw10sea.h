@@ -23,7 +23,11 @@ class Sea
     //Post: m_seaGrid[][] is populated with chars representing actors
     void populate();
 
-
+    // Adds Representative character to m_seaGrid[][] at correct X&Y coord
+    // Pre: Passed Object's X&Y coordinates are valid
+    // Post: m_seaGrid[][] is updated with proper character.
+    template <typename T>
+    void addToGrid(T actor);
 
     friend ostream & operator <<(ostream &os, const Sea &sea);
 };

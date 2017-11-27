@@ -14,6 +14,9 @@ class Penguin
   public:
     Penguin();
 
+    //
+    //Pre:
+    //Post: Returns can_move. If true, call addToGrid(). Else, return false.
     bool move();
 };
 

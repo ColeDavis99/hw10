@@ -2,7 +2,7 @@
 #define HW10FISH_H
 #include "hw10headder.h"
 
-class fish
+class Fish
 {
 private:
   short m_foodWorth;
@@ -11,7 +11,7 @@ private:
   bool m_isAlive;
 
 public:
-  fish();
+  Fish();
 
   bool move();
 
