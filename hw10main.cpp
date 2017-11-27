@@ -21,6 +21,7 @@ int main()
   Fish fishArr[MAX_FISH];
 
   Sea Arctic(penguinArr, fishArr, PLAYABLE_SPACE);
+
   cout<<Arctic;
 
 

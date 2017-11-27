@@ -20,6 +20,16 @@ public:
   //Post:
   void setFishPos(const short posX, const short posY);
 
+  //
+  //Pre:
+  //Post:
+  short getFishPosX()const;
+
+  //
+  //Pre:
+  //Post:
+  short getFishPosY()const;
+
 
 };
 

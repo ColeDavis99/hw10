@@ -13,9 +13,35 @@ class Whale
 
   public:
 
+    //
+    //Pre:
+    //Post:
     Whale();
+
+    //
+    //Pre:
+    //Post:
     bool whaleMove();
+
+    //
+    //Pre:
+    //Post:
     short getPenguinKillCount();
+
+    //
+    //Pre:
+    //Post:
+    void setWhalePos(const short posX, const short posY);
+
+    //
+    //Pre:
+    //Post:
+    short getWhalePosX()const;
+
+    //
+    //Pre:
+    //Post:
+    short getWhalePosY()const;
 
 };
 
