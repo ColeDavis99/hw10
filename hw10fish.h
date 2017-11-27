@@ -28,7 +28,7 @@ public:
   //
   //Pre:
   //Post:
-  short getFishPosY()coinst;
+  short getFishPosY()const;
 
 
 };
