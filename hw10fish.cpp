@@ -7,12 +7,12 @@
 
 
 //Constructor
-fish::fish()
+Fish::Fish()
 {
   m_isAlive = false;
-  
+
   short range = (FOOD_VAL_UPPR - FOOD_VAL_LOWR + 1);
-  
+
   //Starting position of fish
   m_posX = FISH_START_X;
   m_posY = FISH_START_Y;
@@ -21,7 +21,7 @@ fish::fish()
   m_foodWorth = rand() % range + FOOD_VAL_LOWR;
 }
 
-bool fish::move()
+bool Fish::move()
 {
 
 

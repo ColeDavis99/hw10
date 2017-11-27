@@ -1,4 +1,4 @@
-class point
+class Point
 {
 private:
   short m_posX;

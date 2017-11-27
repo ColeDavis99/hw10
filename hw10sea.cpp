@@ -10,16 +10,16 @@ Sea::Sea(const short seaspace)
 
 
   //Border Drawing
-  for (short i = m_seaSpace - 1; i > 0; i--)
+  for(short i = m_seaSpace+1; i >= 0; i--)
   {
-    for (short p = 0; p < m_seaSpace; p++)
+    for(short q = 0; q <=m_seaSpace+1; q++)
     {
-      m_seaGrid[i][p] = 'x';
+      m_seaGrid[i][q] = 'x';
     }
   }
 
   // Clear m_seaGrid[][]
-  clear();
+   clear();
 
   // Place fish, pengs, and killers into m_seaGrid[][]
   populate();
@@ -31,9 +31,9 @@ Sea::Sea(const short seaspace)
 ==================*/
 void Sea::clear()
 {
-  for (short i = m_seaSpace - 2; i > 1; i--)
+  for(short i = m_seaSpace; i > 0; i--)
   {
-    for (short q = 1; q < m_seaSpace - 1; q++)
+    for(short q = 1; q <=m_seaSpace; q++)
     {
       m_seaGrid[i][q] = ' ';
     }
@@ -45,7 +45,7 @@ void Sea::clear()
 void Sea::populate()
 {
   //Code goes here for m_seaGrid[][] population
-  m_seaGrid[2][1] = 'A';
+  m_seaGrid[1][1] = 'A';
 }
 
 
@@ -59,13 +59,13 @@ void Sea::populate()
 
 ostream & operator <<(ostream &os, const Sea &sea)
 {
-  for (short i = sea.m_seaSpace - 1; i > 0; i--)
+  for(short i = sea.m_seaSpace+1; i >= 0; i--)
   {
-    for (short q = 0; q < sea.m_seaSpace; q++)
+    for(short q = 0; q <=sea.m_seaSpace+1; q++)
     {
-      os << sea.m_seaGrid[i][q];
+      os<<sea.m_seaGrid[i][q];
     }
-    os << endl;
+    os<<endl;
   }
   return os;
 }

@@ -17,18 +17,16 @@ int main()
 {
   srand(time(NULL));
 
-  cout<<"I'm filling Arctic.m_seaGrid[][] with an 'S'.This can easily be"<<endl
-  <<"switched with a space in order to 'clear' the grid."<<endl<<endl;
-  Sea Arctic(17);
+  Sea Arctic(18);
   cout<<Arctic;
-
 
 
   Penguin Mumble;
   Mumble.move();// move() is incomplete
 
+
   //Testing fish movement
-  fish frank;
+  Fish frank;
 
 
 
