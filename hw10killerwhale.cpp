@@ -25,12 +25,12 @@ void Whale::setWhalePos(const short posX, const short posY)
   return;
 }
 
-short Whale::getWhalePosX()
+short Whale::getWhalePosX()const
 {
   return m_posX;
 }
 
-short Whale::getWhalePosY()
+short Whale::getWhalePosY()const
 {
   return m_posY;
 }
