@@ -20,12 +20,8 @@ int main()
   Penguin penguinArr[MAX_PENGUINS];
   Fish fishArr[MAX_FISH];
 
-<<<<<<< HEAD
-  Sea Arctic(penguinArr, fishArr, 17);
-=======
-  Sea Arctic(PLAYABLE_SPACE);
+  Sea Arctic(penguinArr, fishArr, PLAYABLE_SPACE);
 
->>>>>>> e4c52e384686a7a9d835653e64dd38860b22cf6e
   cout<<Arctic;
 
 

@@ -35,3 +35,13 @@ void Fish::setFishPos(const short posX, const short posY)
   m_posY = posY;
   return;
 }
+
+short Fish::getFishPosX()const
+{
+  return m_posX;
+}
+
+short Fish::getFishPosY()const
+{
+  return m_posY;
+}

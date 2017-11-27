@@ -17,3 +17,20 @@ short Whale::getPenguinKillCount()
 {
   return m_penguinKillCount;
 }
+
+void Whale::setWhalePos(const short posX, const short posY)
+{
+  m_posX = posX;
+  m_posY = posY;
+  return;
+}
+
+short Whale::getWhalePosX()
+{
+  return m_posX;
+}
+
+short Whale::getWhalePosY()
+{
+  return m_posY;
+}
