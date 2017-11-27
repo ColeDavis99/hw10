@@ -82,3 +82,46 @@ bool Penguin::move()
 
   return can_move;
 }//End of Penguin::move()
+
+
+
+/*================
+     GETTERS
+================*/
+short Penguin::getPengPosX()const
+{
+  return m_X;
+}
+
+short Penguin::getPengPosY()const
+{
+  return m_Y;
+}
+
+bool Penguin::getAliveState()const
+{
+  return m_alive;
+}
+
+
+
+/*================
+     SETTERS
+================*/
+void Penguin::setAliveState(const bool p_state)
+{
+  m_alive = p_state;
+  return;
+}
+
+void Penguin::setPengPosX(const short x)
+{
+  m_X = x;
+  return;
+}
+
+void Penguin::setPengPosY(const short y)
+{
+  m_Y = y;
+  return;
+}

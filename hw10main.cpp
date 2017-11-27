@@ -20,13 +20,21 @@ int main()
   Penguin penguinArr[MAX_PENGUINS];
   Fish fishArr[MAX_FISH];
 
-  Sea Arctic(penguinArr, fishArr, 17);
+  Sea Arctic(penguinArr, fishArr, PLAYABLE_SPACE);
   cout<<Arctic;
 
 
 
 
 
+
+
+
+  for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
+  {
+
+
+  }
 
 
   return 0;

@@ -14,10 +14,8 @@ Sea::Sea(Penguin penguinArr[],
   // Fill m_seaGrid[][] with x's
   drawBorder();
 
-
   // Clear m_seaGrid[][]
-   clear();
-
+  clear();
 
   // Place fish, pengs, and killers into m_seaGrid[][]
   populate(penguinArr, fishArr);
@@ -58,19 +56,38 @@ void Sea::populate(Penguin penguinArr[],
                    Fish fishArr[])
 {
   //Randomly generate penguin's valid x&y values and set their member vars.
+  bool is_space;
   short peng_x;
   short peng_y;
 
   for(short i=0; i<PENG_SPAWN_NUM; i++)
   {
-    //Generate random number between 1 & 17 inclusive
-    peng_x = rand() % m_seaSpace + 1;
-    peng_y = rand() % m_seaSpace + 1;
-    cout<<"Penguin's Random X: "<<peng_x<<endl;
-    cout<<"Penguin's Random Y: "<<peng_y<<endl;
+    is_space = false;
+    do
+    {
+      //Generate random number between 1 & 17 inclusive
+      peng_x = rand() % m_seaSpace + 1;
+      peng_y = rand() % m_seaSpace + 1;
+      cout<<"Penguin's Random X: "<<peng_x<<endl;
+      cout<<"Penguin's Random Y: "<<peng_y<<endl<<endl;
 
-  }
-}
+
+      if(m_seaGrid[peng_x][peng_y] == ' ')
+      {
+        is_space = true;
+        m_seaGrid[peng_x][peng_y] = 'P';
+
+        penguinArr[i].setPengPosX(peng_x);
+        penguinArr[i].setPengPosY(peng_y);
+      }
+      else{
+        cout<<"^CONFLICT^"<<endl<<endl<<endl;
+      }
+    } while(!is_space);
+  }//End of Penguin Loop
+
+
+}//End of Sea::populate()
 
 
 
