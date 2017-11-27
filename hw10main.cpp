@@ -17,7 +17,9 @@ int main()
 {
   srand(time(NULL));
 
+
   Sea Arctic(17);
+
   cout<<Arctic;
 
 

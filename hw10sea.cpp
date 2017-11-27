@@ -46,10 +46,7 @@ void Sea::populate()
 {
   //Code goes here for m_seaGrid[][] population
 
-  //Hardcoded Example
   m_seaGrid[1][1] = 'A';
-
-
 }
 
 
