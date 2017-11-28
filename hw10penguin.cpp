@@ -15,8 +15,8 @@ Penguin::Penguin()
   m_alive = false;
 
   //Set starting X and Y values
-  m_X = PENG_START_X;
-  m_Y = PENG_START_Y;
+  m_posX = PENG_START_X;
+  m_posY = PENG_START_Y;
 }
 
 
@@ -90,12 +90,12 @@ bool Penguin::move()
 ================*/
 short Penguin::getPengPosX()const
 {
-  return m_X;
+  return m_posX;
 }
 
 short Penguin::getPengPosY()const
 {
-  return m_Y;
+  return m_posY;
 }
 
 bool Penguin::getAliveState()const
@@ -108,20 +108,15 @@ bool Penguin::getAliveState()const
 /*================
      SETTERS
 ================*/
-void Penguin::setAliveState(const bool p_state)
+void Penguin::setPengAliveState(const bool p_state)
 {
   m_alive = p_state;
   return;
 }
 
-void Penguin::setPengPosX(const short x)
+void Penguin::setPengPos(const short posX, const short posY)
 {
-  m_X = x;
-  return;
-}
-
-void Penguin::setPengPosY(const short y)
-{
-  m_Y = y;
+  m_posX = posX;
+  m_posY = posY;
   return;
 }

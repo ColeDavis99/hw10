@@ -7,8 +7,8 @@ class Penguin
   private:
     short m_energy;
     bool m_alive;
-    short m_X;
-    short m_Y;
+    short m_posX;
+    short m_posY;
 
 
   public:
@@ -22,18 +22,12 @@ class Penguin
     //
     //pre:
     //Post:
-    void setAliveState(const bool p_state);
+    void setPengAliveState(const bool p_state);
 
     //
-    //pre:
+    //Pre:
     //Post:
-    void setPengPosX(const short x);
-
-    //
-    //pre:
-    //Post:
-    void setPengPosY(const short y);
-
+    void setPengPos(const short posX, const short posY);
 
     //
     //pre:

@@ -9,7 +9,7 @@
 //Constructor
 Fish::Fish()
 {
-  m_isAlive = false;
+  m_alive = false;
 
   short range = (FOOD_VAL_UPPR - FOOD_VAL_LOWR + 1);
 
@@ -21,21 +21,17 @@ Fish::Fish()
   m_foodWorth = rand() % range + FOOD_VAL_LOWR;
 }
 
+
+
 bool Fish::move()
 {
 
-
-
 }
 
 
-void Fish::setFishPos(const short posX, const short posY)
-{
-  m_posX = posX;
-  m_posY = posY;
-  return;
-}
-
+/*============
+    GETTERS
+============*/
 short Fish::getFishPosX()const
 {
   return m_posX;
@@ -44,4 +40,23 @@ short Fish::getFishPosX()const
 short Fish::getFishPosY()const
 {
   return m_posY;
+}
+
+
+/*============
+    SETTERS
+============*/
+
+void Fish::setFishPos(const short posX, const short posY)
+{
+  m_posX = posX;
+  m_posY = posY;
+  return;
+}
+
+
+void Fish::setFishAliveState(const bool p_state)
+{
+  m_alive = p_state;
+  return;
 }

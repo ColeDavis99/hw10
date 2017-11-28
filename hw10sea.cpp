@@ -1,12 +1,14 @@
 #include "hw10headder.h"
 #include "hw10sea.h"
 #include "hw10killerwhale.h"
+#include "hw10fish.h"
 
 /*==================
     CONSTRUCTOR
 ==================*/
 Sea::Sea(Penguin penguinArr[],
          Fish fishArr[],
+         Whale whaleArr[],
          const short seaspace)
 {
   m_seaSpace = seaspace;//Default argument of SEA_MAX
@@ -18,7 +20,7 @@ Sea::Sea(Penguin penguinArr[],
   clear();
 
   // Place fish, pengs, and killers into m_seaGrid[][]
-  populate(penguinArr, fishArr);
+  populate(penguinArr, fishArr, whaleArr);
 }
 
 
@@ -53,32 +55,37 @@ void Sea::clear()
 
 //Eventually will pass whale array as well
 void Sea::populate(Penguin penguinArr[],
-                   Fish fishArr[])
+                   Fish fishArr[],
+                   Whale whaleArr[])
 {
   //Randomly generate penguin's valid x&y values and set their member vars.
   bool is_space;
-  short peng_x;
-  short peng_y;
+  short new_x;
+  short new_y;
 
+  //loop 1 of 3
   for(short i=0; i<PENG_SPAWN_NUM; i++)
   {
     is_space = false;
     do
     {
       //Generate random number between 1 & 17 inclusive
-      peng_x = rand() % m_seaSpace + 1;
-      peng_y = rand() % m_seaSpace + 1;
-      cout<<"Penguin's Random X: "<<peng_x<<endl;
-      cout<<"Penguin's Random Y: "<<peng_y<<endl<<endl;
+      new_x = rand() % m_seaSpace + 1;
+      new_y = rand() % m_seaSpace + 1;
+      cout<<"Penguin's Random X: "<<new_x<<endl;
+      cout<<"Penguin's Random Y: "<<new_y<<endl<<endl;
 
 
-      if(m_seaGrid[peng_x][peng_y] == ' ')
+      if(m_seaGrid[new_x][new_y] == ' ')
       {
         is_space = true;
-        m_seaGrid[peng_x][peng_y] = 'P';
+        m_seaGrid[new_x][new_y] = PENG_CHAR;
 
-        penguinArr[i].setPengPosX(peng_x);
-        penguinArr[i].setPengPosY(peng_y);
+        //Set member x&y variables
+        penguinArr[i].setPengPos(new_x, new_y);
+
+        //Make member 'alive' variable to true
+        penguinArr[i].setPengAliveState(true);
       }
       else{
         cout<<"^CONFLICT^"<<endl<<endl<<endl;
@@ -86,6 +93,63 @@ void Sea::populate(Penguin penguinArr[],
     } while(!is_space);
   }//End of Penguin Loop
 
+  //loop 2 of 3
+  for(short i=0; i<FISH_SPAWN_NUM; i++)
+  {
+    is_space = false;
+    do
+    {
+      //Generate random number between 1 & 17 inclusive
+      new_x = rand() % m_seaSpace + 1;
+      new_y = rand() % m_seaSpace + 1;
+      cout<<"Fish's Random X: "<<new_x<<endl;
+      cout<<"Fish's Random Y: "<<new_y<<endl<<endl;
+
+
+      if(m_seaGrid[new_x][new_y] == ' ')
+      {
+        is_space = true;
+        m_seaGrid[new_x][new_y] = FISH_CHAR;
+
+        //Set member x&y variables
+        fishArr[i].setFishPos(new_x, new_y);
+
+        //Make member 'alive' variable to true
+        fishArr[i].setFishAliveState(true);
+      }
+      else{
+        cout<<"^CONFLICT^"<<endl<<endl<<endl;
+      }
+    } while(!is_space);
+  }//End of fish Loop
+
+
+  //loop 3 of 3
+  for(short i=0; i<WHALE_SPAWN_NUM; i++)
+  {
+    is_space = false;
+    do
+    {
+      //Generate random number between 1 & 17 inclusive
+      new_x = rand() % m_seaSpace + 1;
+      new_y = rand() % m_seaSpace + 1;
+      cout<<"Whale's Random X: "<<new_x<<endl;
+      cout<<"Whale's Random Y: "<<new_y<<endl<<endl;
+
+
+      if(m_seaGrid[new_x][new_y] == ' ')
+      {
+        is_space = true;
+        m_seaGrid[new_x][new_y] = WHALE_CHAR;
+
+        //Set member x&y variables
+        whaleArr[i].setWhalePos(new_x, new_y);
+      }
+      else{
+        cout<<"^CONFLICT^"<<endl<<endl<<endl;
+      }
+    } while(!is_space);
+  }//End of fish Loop
 
 }//End of Sea::populate()
 

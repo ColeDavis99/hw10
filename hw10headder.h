@@ -30,17 +30,23 @@ const short PENG_HEALTH_1 = 20;
 const short PENG_HEALTH_2 = 40;
 const short PENG_HEALTH_3 = 60;
 const short PENG_HEALTH_4 = 80;
+const char PENG_CHAR = 'p';
 
 
-//Fish
+//Fishes
 const short MAX_FISH = 200;
+const short FISH_SPAWN_NUM = 35;
 const short FOOD_VAL_LOWR = 1;
 const short FOOD_VAL_UPPR = 10;
 const short FISH_START_X = -1;
 const short FISH_START_Y = -1;
+const char FISH_CHAR = 'f';
 
 
-
+//Whales
+const short MAX_WHALES = 2;
+const short WHALE_SPAWN_NUM = 2;
+const char WHALE_CHAR = 'W';
 
 
 #endif

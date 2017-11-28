@@ -8,7 +8,7 @@ private:
   short m_foodWorth;
   short m_posX;
   short m_posY;
-  bool m_isAlive;
+  bool m_alive;
 
 public:
   Fish();
@@ -30,7 +30,10 @@ public:
   //Post:
   short getFishPosY()const;
 
-
+  //
+  //Pre:
+  //Post:
+  void setFishAliveState(const bool p_state);
 };
 
 #endif

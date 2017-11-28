@@ -17,11 +17,12 @@ int main()
 {
   srand(time(NULL));
 
+  //Create arrays of all actors
   Penguin penguinArr[MAX_PENGUINS];
   Fish fishArr[MAX_FISH];
+  Whale whaleArr[MAX_WHALES];
 
-  Sea Arctic(penguinArr, fishArr, PLAYABLE_SPACE);
-
+  Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
   cout<<Arctic;
 
 

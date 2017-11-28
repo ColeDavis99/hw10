@@ -3,6 +3,7 @@
 #include "hw10headder.h"
 #include "hw10fish.h"
 #include "hw10penguin.h"
+#include "hw10killerwhale.h"
 
 
 class Sea
@@ -15,6 +16,7 @@ class Sea
     //Constructor (definition in hw10sea.cpp)
     Sea(Penguin penguinArr[],
         Fish fishArr[],
+        Whale whaleArr[],
         const short seaspace = SEA_MAX);
 
 
@@ -34,7 +36,8 @@ class Sea
     //Pre: Actor objects & sea objects must be instanciated
     //Post: m_seaGrid[][] is populated with chars representing actors
     void populate(Penguin penguinArr[],
-                  Fish fishArr[]);
+                  Fish fishArr[],
+                  Whale whaleArr[]);
 
     // Adds Representative character to m_seaGrid[][] at correct X&Y coord
     // Pre: Passed Object's X&Y coordinates are valid
