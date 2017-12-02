@@ -117,7 +117,6 @@ bool Penguin::pengFoundTarget(const Sea S)
   {
      for ( short x = startX; x <= endX; x++)
      {
-
        temp = S.getActor(x,y);//Get character in grid.
        if(temp == FISH_CHAR)
        {
@@ -132,10 +131,8 @@ bool Penguin::pengFoundTarget(const Sea S)
        }
      }
   }
-  cout<<"This penguin's coords: X:"<<m_posX<<" Y: "<<m_posY<<endl;
-  cout<<"Target coords: X:"<<m_targetX<<" Y: "<<m_targetY<<endl;
-  cout<<"Shortest Distance To Target: "<<target_dist<<endl;
-}
+  return found_target;
+}//End of pengFoundTarget()
 
 
 
