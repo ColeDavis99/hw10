@@ -164,7 +164,7 @@ bool Fish::move(Sea & arctic)
     moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
     moveToPosY = m_posY + ADVANCE_FISH_MOVE_BY;
 
-    if (moveToPosY <= MAX_MOVABLE_BOUNDARY)
+    if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
     {
       moveToPosY = MAX_MOVABLE_BOUNDARY;
     }
