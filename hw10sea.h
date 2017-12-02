@@ -3,7 +3,7 @@
 #include "hw10headder.h"
 #include "hw10fish.h"
 #include "hw10penguin.h"
-#include "hw10killerwhale.h" //TEST COMMENT
+#include "hw10killerwhale.h" 
 
 
 class Sea

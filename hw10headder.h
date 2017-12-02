@@ -44,6 +44,7 @@ const short PENG_HEALTH_3 = 60;
 const short PENG_HEALTH_4 = 80;
 
 const short PENG_VISION_RANGE = 8;
+const short PENG_TARGET_DEF = PENG_VISION_RANGE + 1;
 const char PENG_CHAR = 'p';
 
 
@@ -65,11 +66,17 @@ const char WHALE_CHAR = 'W';
 
 
 
+
 //Functions
 
 //
 //Pre:
 //Post:
 short randomDirection();
+
+//
+//Pre:
+//Post:
+float calcDist(const short x1, const short y1, const short x2, const short y2);
 
 #endif
