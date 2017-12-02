@@ -206,7 +206,9 @@ char Sea::getActor(const short posX, const short posY)const
   return m_seaGrid[posY][posX];
 }
 
-void Sea::setActor(const short & posX, const short & posY, char actor)
+void Sea::setActor(const short newPosX, const short newPosY, char newActor, short lastPosX, short lastPosY, char clearActor)
 {
-  m_seaGrid[posY][posX] = actor;
+  m_seaGrid[lastPosY][lastPosX] = clearActor;
+  m_seaGrid[newPosY][newPosX] = newActor;
+  return;
 }

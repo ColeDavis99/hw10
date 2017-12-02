@@ -132,7 +132,7 @@ bool Penguin::pengFoundTarget(const Sea S)
       //Loop through S.m_seaGrid[][] using these x & y values
       //And set the penguin's targetx&y values equal to the fish's
       // x & y values
-      (Look at picture on phone, black pseudocode on whiteboard)
+      //(Look at picture on phone, black pseudocode on whiteboard)
      }
   }
 }

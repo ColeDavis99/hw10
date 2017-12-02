@@ -58,7 +58,7 @@ class Sea
     //
     //Pre:
     //Post:
-    void setActor(const short & posX, const short & posY, char actor);
+    void setActor(const short newPosX, const short newPosY, char newActor, short lastPosX, short lastPosY, char clearActor);
 };
 
 #endif
