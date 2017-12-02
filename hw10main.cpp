@@ -10,6 +10,7 @@
 #include "hw10penguin.h"
 #include "hw10killerwhale.h"
 #include <iostream>
+#include <unistd.h>
 
 
 int main()
@@ -22,15 +23,18 @@ int main()
   Whale whaleArr[MAX_WHALES];
 
   Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
-  cout<<Arctic;
+  //cout<<Arctic;
 
 
 
 
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
   {
+    for (short fish = 0; fish < 35; fish++)
 
-
+    fishArr[fish].move(Arctic);
+    usleep(200000);
+    cout << Arctic;
   }
 
 

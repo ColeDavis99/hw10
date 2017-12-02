@@ -15,10 +15,10 @@ using namespace std;
 ========================*/
 const short SEA_PLAYABLE_MAX = 25;
 const short PLAYABLE_SPACE = 17;
-const short SIMULATION_ITTERATIONS = 1;
+const short SIMULATION_ITTERATIONS = 10000;
 const short RAND_DIR_UPPR = 7;
 const short RAND_DIR_LOWR = 0;
-const char CLEAR_LAST_POS = ' ';
+const char SPACE_EMPTY = ' ';
 
 //DO NOT CHANGE THIS!!! I WILL HUNT YOU DOWN IF YOU DO!!!!
 const short BORDERS_OF_PLAY_SPACE = PLAYABLE_SPACE + 2;
