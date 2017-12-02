@@ -131,10 +131,8 @@ bool Penguin::pengFoundTarget(const Sea S)
        }
      }
   }
-  cout<<"This penguin's coords: X:"<<m_posX<<" Y: "<<m_posY<<endl;
-  cout<<"Target coords: X:"<<m_targetX<<" Y: "<<m_targetY<<endl;
-  cout<<"Shortest Distance To Target: "<<target_dist<<endl;
-}
+  return found_target;
+}//End of pengFoundTarget()
 
 
 
