@@ -49,8 +49,8 @@ const char PENG_CHAR = 'p';
 
 
 //Fishes
-const short MAX_FISH = 200;
-const short FISH_SPAWN_NUM = 35;
+const short MAX_FISH = 1; //Default to 200
+const short FISH_SPAWN_NUM = 1; //Default to 35
 const short FOOD_VAL_LOWR = 1;
 const short FOOD_VAL_UPPR = 10;
 const short FISH_START_X = -1;

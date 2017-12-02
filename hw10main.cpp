@@ -30,7 +30,7 @@ int main()
 
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
   {
-    for (short fish = 0; fish < 35; fish++)
+    for (short fish = 0; fish < 1; fish++)
     {
       fishArr[fish].move(Arctic);
     }

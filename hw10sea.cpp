@@ -48,7 +48,7 @@ void Sea::clear()
   {
     for(short q = 1; q <=m_seaSpace; q++)
     {
-      m_seaGrid[i][q] = ' ';
+      m_seaGrid[i][q] = SPACE_EMPTY;
     }
   }
 }
@@ -78,7 +78,7 @@ void Sea::populate(Penguin penguinArr[],
       cout<<"Fish's Random Y: "<<new_y<<endl<<endl;
 
 
-      if(m_seaGrid[new_y][new_x] == ' ')
+      if(m_seaGrid[new_y][new_x] == SPACE_EMPTY)
       {
         is_space = true;
         m_seaGrid[new_y][new_x] = FISH_CHAR;
@@ -90,7 +90,7 @@ void Sea::populate(Penguin penguinArr[],
         fishArr[i].setFishAliveState(true);
       }
       else{
-        cout<<"^CONFLICT^"<<endl<<endl<<endl;
+        //cout<<"^CONFLICT^"<<endl<<endl<<endl;
       }
     } while(!is_space);
   }//End of fish Loop
@@ -108,7 +108,7 @@ void Sea::populate(Penguin penguinArr[],
       cout<<"Penguin's Random Y: "<<new_y<<endl<<endl;
 
 
-      if(m_seaGrid[new_y][new_x] == ' ')
+      if(m_seaGrid[new_y][new_x] == SPACE_EMPTY)
       {
         is_space = true;
 
@@ -141,7 +141,7 @@ void Sea::populate(Penguin penguinArr[],
   //     cout<<"Whale's Random Y: "<<new_y<<endl<<endl;
   //
   //
-  //     if(m_seaGrid[new_y][new_x] == ' ')
+  //     if(m_seaGrid[new_y][new_x] == SPACE_EMPTY)
   //     {
   //       is_space = true;
   //       m_seaGrid[new_y][new_x] = WHALE_CHAR;
