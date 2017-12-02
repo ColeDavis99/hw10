@@ -30,8 +30,9 @@ int main()
     for (short fish = 0; fish < 35; fish++)
     {
       fishArr[fish].move(Arctic);
-      cout << Arctic;
     }
+    usleep(200000);
+    cout << Arctic;
   }
 
 
