@@ -45,7 +45,20 @@ class Sea
     template <typename T>
     void addToGrid(T actor);
 
+    //
+    //Pre:
+    //Post:
     friend ostream & operator <<(ostream &os, const Sea &sea);
+
+    //
+    //Pre:
+    //Post:
+    char getActor(const short posX, const short posY)const;
+
+    //
+    //Pre:
+    //Post:
+    void setActor(const short & posX, const short & posY, char actor);
 };
 
 #endif

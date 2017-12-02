@@ -1,12 +1,9 @@
-template <typename T>
-void addToGrid(T obj)
+#include "hw10headder.h"
+
+using namespace std;
+
+short randomDirection()
 {
-  //Template function that takes a fish, penguin, or killer whale
-  // object and adds it to m_seaGrid[][].
-
-  /*Note:
-
-    I imagine the addToGrid() call will look something like this:
-    addToGrid(,);
-  */
+  short range = (RAND_DIR_UPPR - RAND_DIR_LOWR + 1)
+    return rand() % range + RAND_DIR_LOWR;
 }

@@ -1,5 +1,6 @@
 #include "hw10headder.h"
 #include "hw10fish.h"
+#include "hw10sea.h"
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
@@ -23,9 +24,51 @@ Fish::Fish()
 
 
 
-bool Fish::move()
+bool Fish::move(const Sea & arctic)
 {
+  bool moveSuccessful = false;
+  short direction;
+  short moveToPosY;
+  short moveToPosX;
+  direction = randomDirection();
 
+  switch (direction)
+  {
+  case: 0
+    moveToPosX = m_posX;
+    moveToPosY = m_posY + ADVANCE_FISH_MOVE_BY;
+
+    if (moveToPosY >= MAX_MOVEABLE_BOUNDRY)
+    {
+      moveToPosY = MAX_MOVEABLE_BOUNDRY;
+    }
+    if (arctic.getActor(moveToPosX, moveToPosY) == ' ')
+    {
+      arctic.setActor(m_PosX, m_posY, CLEAR_LAST_POS);
+      m_posX = moveToPosX;
+      m_posY = moveToPosY;
+      moveSuccessful = true;
+    }
+    break;
+  case: 1
+    break;
+  case 2:
+    break;
+  case: 3
+    break;
+  case: 4
+    break;
+  case 5:
+    break;
+  case: 6
+    break;
+  case: 7
+    break;
+  default:
+    break;
+  }
+
+  return moveSuccessful;
 }
 
 

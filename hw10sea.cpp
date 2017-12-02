@@ -198,3 +198,14 @@ ostream & operator <<(ostream &os, const Sea &sea)
   }
   return os;
 }
+
+
+char getActor(const short posX, const short posY)const
+{
+  return m_seaGrid[posY][posX];
+}
+
+void setActor(const short & posX, const short & posY, char actor)
+{
+  m_seaGrid[posY][posX] = actor;
+}

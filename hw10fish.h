@@ -13,7 +13,10 @@ private:
 public:
   Fish();
 
-  bool move();
+  //
+  //Pre:
+  //Post:
+  bool move(const Sea & artic);
 
   //
   //Pre:
