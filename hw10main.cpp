@@ -4,13 +4,12 @@
  *Class: CS1570 Section A
  *Purpose: Simulate Antarctic Waters
 ========================================================================*/
-
 #include "hw10headder.h"
-#include "hw10fish.h"
-#include "hw10killerwhale.h"
-#include "hw10penguin.h"
 #include "hw10sea.h"
-
+#include "hw10fish.h"
+#include "hw10penguin.h"
+#include "hw10killerwhale.h"
+#include <iostream>
 
 
 int main()

@@ -1,5 +1,7 @@
 #include "hw10headder.h"
 #include "hw10penguin.h"
+#include "hw10sea.h"
+
 
 /*==================
     CONSTRUCTOR
@@ -59,7 +61,7 @@ bool Penguin::move()
 
 
   /*determine what direction the penguin should move
-   (look for fish and avoid killer whales)*/
+   (look for fish)
 
 
   /*Determine whether or not moving X amt of spaces in X direction
@@ -102,6 +104,41 @@ bool Penguin::getAliveState()const
 {
   return m_alive;
 }
+
+bool Penguin::pengFoundTarget(const Sea S)
+{
+
+  short startX = m_posX - PENG_VISION_RANGE;
+  if(startX < MIN_MOVABLE_BOUNDARY)
+     startX = MIN_MOVABLE_BOUNDARY;
+
+  short endX = m_posX + PENG_VISION_RANGE;
+  if(endX > MAX_MOVABLE_BOUNDARY)
+    endX = MAX_MOVABLE_BOUNDARY;
+
+
+  short startY = m_posY + PENG_VISION_RANGE;
+  if(startY > MAX_MOVABLE_BOUNDARY)
+     startY = MAX_MOVABLE_BOUNDARY;
+
+  short endY = m_posY - PENG_VISION_RANGE;
+   if(endY < MIN_MOVABLE_BOUNDARY)
+      endY = MIN_MOVABLE_BOUNDARY;
+
+  for (short y = startY; y >= endY; y--)
+  {
+     for ( short x = startX; x <= endX; x++)
+     {
+      //Loop through S.m_seaGrid[][] using these x & y values
+      //And set the penguin's targetx&y values equal to the fish's
+      // x & y values
+      // (Look at picture on phone, black pseudocode on whiteboard)
+     }
+  }
+}
+
+
+
 
 
 

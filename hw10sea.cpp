@@ -1,7 +1,9 @@
-#include "hw10headder.h"
 #include "hw10sea.h"
-#include "hw10killerwhale.h"
-#include "hw10fish.h"
+#include "hw10penguin.h"
+
+
+
+
 
 /*==================
     CONSTRUCTOR
@@ -53,7 +55,6 @@ void Sea::clear()
 
 
 
-//Eventually will pass whale array as well
 void Sea::populate(Penguin penguinArr[],
                    Fish fishArr[],
                    Whale whaleArr[])
@@ -63,37 +64,8 @@ void Sea::populate(Penguin penguinArr[],
   short new_x;
   short new_y;
 
+
   //loop 1 of 3
-  for(short i=0; i<PENG_SPAWN_NUM; i++)
-  {
-    is_space = false;
-    do
-    {
-      //Generate random number between 1 & 17 inclusive
-      new_x = rand() % m_seaSpace + 1;
-      new_y = rand() % m_seaSpace + 1;
-      cout<<"Penguin's Random X: "<<new_x<<endl;
-      cout<<"Penguin's Random Y: "<<new_y<<endl<<endl;
-
-
-      if(m_seaGrid[new_x][new_y] == ' ')
-      {
-        is_space = true;
-        m_seaGrid[new_x][new_y] = PENG_CHAR;
-
-        //Set member x&y variables
-        penguinArr[i].setPengPos(new_x, new_y);
-
-        //Make member 'alive' variable to true
-        penguinArr[i].setPengAliveState(true);
-      }
-      else{
-        cout<<"^CONFLICT^"<<endl<<endl<<endl;
-      }
-    } while(!is_space);
-  }//End of Penguin Loop
-
-  //loop 2 of 3
   for(short i=0; i<FISH_SPAWN_NUM; i++)
   {
     is_space = false;
@@ -106,13 +78,13 @@ void Sea::populate(Penguin penguinArr[],
       cout<<"Fish's Random Y: "<<new_y<<endl<<endl;
 
 
-      if(m_seaGrid[new_x][new_y] == ' ')
+      if(m_seaGrid[new_y][new_x] == ' ')
       {
         is_space = true;
-        m_seaGrid[new_x][new_y] = FISH_CHAR;
+        m_seaGrid[new_y][new_x] = FISH_CHAR;
 
         //Set member x&y variables
-        fishArr[i].setFishPos(new_x, new_y);
+        fishArr[i].setFishPos(new_y, new_x);
 
         //Make member 'alive' variable to true
         fishArr[i].setFishAliveState(true);
@@ -123,33 +95,62 @@ void Sea::populate(Penguin penguinArr[],
     } while(!is_space);
   }//End of fish Loop
 
+  // //loop 2 of 3
+  // for(short i=0; i<PENG_SPAWN_NUM; i++)
+  // {
+  //   is_space = false;
+  //   do
+  //   {
+  //     //Generate random number between 1 & 17 inclusive
+  //     new_x = rand() % m_seaSpace + 1;
+  //     new_y = rand() % m_seaSpace + 1;
+  //     cout<<"Penguin's Random X: "<<new_x<<endl;
+  //     cout<<"Penguin's Random Y: "<<new_y<<endl<<endl;
+  //
+  //
+  //     if(m_seaGrid[new_y][new_x] == ' ')
+  //     {
+  //       is_space = true;
+  //       m_seaGrid[new_y][new_x] = PENG_CHAR;
+  //
+  //       //Set member x&y variables
+  //       penguinArr[i].setPengPos(new_y, new_x);
+  //
+  //       //Make member 'alive' variable to true
+  //       penguinArr[i].setPengAliveState(true);
+  //     }
+  //     else{
+  //       cout<<"^CONFLICT^"<<endl<<endl<<endl;
+  //     }
+  //   } while(!is_space);
+  // }//End of Penguin Loop
 
-  //loop 3 of 3
-  for(short i=0; i<WHALE_SPAWN_NUM; i++)
-  {
-    is_space = false;
-    do
-    {
-      //Generate random number between 1 & 17 inclusive
-      new_x = rand() % m_seaSpace + 1;
-      new_y = rand() % m_seaSpace + 1;
-      cout<<"Whale's Random X: "<<new_x<<endl;
-      cout<<"Whale's Random Y: "<<new_y<<endl<<endl;
-
-
-      if(m_seaGrid[new_x][new_y] == ' ')
-      {
-        is_space = true;
-        m_seaGrid[new_x][new_y] = WHALE_CHAR;
-
-        //Set member x&y variables
-        whaleArr[i].setWhalePos(new_x, new_y);
-      }
-      else{
-        cout<<"^CONFLICT^"<<endl<<endl<<endl;
-      }
-    } while(!is_space);
-  }//End of fish Loop
+  // //loop 3 of 3
+  // for(short i=0; i<WHALE_SPAWN_NUM; i++)
+  // {
+  //   is_space = false;
+  //   do
+  //   {
+  //     //Generate random number between 1 & 17 inclusive
+  //     new_x = rand() % m_seaSpace + 1;
+  //     new_y = rand() % m_seaSpace + 1;
+  //     cout<<"Whale's Random X: "<<new_x<<endl;
+  //     cout<<"Whale's Random Y: "<<new_y<<endl<<endl;
+  //
+  //
+  //     if(m_seaGrid[new_y][new_x] == ' ')
+  //     {
+  //       is_space = true;
+  //       m_seaGrid[new_y][new_x] = WHALE_CHAR;
+  //
+  //       //Set member x&y variables
+  //       whaleArr[i].setWhalePos(new_y, new_x);
+  //     }
+  //     else{
+  //       cout<<"^CONFLICT^"<<endl<<endl<<endl;
+  //     }
+  //   } while(!is_space);
+  // }//End of Whale Loop
 
 }//End of Sea::populate()
 

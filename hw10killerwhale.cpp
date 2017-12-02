@@ -1,5 +1,7 @@
 #include "hw10headder.h"
 #include "hw10killerwhale.h"
+#include "hw10sea.h"
+
 
 Whale::Whale()
 {

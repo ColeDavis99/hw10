@@ -1,7 +1,7 @@
 #ifndef HW10FISH_H
 #define HW10FISH_H
-#include "hw10headder.h"
 
+class Sea;
 class Fish
 {
 private:

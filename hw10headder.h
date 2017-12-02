@@ -6,17 +6,26 @@
 ========================*/
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
+#include <ctime>
 using namespace std;
 
 /*========================
     GLOBAL CONSTANTS
 ========================*/
-const short SEA_MAX = 25;
+const short SEA_PLAYABLE_MAX = 25;
 const short PLAYABLE_SPACE = 17;
 const short SIMULATION_ITTERATIONS = 1;
 
 //DO NOT CHANGE THIS!!! I WILL HUNT YOU DOWN IF YOU DO!!!!
 const short BORDERS_OF_PLAY_SPACE = PLAYABLE_SPACE + 2;
+const short SEA_MAX = SEA_PLAYABLE_MAX + 2;
+
+//For "out of border" prevention
+const short MIN_MOVABLE_BOUNDARY = 1;
+const short MAX_MOVABLE_BOUNDARY = PLAYABLE_SPACE;
+const short DOUBLE_VISION = 2;
+
 
 //Penguins
 const short MAX_PENGUINS = 50;
@@ -30,6 +39,8 @@ const short PENG_HEALTH_1 = 20;
 const short PENG_HEALTH_2 = 40;
 const short PENG_HEALTH_3 = 60;
 const short PENG_HEALTH_4 = 80;
+
+const short PENG_VISION_RANGE = 8;
 const char PENG_CHAR = 'p';
 
 

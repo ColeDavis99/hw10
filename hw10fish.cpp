@@ -1,9 +1,6 @@
-#include "hw10headder.h"
 #include "hw10fish.h"
-#include <iostream>
-#include <cstdlib>
-#include <cmath>
-#include <ctime>
+#include "hw10sea.h"
+
 
 
 //Constructor
