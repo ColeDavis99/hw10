@@ -23,18 +23,15 @@ int main()
   Whale whaleArr[MAX_WHALES];
 
   Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
-  //cout<<Arctic;
-
-
 
 
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
   {
     for (short fish = 0; fish < 35; fish++)
-
-    fishArr[fish].move(Arctic);
-    usleep(200000);
-    cout << Arctic;
+    {
+      fishArr[fish].move(Arctic);
+      cout << Arctic;
+    }
   }
 
 

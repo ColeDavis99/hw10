@@ -50,136 +50,124 @@ bool Fish::move(Sea & arctic)
       m_posY = moveToPosY;
     }
     break;
-  case 1:
-    moveToPosX = m_posX + ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY + ADVANCE_FISH_MOVE_BY;
-
-    if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
-    {
-      moveToPosY = MAX_MOVABLE_BOUNDARY;
-    }
-    if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
-    {
-      moveToPosX = MAX_MOVABLE_BOUNDARY;
-    }
-    if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
-    {
-      m_posX = moveToPosX;
-      m_posY = moveToPosY;
-    }
-    break;
-  case 2:
-    moveToPosX = m_posX + ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY;
-
-    if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
-    {
-      moveToPosX = MAX_MOVABLE_BOUNDARY;
-    }
-    if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
-    {
-      m_posX = moveToPosX;
-      m_posY = moveToPosY;
-    }
-    break;
-  case 3:
-    moveToPosX = m_posX + ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY - ADVANCE_FISH_MOVE_BY;
-
-    if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
-    {
-      moveToPosY = MIN_MOVABLE_BOUNDARY;
-    }
-    if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
-    {
-      moveToPosX = MAX_MOVABLE_BOUNDARY;
-    }
-    if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
-    {
-      m_posX = moveToPosX;
-      m_posY = moveToPosY;
-    }
-    break;
-  case 4:
-    moveToPosX = m_posX;
-    moveToPosY = m_posY - ADVANCE_FISH_MOVE_BY;
-
-    if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
-    {
-      moveToPosY = MIN_MOVABLE_BOUNDARY;
-    }
-    if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
-    {
-      m_posX = moveToPosX;
-      m_posY = moveToPosY;
-    }
-    break;
-  case 5:
-    moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY - ADVANCE_FISH_MOVE_BY;
-
-    if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
-    {
-      moveToPosY = MIN_MOVABLE_BOUNDARY;
-    }
-    if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
-    {
-      moveToPosX = MIN_MOVABLE_BOUNDARY;
-    }
-    if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
-    {
-      m_posX = moveToPosX;
-      m_posY = moveToPosY;
-    }
-    break;
-  case 6:
-    moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY;
-
-    if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
-    {
-      moveToPosX = MIN_MOVABLE_BOUNDARY;
-    }
-    if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
-    {
-      m_posX = moveToPosX;
-      m_posY = moveToPosY;
-    }
-    break;
-  case 7:
-    moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY + ADVANCE_FISH_MOVE_BY;
-
-    if (moveToPosY <= MAX_MOVABLE_BOUNDARY)
-    {
-      moveToPosY = MAX_MOVABLE_BOUNDARY;
-    }
-    if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
-    {
-      moveToPosX = MIN_MOVABLE_BOUNDARY;
-    }
-    if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
-    {
-      m_posX = moveToPosX;
-      m_posY = moveToPosY;
-    }
-    break;
+  // case 1:
+  //   moveToPosX = m_posX + ADVANCE_FISH_MOVE_BY;
+  //   moveToPosY = m_posY + ADVANCE_FISH_MOVE_BY;
+  //
+  //   if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosY = MAX_MOVABLE_BOUNDARY;
+  //   }
+  //   if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosX = MAX_MOVABLE_BOUNDARY;
+  //   }
+  //   if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
+  //   {
+  //     m_posX = moveToPosX;
+  //     m_posY = moveToPosY;
+  //   }
+  //   break;
+  // case 2:
+  //   moveToPosX = m_posX + ADVANCE_FISH_MOVE_BY;
+  //   moveToPosY = m_posY;
+  //
+  //   if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosX = MAX_MOVABLE_BOUNDARY;
+  //   }
+  //   if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
+  //   {
+  //     m_posX = moveToPosX;
+  //     m_posY = moveToPosY;
+  //   }
+  //   break;
+  // case 3:
+  //   moveToPosX = m_posX + ADVANCE_FISH_MOVE_BY;
+  //   moveToPosY = m_posY - ADVANCE_FISH_MOVE_BY;
+  //
+  //   if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosY = MIN_MOVABLE_BOUNDARY;
+  //   }
+  //   if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosX = MAX_MOVABLE_BOUNDARY;
+  //   }
+  //   if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
+  //   {
+  //     m_posX = moveToPosX;
+  //     m_posY = moveToPosY;
+  //   }
+  //   break;
+  // case 4:
+  //   moveToPosX = m_posX;
+  //   moveToPosY = m_posY - ADVANCE_FISH_MOVE_BY;
+  //
+  //   if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosY = MIN_MOVABLE_BOUNDARY;
+  //   }
+  //   if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
+  //   {
+  //     m_posX = moveToPosX;
+  //     m_posY = moveToPosY;
+  //   }
+  //   break;
+  // case 5:
+  //   moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
+  //   moveToPosY = m_posY - ADVANCE_FISH_MOVE_BY;
+  //
+  //   if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosY = MIN_MOVABLE_BOUNDARY;
+  //   }
+  //   if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosX = MIN_MOVABLE_BOUNDARY;
+  //   }
+  //   if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
+  //   {
+  //     m_posX = moveToPosX;
+  //     m_posY = moveToPosY;
+  //   }
+  //   break;
+  // case 6:
+  //   moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
+  //   moveToPosY = m_posY;
+  //
+  //   if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosX = MIN_MOVABLE_BOUNDARY;
+  //   }
+  //   if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
+  //   {
+  //     m_posX = moveToPosX;
+  //     m_posY = moveToPosY;
+  //   }
+  //   break;
+  // case 7:
+  //   moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
+  //   moveToPosY = m_posY + ADVANCE_FISH_MOVE_BY;
+  //
+  //   if (moveToPosY <= MAX_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosY = MAX_MOVABLE_BOUNDARY;
+  //   }
+  //   if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
+  //   {
+  //     moveToPosX = MIN_MOVABLE_BOUNDARY;
+  //   }
+  //   if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY)
+  //   {
+  //     m_posX = moveToPosX;
+  //     m_posY = moveToPosY;
+  //   }
+  //   break;
   default:
-    cout << "Fish not moving" << endl;
+    //cout << "Fish not moving" << endl;
     break;
   }
-
-
-  if (moveToPosX != lastPosX && moveToPosY != lastPosY)
-  {
-    moveSuccessful = true;
-    arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-  }
-  else
-  {
-    moveSuccessful = false;
-  }
-
   return moveSuccessful;
 }
 
