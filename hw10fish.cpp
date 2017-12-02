@@ -180,11 +180,15 @@ bool Fish::move(Sea & arctic)
       moveSuccessful = true;
     }
     break;
+>>>>>>> 807fceec249646fe3ab3442b14079bcd918d12bf
   default:
-    cout << "Fish not moving" << endl;
+    //cout << "Fish not moving" << endl;
     break;
   }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 807fceec249646fe3ab3442b14079bcd918d12bf
   return moveSuccessful;
 }
 

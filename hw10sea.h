@@ -3,7 +3,7 @@
 #include "hw10headder.h"
 #include "hw10fish.h"
 #include "hw10penguin.h"
-#include "hw10killerwhale.h" 
+#include "hw10killerwhale.h"
 
 
 class Sea
@@ -55,10 +55,15 @@ class Sea
     //Post:
     char getActor(const short posX, const short posY)const;
 
-    //
+    //Adds new character and removes old character to m_seaGrid[][]
     //Pre:
     //Post:
-    void setActor(const short newPosX, const short newPosY, char newActor, short lastPosX, short lastPosY, char clearActor);
+    void setActor(const short newPosX,
+                  const short newPosY,
+                  char newActor,
+                  short lastPosX,
+                  short lastPosY,
+                  char clearActor);
 };
 
 #endif

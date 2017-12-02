@@ -23,9 +23,6 @@ int main()
   Whale whaleArr[MAX_WHALES];
 
   Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
-  //cout<<Arctic;
-
-
 
 
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
