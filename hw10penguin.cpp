@@ -19,8 +19,8 @@ Penguin::Penguin()
   //Set starting X and Y values
   m_posX = PENG_START_X;
   m_posY = PENG_START_Y;
-}
 
+}
 
 
 /*==================
@@ -58,30 +58,6 @@ bool Penguin::move()
     //The penguin doesn't move, no energy.
   }
 
-
-
-  /*determine what direction the penguin should move
-   (look for fish)
-
-
-  /*Determine whether or not moving X amt of spaces in X direction
-    is a valid move or not. bool can_move represents this.*/
-
-
-
-  /*
-    Note about move():
-    -----------------
-
-    Should we call call move() again if the penguin's first move wasn't
-    valid? I think we should call it a maximum of 3 times to represent the
-    amount of time the penguin would have to make a decision (I assume a
-    penguin being chased by a killer whale  would have enough time to
-    plot 3 different escape routes?) Having a limit of times move() is
-    called will also prevent an infinite loop of
-    "can't move" from occuring.
-  */
-
   return can_move;
 }//End of Penguin::move()
 
@@ -107,34 +83,57 @@ bool Penguin::getAliveState()const
 
 bool Penguin::pengFoundTarget(const Sea S)
 {
-
-  short startX = m_posX - PENG_VISION_RANGE;
+  /*
+    Make sure looping doesn't start outside of the array
+    (start X&Y, end X&Y variables are set to acceptable values)
+  */
+  short startX = m_posX - PENG_VISION_RANGE;    //Starting X
   if(startX < MIN_MOVABLE_BOUNDARY)
      startX = MIN_MOVABLE_BOUNDARY;
 
-  short endX = m_posX + PENG_VISION_RANGE;
+  short endX = m_posX + PENG_VISION_RANGE;      //Ending X
   if(endX > MAX_MOVABLE_BOUNDARY)
     endX = MAX_MOVABLE_BOUNDARY;
 
 
-  short startY = m_posY + PENG_VISION_RANGE;
+  short startY = m_posY + PENG_VISION_RANGE;    //Starting Y
   if(startY > MAX_MOVABLE_BOUNDARY)
      startY = MAX_MOVABLE_BOUNDARY;
 
-  short endY = m_posY - PENG_VISION_RANGE;
+  short endY = m_posY - PENG_VISION_RANGE;      //Ending Y
    if(endY < MIN_MOVABLE_BOUNDARY)
       endY = MIN_MOVABLE_BOUNDARY;
+
+
+  /*
+    Loop through the penguin's view and set a fish as target if there is one
+  */
+  bool found_target = false;
+  char temp;
+  float dist;
+  float target_dist = PENG_TARGET_DEF;//One larger than Penguin's vision range
 
   for (short y = startY; y >= endY; y--)
   {
      for ( short x = startX; x <= endX; x++)
      {
-      //Loop through S.m_seaGrid[][] using these x & y values
-      //And set the penguin's targetx&y values equal to the fish's
-      // x & y values
-      // (Look at picture on phone, black pseudocode on whiteboard)
+       temp = S.getActor(x,y);//Get character in grid.
+       if(temp == FISH_CHAR)
+       {
+         dist = calcDist(m_posX, m_posY, x, y);
+         if(dist < target_dist)
+         {
+           found_target = true;
+           target_dist = dist;
+           m_targetX = x;
+           m_targetY = y;
+         }
+       }
      }
   }
+  cout<<"This penguin's coords: X:"<<m_posX<<" Y: "<<m_posY<<endl;
+  cout<<"Target coords: X:"<<m_targetX<<" Y: "<<m_targetY<<endl;
+  cout<<"Shortest Distance To Target: "<<target_dist<<endl;
 }
 
 

@@ -24,7 +24,7 @@ int main()
   Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
   cout<<Arctic;
 
-
+  penguinArr[5].pengFoundTarget(Arctic);
 
 
 

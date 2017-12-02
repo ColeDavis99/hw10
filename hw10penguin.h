@@ -54,6 +54,7 @@ class Penguin
     //Pre:
     //Post:
     bool pengFoundTarget(const Sea S);
+
 };
 
 #endif

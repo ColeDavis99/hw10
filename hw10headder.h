@@ -16,6 +16,9 @@ using namespace std;
 const short SEA_PLAYABLE_MAX = 25;
 const short PLAYABLE_SPACE = 17;
 const short SIMULATION_ITTERATIONS = 1;
+const short RAND_DIR_UPPR = 7;
+const short RAND_DIR_LOWR = 0;
+const char CLEAR_LAST_POS = ' ';
 
 //DO NOT CHANGE THIS!!! I WILL HUNT YOU DOWN IF YOU DO!!!!
 const short BORDERS_OF_PLAY_SPACE = PLAYABLE_SPACE + 2;
@@ -41,6 +44,7 @@ const short PENG_HEALTH_3 = 60;
 const short PENG_HEALTH_4 = 80;
 
 const short PENG_VISION_RANGE = 8;
+const short PENG_TARGET_DEF = PENG_VISION_RANGE + 1;
 const char PENG_CHAR = 'p';
 
 
@@ -52,6 +56,7 @@ const short FOOD_VAL_UPPR = 10;
 const short FISH_START_X = -1;
 const short FISH_START_Y = -1;
 const char FISH_CHAR = 'f';
+const short ADVANCE_FISH_MOVE_BY = 1;
 
 
 //Whales
@@ -59,5 +64,19 @@ const short MAX_WHALES = 2;
 const short WHALE_SPAWN_NUM = 2;
 const char WHALE_CHAR = 'W';
 
+
+
+
+//Functions
+
+//
+//Pre:
+//Post:
+short randomDirection();
+
+//
+//Pre:
+//Post:
+float calcDist(const short x1, const short y1, const short x2, const short y2);
 
 #endif
