@@ -48,6 +48,8 @@ bool Fish::move(Sea & arctic)
     {
       m_posX = moveToPosX;
       m_posY = moveToPosY;
+      arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+      moveSuccessful = true;
     }
     break;
   case 1:
@@ -66,6 +68,8 @@ bool Fish::move(Sea & arctic)
     {
       m_posX = moveToPosX;
       m_posY = moveToPosY;
+      arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+      moveSuccessful = true;
     }
     break;
   case 2:
@@ -80,6 +84,8 @@ bool Fish::move(Sea & arctic)
     {
       m_posX = moveToPosX;
       m_posY = moveToPosY;
+      arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+      moveSuccessful = true;
     }
     break;
   case 3:
@@ -98,6 +104,8 @@ bool Fish::move(Sea & arctic)
     {
       m_posX = moveToPosX;
       m_posY = moveToPosY;
+      arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+      moveSuccessful = true;
     }
     break;
   case 4:
@@ -112,6 +120,8 @@ bool Fish::move(Sea & arctic)
     {
       m_posX = moveToPosX;
       m_posY = moveToPosY;
+      arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+      moveSuccessful = true;
     }
     break;
   case 5:
@@ -130,6 +140,8 @@ bool Fish::move(Sea & arctic)
     {
       m_posX = moveToPosX;
       m_posY = moveToPosY;
+      arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+      moveSuccessful = true;
     }
     break;
   case 6:
@@ -144,6 +156,8 @@ bool Fish::move(Sea & arctic)
     {
       m_posX = moveToPosX;
       m_posY = moveToPosY;
+      arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+      moveSuccessful = true;
     }
     break;
   case 7:
@@ -162,22 +176,13 @@ bool Fish::move(Sea & arctic)
     {
       m_posX = moveToPosX;
       m_posY = moveToPosY;
+      arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+      moveSuccessful = true;
     }
     break;
   default:
     cout << "Fish not moving" << endl;
     break;
-  }
-
-
-  if (moveToPosX != lastPosX && moveToPosY != lastPosY)
-  {
-    moveSuccessful = true;
-    arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-  }
-  else
-  {
-    moveSuccessful = false;
   }
 
   return moveSuccessful;
