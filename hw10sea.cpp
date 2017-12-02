@@ -84,7 +84,7 @@ void Sea::populate(Penguin penguinArr[],
         m_seaGrid[new_y][new_x] = FISH_CHAR;
 
         //Set member x&y variables
-        fishArr[i].setFishPos(new_y, new_x);
+        fishArr[i].setFishPos(new_x, new_y);
 
         //Make member 'alive' variable to true
         fishArr[i].setFishAliveState(true);
