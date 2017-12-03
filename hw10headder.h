@@ -20,6 +20,7 @@ const short RAND_DIR_UPPR = 7;
 const short RAND_DIR_LOWR = 0;
 const short ZERO = 0;
 const char SPACE_EMPTY = ' ';
+const short ADVANCE_ACTOR_MOVE = 1;
 
 
 //DO NOT CHANGE THIS!!! I WILL HUNT YOU DOWN IF YOU DO!!!!
@@ -66,7 +67,7 @@ const short FOOD_VAL_UPPR = 10;
 const short FISH_START_X = -1;
 const short FISH_START_Y = -1;
 const char FISH_CHAR = 'f';
-const short ADVANCE_FISH_MOVE_BY = 1;
+
 const short FISH_MAX_MOVE_TRY = 7;
 
 //Whales
