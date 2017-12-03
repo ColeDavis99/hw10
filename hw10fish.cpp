@@ -2,24 +2,24 @@
 #include "hw10fish.h"
 #include "hw10sea.h"
 
+<<<<<<< HEAD
 short Fish::m_num_fish_alive = 0;    //Represent number of fish in grid
 
 
+=======
+>>>>>>> 7514dffe217d3fa57f701e3f076e8483af4d5872
 /*==================
     CONSTRUCTOR
 ==================*/
 Fish::Fish()
 {
   m_alive = false;
-
-  short range = (FOOD_VAL_UPPR - FOOD_VAL_LOWR + 1);
-
   //Starting position of fish
   m_posX = FISH_START_X;
   m_posY = FISH_START_Y;
 
   //Sets random food value worth
-  m_foodWorth = rand() % range + FOOD_VAL_LOWR;
+  m_foodWorth = randomNumberGen(FOOD_VAL_UPPR, FOOD_VAL_LOWR);
 }
 
 
@@ -33,7 +33,7 @@ bool Fish::move(Sea & arctic)
   short lastPosY;
   short lastPosX;
 
-  direction = randomDirection();
+  direction = randomNumberGen(RAND_DIR_UPPR, RAND_DIR_LOWR);
 
   lastPosY = m_posY;
   lastPosX = m_posX;
@@ -232,8 +232,11 @@ void Fish::incrementFishAlive()
   cout<<m_num_fish_alive<<endl;
   return;
 }
+<<<<<<< HEAD
 
 short Fish::getm_num_fish_alive()
 {
   return m_num_fish_alive;
 }
+=======
+>>>>>>> 7514dffe217d3fa57f701e3f076e8483af4d5872

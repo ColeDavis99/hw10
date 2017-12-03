@@ -72,11 +72,11 @@ const char WHALE_CHAR = 'W';
 //
 //Pre:
 //Post:
-short randomDirection();
+short randomNumberGen(const short upperBound, const short lowerBound);
 
-//
+//calculated the distance between the calling object and targets location
 //Pre:
-//Post:
+//Post: returns the distance to target.
 float calcDist(const short x1, const short y1, const short x2, const short y2);
 
 #endif

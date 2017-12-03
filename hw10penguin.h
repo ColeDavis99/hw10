@@ -67,9 +67,6 @@ class Penguin
     void incrementPengAlive();
 
 
-
-
-
 };
 
 #endif
