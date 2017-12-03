@@ -13,11 +13,12 @@ private:
 
 
 public:
+
   Fish();
 
-  //
+  //Allows the fish to move inside the sea grid
   //Pre:
-  //Post:
+  //Post: The calling objects location variables will have been changed
   bool move(Sea & artic);
 
   //

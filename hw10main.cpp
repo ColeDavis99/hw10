@@ -16,6 +16,12 @@
 int main()
 {
   srand(time(NULL));
+  
+  bool fishHasMoved = false;
+  short numFishAlive;
+  
+  short numPenguinAlive;
+
 
   //Create arrays of all actors
   Penguin penguinArr[MAX_PENGUINS];
@@ -27,11 +33,13 @@ int main()
 
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
   {
-    for (short fish = 0; fish < 35; fish++)//This 35 will be the static
+    do
     {
-      fishArr[fish].move(Arctic);
-    }
-
+      for (short fish = 0; fish < 35; fish++)
+      {
+        fishHasMoved = fishArr[fish].move(Arctic);
+      }
+    } while (fishHasMoved == false);
     usleep(200000);
     cout << Arctic;
   }

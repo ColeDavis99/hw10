@@ -9,8 +9,7 @@
 Penguin::Penguin()
 {
   //Calculate starting energy level;
-  short range = (PENG_HEALTH_MAX - PENG_HEALTH_MIN + 1);
-  m_energy = rand() % range + PENG_HEALTH_MIN;
+  m_energy = randomNumberGen(PENG_HEALTH_MAX, PENG_HEALTH_MIN);
 
 
   //Penguins spawn "dead" (Instructions said to)
