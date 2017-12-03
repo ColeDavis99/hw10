@@ -27,7 +27,7 @@ Penguin::Penguin()
 /*==================
     FUNCTIONALITY
 ==================*/
-bool Penguin::move(short distToMove, Fish & fishArr, Sea & seaGrid, const bool hasTarget)
+bool Penguin::move(short distToMove, Fish fishArr[], Sea seaGrid, const bool hasTarget)
 {
 
   bool can_move = false;// Assume penguin is going to move to an invalid
@@ -44,7 +44,7 @@ bool Penguin::move(short distToMove, Fish & fishArr, Sea & seaGrid, const bool h
     case false:
       break;
     default:
-      cout << "ERROR, Penguin Tartet not true or false" endl;
+      cout << "ERROR, Penguin Tartet not true or false"<<endl;
     }
 
 

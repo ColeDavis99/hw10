@@ -21,7 +21,7 @@ class Penguin
     //
     //Pre:
     //Post: Returns
-    bool move(short distToMove, Fish & fishArr, Sea & seaGrid, const bool hasTarget);
+    bool move(short distToMove, Fish fishArr[], Sea seaGrid, const bool hasTarget);
 
     //
     //pre:

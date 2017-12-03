@@ -64,7 +64,7 @@ int main()
       pengFoundTarget = penguinArr[peng].pengFoundTarget(Arctic);
       do
       {
-        pengHasMoved = penguinArr[peng].move(pengDistToMove, Arctic, pengFoundTarget);
+        pengHasMoved = penguinArr[peng].move(pengDistToMove, fishArr, Arctic, pengFoundTarget);
         pengMoveAttempts++;
       } while ( pengHasMoved == false && pengMoveAttempts < PENG_MAX_MOVE_TRY);
 
