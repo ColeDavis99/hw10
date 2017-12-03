@@ -34,7 +34,8 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea S, const bool hasTarget
 
   //Get the quadrant the target is in. quad is used in the switch case below
   if(hasTarget == true)
-    quad = superPosition();
+    quad = superPosition(m_posX, m_posY, m_targetX, m_targetY);
+
   else
     quad = 9;
 
