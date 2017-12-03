@@ -20,7 +20,7 @@ class Penguin
 
     //
     //Pre:
-    //Post: Returns can_move. If true, call addToGrid(). Else, return false.
+    //Post: Returns
     bool move();
 
     //
@@ -65,7 +65,6 @@ class Penguin
     //Pre:
     //Post:
     void incrementPengAlive();
-
 
 
 };

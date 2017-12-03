@@ -2,6 +2,8 @@
 #include "hw10penguin.h"
 #include "hw10sea.h"
 
+short Penguin::m_num_pengs_alive = 0;//Represent number of pengs in grid
+
 
 /*==================
     CONSTRUCTOR

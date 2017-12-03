@@ -2,8 +2,6 @@
 #include "hw10penguin.h"
 #include "hw10fish.h"
 
-short Fish::m_num_fish_alive = 0;
-short Penguin::m_num_pengs_alive = 0;
 
 
 /*==================

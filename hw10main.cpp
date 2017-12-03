@@ -1,5 +1,5 @@
 /*========================================================================
- *Programmers: Cole Davis & Matthew (Last Name)
+ *Programmers: Cole Davis & Matthew Stroble
  *Date: 12-7-2017
  *Class: CS1570 Section A
  *Purpose: Simulate Antarctic Waters
@@ -29,6 +29,7 @@ int main()
 
   Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
 
+  cout<<"Fish alive: "<<fishArr[4].getm_num_fish_alive()<<endl<<endl;
 
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
   {

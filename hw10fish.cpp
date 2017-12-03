@@ -2,6 +2,12 @@
 #include "hw10fish.h"
 #include "hw10sea.h"
 
+<<<<<<< HEAD
+short Fish::m_num_fish_alive = 0;    //Represent number of fish in grid
+
+
+=======
+>>>>>>> 7514dffe217d3fa57f701e3f076e8483af4d5872
 /*==================
     CONSTRUCTOR
 ==================*/
@@ -226,3 +232,11 @@ void Fish::incrementFishAlive()
   cout<<m_num_fish_alive<<endl;
   return;
 }
+<<<<<<< HEAD
+
+short Fish::getm_num_fish_alive()
+{
+  return m_num_fish_alive;
+}
+=======
+>>>>>>> 7514dffe217d3fa57f701e3f076e8483af4d5872

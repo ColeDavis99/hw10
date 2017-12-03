@@ -46,6 +46,11 @@ public:
   //Post:
   void incrementFishAlive();
 
+  //
+  //Pre:
+  //Post:
+  static short getm_num_fish_alive();
+
 };
 
 #endif
