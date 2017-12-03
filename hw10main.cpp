@@ -67,8 +67,6 @@ int main()
         pengHasMoved = penguinArr[peng].move(pengDistToMove, fishArr, Arctic, pengFoundTarget);
         pengMoveAttempts++;
       } while ( pengHasMoved == false && pengMoveAttempts < PENG_MAX_MOVE_TRY);
-
-
     }
 
 
