@@ -18,7 +18,10 @@ const short PLAYABLE_SPACE = 17;
 const short SIMULATION_ITTERATIONS = 10000;
 const short RAND_DIR_UPPR = 7;
 const short RAND_DIR_LOWR = 0;
+const short ZERO = 0;
 const char SPACE_EMPTY = ' ';
+const short ADVANCE_ACTOR_MOVE = 1;
+
 
 //DO NOT CHANGE THIS!!! I WILL HUNT YOU DOWN IF YOU DO!!!!
 const short BORDERS_OF_PLAY_SPACE = PLAYABLE_SPACE + 2;
@@ -64,7 +67,7 @@ const short FOOD_VAL_UPPR = 10;
 const short FISH_START_X = -1;
 const short FISH_START_Y = -1;
 const char FISH_CHAR = 'f';
-const short ADVANCE_FISH_MOVE_BY = 1;
+
 const short FISH_MAX_MOVE_TRY = 7;
 
 //Whales
@@ -87,5 +90,11 @@ short randomNumberGen(const short upperBound, const short lowerBound);
 //Pre:
 //Post: returns the distance to target.
 float calcDist(const short x1, const short y1, const short x2, const short y2);
+
+//Determins the Quadrent of the target by the super possition of the source object
+//Pre: Source and Target  object must exist in SeaGrid
+//Post: Returns what Quadrent the target is in.
+short superPosition(short sourcePosX, short sourcePosY, 
+  short targetPosX, short targetPosY);
 
 #endif

@@ -39,7 +39,7 @@ bool Fish::move(Sea & arctic)
   {
   case 0:
     moveToPosX = m_posX;
-    moveToPosY = m_posY + ADVANCE_FISH_MOVE_BY;
+    moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
 
     if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
     {
@@ -54,8 +54,8 @@ bool Fish::move(Sea & arctic)
     }
     break;
   case 1:
-    moveToPosX = m_posX + ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY + ADVANCE_FISH_MOVE_BY;
+    moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
+    moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
 
     if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
     {
@@ -74,7 +74,7 @@ bool Fish::move(Sea & arctic)
     }
     break;
   case 2:
-    moveToPosX = m_posX + ADVANCE_FISH_MOVE_BY;
+    moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
     moveToPosY = m_posY;
 
     if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
@@ -90,8 +90,8 @@ bool Fish::move(Sea & arctic)
     }
     break;
   case 3:
-    moveToPosX = m_posX + ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY - ADVANCE_FISH_MOVE_BY;
+    moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
+    moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
 
     if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
     {
@@ -111,7 +111,7 @@ bool Fish::move(Sea & arctic)
     break;
   case 4:
     moveToPosX = m_posX;
-    moveToPosY = m_posY - ADVANCE_FISH_MOVE_BY;
+    moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
 
     if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
     {
@@ -126,8 +126,8 @@ bool Fish::move(Sea & arctic)
     }
     break;
   case 5:
-    moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY - ADVANCE_FISH_MOVE_BY;
+    moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
+    moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
 
     if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
     {
@@ -146,7 +146,7 @@ bool Fish::move(Sea & arctic)
     }
     break;
   case 6:
-    moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
+    moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
     moveToPosY = m_posY;
 
     if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
@@ -162,8 +162,8 @@ bool Fish::move(Sea & arctic)
     }
     break;
   case 7:
-    moveToPosX = m_posX - ADVANCE_FISH_MOVE_BY;
-    moveToPosY = m_posY + ADVANCE_FISH_MOVE_BY;
+    moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
+    moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
 
     if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
     {
