@@ -27,37 +27,14 @@ Penguin::Penguin()
 /*==================
     FUNCTIONALITY
 ==================*/
-bool Penguin::move()
+bool Penguin::move(short distToMove)
 {
 
   short moveAmmount = 0;
   bool can_move = false;// Assume penguin is going to move to an invalid
                         // location (either occupied or out of bounds)
 
-  if(m_energy > PENG_HEALTH_4)
-  {
-    //Move 5 spaces
-  }
-  else if(m_energy > PENG_HEALTH_3)
-  {
-    //Move 4 spaces
-  }
-  else if(m_energy > PENG_HEALTH_2)
-  {
-    //Move 3 Spaces
-  }
-  else if(m_energy > PENG_HEALTH_1)
-  {
-    //Move 2 spaces
-  }
-  else if(m_energy >= PENG_HEALTH_0)
-  {
-    //Move 1 space
-  }
-  else
-  {
-    //The penguin doesn't move, no energy.
-  }
+
 
   return can_move;
 }//End of Penguin::move()
@@ -163,4 +140,42 @@ void Penguin::incrementPengAlive()
   cout<<"NUMBER OF PENGUINS ALIVE: ";
   cout<<m_num_pengs_alive<<endl;
   return;
+}
+
+short Penguin::distToMove()
+{
+  short distToMove = 0;
+
+  if (m_energy > PENG_HEALTH_4)
+  {
+    //Move 5 spaces
+    distToMove = PENG_MOVE_MAX5;
+  }
+  else if (m_energy > PENG_HEALTH_3)
+  {
+    //Move 4 spaces
+    distToMove = PENG_MOVE_MAX4;
+  }
+  else if (m_energy > PENG_HEALTH_2)
+  {
+    //Move 3 Spaces
+    distToMove = PENG_MOVE_MAX3;
+  }
+  else if (m_energy > PENG_HEALTH_1)
+  {
+    //Move 2 spaces
+    distToMove = PENG_MOVE_MAX2;
+  }
+  else if (m_energy >= PENG_HEALTH_0)
+  {
+    //Move 1 space
+    distToMove = PENG_MOVE_MAX1;
+  }
+  else
+  {
+    //The penguin doesn't move, no energy.
+    distToMove = PENG_MOVE_Max0;
+  }
+
+  return distToMove;
 }

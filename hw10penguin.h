@@ -21,7 +21,7 @@ class Penguin
     //
     //Pre:
     //Post: Returns
-    bool move();
+    bool move(short distToMove);
 
     //
     //pre:
@@ -65,6 +65,11 @@ class Penguin
     //Pre:
     //Post:
     void incrementPengAlive();
+
+    //
+    //Pre:
+    //Post:
+    short distToMove();
 
 
 };

@@ -42,6 +42,14 @@ const short PENG_HEALTH_1 = 20;
 const short PENG_HEALTH_2 = 40;
 const short PENG_HEALTH_3 = 60;
 const short PENG_HEALTH_4 = 80;
+const short PENG_MOVE_MAX5 = 5;
+const short PENG_MOVE_MAX4 = 4;
+const short PENG_MOVE_MAX3 = 3;
+const short PENG_MOVE_MAX2 = 2;
+const short PENG_MOVE_MAX1 = 1;
+const short PENG_MOVE_Max0 = 0;
+
+const short PENG_MAX_MOVE_TRY = 7;
 
 const short PENG_VISION_RANGE = 8;
 const short PENG_TARGET_DEF = PENG_VISION_RANGE + 1;

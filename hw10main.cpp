@@ -21,6 +21,11 @@ int main()
   short fishNumAlive;
   short fishMoveAttempts; //counter
 
+  bool pengHasMoved = false;
+  short pengNumAlive;
+  short pengDistToMove;
+  short pengMoveAttempts;
+
 
   //Create arrays of all actors
   Penguin penguinArr[MAX_PENGUINS];
@@ -34,16 +39,35 @@ int main()
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
   {
     fishNumAlive = fishArr[0].getm_num_fish_alive();
+    pengNumAlive = penguinArr[0].getm_num_pengs_alive();
 
     for (short fish = 0; fish < fishNumAlive; fish++)
     {
       fishMoveAttempts = 0;
+      fishHasMoved = false;
       do
       {
         fishHasMoved = fishArr[fish].move(Arctic);
         fishMoveAttempts++;
       } while (fishHasMoved == false && fishMoveAttempts < FISH_MAX_MOVE_TRY);
+
     }
+
+    for (short peng = 0; peng < pengNumAlive; peng++)
+    {
+      pengMoveAttempts = 0;
+      pengHasMoved = false;
+      do
+      {
+        pengDistToMove = penguinArr[peng].distToMove();
+        penguinArr[peng].move(pengDistToMove);
+        pengMoveAttempts++;
+      } while ( pengHasMoved == false && pengMoveAttempts < PENG_MAX_MOVE_TRY);
+
+
+    }
+
+
     usleep(200000);
     cout << Arctic;
   }
