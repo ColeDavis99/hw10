@@ -27,32 +27,87 @@ Penguin::Penguin()
 /*==================
     FUNCTIONALITY
 ==================*/
-bool Penguin::move(short distToMove, Fish fishArr[], Sea seaGrid, const bool hasTarget)
+bool Penguin::move(short distToMove, Fish fishArr[], Sea S, const bool hasTarget)
 {
+  bool did_move = false;// Assume penguin isn't going to be able to move
+  short quad;
 
-  bool can_move = false;// Assume penguin is going to move to an invalid
-                        // location (either occupied or out of bounds)
+  //Get the quadrant the target is in. quad is used in the switch case below
+  if(hasTarget == true)
+    quad = superPosition(m_posX, m_posY, m_targetX, m_targetY);
+
+  else
+    quad = 9;
 
 
+  //Number of times can move
   for (short cycle = distToMove; cycle > 0; cycle--)
   {
-
-    switch (hasTarget)
+    switch (quad)
     {
-    case true:
-      break;
-    case false:
-      break;
-    default:
-      cout << "ERROR, Penguin Tartet not true or false"<<endl;
-    }
+      case 1:
+      {
+        if(S.getActor(m_posX + ADVANCE_ACTOR_MOVE, m_posY + ADVANCE_ACTOR_MOVE
+          == SPACE_EMPTY) || S.getActor(m_posX + ADVANCE_ACTOR_MOVE, m_posY
+            + ADVANCE_ACTOR_MOVE == FISH_CHAR))
+        {
+          m_posX += ADVANCE_ACTOR_MOVE;
+          m_posY += ADVANCE_ACTOR_MOVE;
+        }
 
+        else if(S.getActor(m_posX + ADVANCE_ACTOR_MOVE, m_posY) == SPACE_EMPTY
+          || S.getActor(m_posX + ADVANCE_ACTOR_MOVE, m_posY) == FISH_CHAR)
+            m_posX += ADVANCE_ACTOR_MOVE;
 
+        else if(S.getActor(m_posX, m_posY + ADVANCE_ACTOR_MOVE) == SPACE_EMPTY
+          || S.getActor(m_posX, m_posY + ADVANCE_ACTOR_MOVE) == FISH_CHAR)
+            m_posY += ADVANCE_ACTOR_MOVE;
 
+        break;
+      }
 
+      case 2:
+      {
 
+        break;
+      }
+      case 3:
+      {
+
+        break;
+      }
+      case 4:
+      {
+
+        break;
+      }
+      case 5:
+      {
+
+        break;
+      }
+      case 6:
+      {
+
+        break;
+      }
+      case 7:
+      {
+
+        break;
+      }
+      case 8:
+      {
+
+        break;
+      }
+      default:
+      {
+
+      }
+    }//End of switch
   }
-  return can_move;
+  return did_move;
 }//End of Penguin::move()
 
 
