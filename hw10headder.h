@@ -18,7 +18,9 @@ const short PLAYABLE_SPACE = 17;
 const short SIMULATION_ITTERATIONS = 10000;
 const short RAND_DIR_UPPR = 7;
 const short RAND_DIR_LOWR = 0;
+const short ZERO = 0;
 const char SPACE_EMPTY = ' ';
+
 
 //DO NOT CHANGE THIS!!! I WILL HUNT YOU DOWN IF YOU DO!!!!
 const short BORDERS_OF_PLAY_SPACE = PLAYABLE_SPACE + 2;
@@ -87,5 +89,11 @@ short randomNumberGen(const short upperBound, const short lowerBound);
 //Pre:
 //Post: returns the distance to target.
 float calcDist(const short x1, const short y1, const short x2, const short y2);
+
+//Determins the Quadrent of the target by the super possition of the source object
+//Pre: Source and Target  object must exist in SeaGrid
+//Post: Returns what Quadrent the target is in.
+short superPosition(short sourcePosX, short sourcePosY, 
+  short targetPosX, short targetPosY);
 
 #endif
