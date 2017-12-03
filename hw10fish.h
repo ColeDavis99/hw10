@@ -9,6 +9,8 @@ private:
   short m_posX;
   short m_posY;
   bool m_alive;
+  static short m_num_fish_alive;
+
 
 public:
   Fish();
@@ -37,6 +39,17 @@ public:
   //Pre:
   //Post:
   void setFishAliveState(const bool p_state);
+
+  //
+  //Pre:
+  //Post:
+  void incrementFishAlive();
+
+  //
+  //Pre:
+  //Post:
+  static short getm_num_fish_alive();
+
 };
 
 #endif

@@ -1,8 +1,6 @@
 #include "hw10sea.h"
 #include "hw10penguin.h"
-
-
-
+#include "hw10fish.h"
 
 
 /*==================
@@ -81,6 +79,9 @@ void Sea::populate(Penguin penguinArr[],
       if(m_seaGrid[new_y][new_x] == SPACE_EMPTY)
       {
         is_space = true;
+
+        fishArr[i].incrementFishAlive();
+
         m_seaGrid[new_y][new_x] = FISH_CHAR;
 
         //Set member x&y variables
@@ -90,7 +91,7 @@ void Sea::populate(Penguin penguinArr[],
         fishArr[i].setFishAliveState(true);
       }
       else{
-        //cout<<"^CONFLICT^"<<endl<<endl<<endl;
+        cout<<"^CONFLICT^"<<endl<<endl<<endl;
       }
     } while(!is_space);
   }//End of fish Loop
@@ -111,9 +112,9 @@ void Sea::populate(Penguin penguinArr[],
       if(m_seaGrid[new_y][new_x] == SPACE_EMPTY)
       {
         is_space = true;
+        penguinArr[i].incrementPengAlive();
 
         //Update m_seaGrid[][]
-        if(i==5)
         m_seaGrid[new_y][new_x] = PENG_CHAR;
 
         //Set member x&y variables
