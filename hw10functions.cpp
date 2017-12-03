@@ -36,7 +36,7 @@ short superPosition(short sourcePosX, short sourcePosY,
   {
     superPosQuad = 4;
   }
-  else if (targetPosx > sourcePosX && targetPosY == sourcePosY)
+  else if (targetPosX > sourcePosX && targetPosY == sourcePosY)
   {
     superPosQuad = 5;
   }
