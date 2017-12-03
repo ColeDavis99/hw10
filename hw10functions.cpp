@@ -2,7 +2,7 @@
 
 short randomNumberGen(const short upperBound, const short lowerBound)
 {
-  short range = (upperBound - lowerBround + 1);
+  short range = (upperBound - lowerBound + 1);
   return rand() % range + lowerBound;
 }
 

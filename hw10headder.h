@@ -57,7 +57,7 @@ const short FISH_START_X = -1;
 const short FISH_START_Y = -1;
 const char FISH_CHAR = 'f';
 const short ADVANCE_FISH_MOVE_BY = 1;
-
+const short FISH_MAX_MOVE_TRY = 7;
 
 //Whales
 const short MAX_WHALES = 2;
@@ -69,9 +69,10 @@ const char WHALE_CHAR = 'W';
 
 //Functions
 
-//
-//Pre:
-//Post:
+//Generates a random number between the upper and lower boundry thats 
+//passed to it
+//Pre: None
+//Post: Returns a random generated number.
 short randomNumberGen(const short upperBound, const short lowerBound);
 
 //calculated the distance between the calling object and targets location

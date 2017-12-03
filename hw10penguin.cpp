@@ -81,11 +81,6 @@ bool Penguin::getAliveState()const
 }
 
 
-
-
-
-
-
 bool Penguin::pengFoundTarget(const Sea S)
 {
   /*
