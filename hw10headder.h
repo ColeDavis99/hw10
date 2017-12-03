@@ -49,8 +49,8 @@ const char PENG_CHAR = 'p';
 
 
 //Fishes
-const short MAX_FISH = 1; //Default to 200
-const short FISH_SPAWN_NUM = 1; //Default to 35
+const short MAX_FISH = 200; //Default to 200
+const short FISH_SPAWN_NUM = 35; //Default to 35
 const short FOOD_VAL_LOWR = 1;
 const short FOOD_VAL_UPPR = 10;
 const short FISH_START_X = -1;
@@ -72,11 +72,11 @@ const char WHALE_CHAR = 'W';
 //
 //Pre:
 //Post:
-short randomDirection();
+short randomNumberGen(const short upperBound, const short lowerBound);
 
-//
+//calculated the distance between the calling object and targets location
 //Pre:
-//Post:
+//Post: returns the distance to target.
 float calcDist(const short x1, const short y1, const short x2, const short y2);
 
 #endif

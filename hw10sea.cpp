@@ -113,7 +113,7 @@ void Sea::populate(Penguin penguinArr[],
         is_space = true;
 
         //Update m_seaGrid[][]
-        if(i==5)
+        //if(i==5)
         m_seaGrid[new_y][new_x] = PENG_CHAR;
 
         //Set member x&y variables
