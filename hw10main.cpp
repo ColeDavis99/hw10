@@ -33,8 +33,9 @@ int main()
 
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
   {
+    fishNumAlive = fishArr[0].getm_num_fish_alive();
 
-    for (short fish = 0; fish < 35 ; fish++)
+    for (short fish = 0; fish < fishNumAlive; fish++)
     {
       fishMoveAttempts = 0;
       do
