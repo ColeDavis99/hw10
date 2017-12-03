@@ -1,6 +1,6 @@
 #ifndef HW10PENGUIN_H
 #define HW10PENGUIN_H
-
+#include "hw10fish.h"
 
 class Sea;
 class Penguin
@@ -12,6 +12,7 @@ class Penguin
     short m_posY;
     short m_targetX;
     short m_targetY;
+    static short m_num_pengs_alive;
 
 
   public:
@@ -54,6 +55,18 @@ class Penguin
     //Pre:
     //Post:
     bool pengFoundTarget(const Sea S);
+
+    //
+    //Pre:
+    //Post:
+    static short getm_num_pengs_alive(){return m_num_pengs_alive;}
+
+    //
+    //Pre:
+    //Post:
+    void incrementPengAlive();
+
+
 
 };
 

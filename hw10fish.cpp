@@ -2,8 +2,9 @@
 #include "hw10fish.h"
 #include "hw10sea.h"
 
-
-//Constructor
+/*==================
+    CONSTRUCTOR
+==================*/
 Fish::Fish()
 {
   m_alive = false;
@@ -217,5 +218,14 @@ void Fish::setFishPos(const short posX, const short posY)
 void Fish::setFishAliveState(const bool p_state)
 {
   m_alive = p_state;
+  return;
+}
+
+
+void Fish::incrementFishAlive()
+{
+  m_num_fish_alive++;
+  cout<<"NUMBER OF FISH ALIVE: ";
+  cout<<m_num_fish_alive<<endl;
   return;
 }

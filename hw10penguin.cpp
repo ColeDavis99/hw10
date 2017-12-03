@@ -81,6 +81,12 @@ bool Penguin::getAliveState()const
   return m_alive;
 }
 
+
+
+
+
+
+
 bool Penguin::pengFoundTarget(const Sea S)
 {
   /*
@@ -152,5 +158,13 @@ void Penguin::setPengPos(const short posX, const short posY)
 {
   m_posX = posX;
   m_posY = posY;
+  return;
+}
+
+void Penguin::incrementPengAlive()
+{
+  m_num_pengs_alive++;
+  cout<<"NUMBER OF PENGUINS ALIVE: ";
+  cout<<m_num_pengs_alive<<endl;
   return;
 }

@@ -27,10 +27,11 @@ int main()
 
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
   {
-    for (short fish = 0; fish < 1; fish++)
+    for (short fish = 0; fish < 35; fish++)//This 35 will be the static
     {
       fishArr[fish].move(Arctic);
     }
+
     usleep(200000);
     cout << Arctic;
   }
