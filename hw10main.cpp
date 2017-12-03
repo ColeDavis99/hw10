@@ -62,18 +62,7 @@ int main()
       pengDistToMove = penguinArr[peng].distToMove();
 
       pengFoundTarget = penguinArr[peng].pengFoundTarget(Arctic);
-
-      do
-      {
-        pengHasMoved = penguinArr[peng].move(pengDistToMove, fishArr, Arctic, pengFoundTarget);
-        pengMoveAttempts++;
-      } while ( pengHasMoved == false && pengMoveAttempts < PENG_MAX_MOVE_TRY);
-
-      //fall back on sequance logic
-      if (pengHasMoved == false)
-      {
-
-      }
+      pengHasMoved = penguinArr[peng].move(pengDistToMove, fishArr, Arctic, pengFoundTarget);
     }
 
 
