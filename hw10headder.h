@@ -50,7 +50,7 @@ const short PENG_MOVE_MAX4 = 4;
 const short PENG_MOVE_MAX3 = 3;
 const short PENG_MOVE_MAX2 = 2;
 const short PENG_MOVE_MAX1 = 1;
-const short PENG_MOVE_Max0 = 0;
+const short PENG_MOVE_MAX0 = 0;
 
 const short PENG_MAX_MOVE_TRY = 7;
 
@@ -69,6 +69,7 @@ const short FISH_START_Y = -1;
 const char FISH_CHAR = 'f';
 
 const short FISH_MAX_MOVE_TRY = 7;
+const bool SET_FISH_LIVING = false;
 
 //Whales
 const short MAX_WHALES = 2;

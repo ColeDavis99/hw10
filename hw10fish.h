@@ -49,7 +49,17 @@ public:
   //
   //Pre:
   //Post:
+  void decramentFishAlive();
+
+  //
+  //Pre:
+  //Post:
   static short getm_num_fish_alive();
+
+  //
+  //Pre:
+  //
+  short getFoodWorth()const { return m_foodWorth; }
 
 };
 

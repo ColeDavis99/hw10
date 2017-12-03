@@ -71,6 +71,11 @@ class Penguin
     //Post:
     short distToMove();
 
+    //
+    //Pre:
+    //Post:
+    void eat(Sea Arctic, Fish fishArr[]);
+
 
 };
 

@@ -230,9 +230,16 @@ void Fish::incrementFishAlive()
   return;
 }
 
+void Fish::decramentFishAlive()
+{
+  m_num_fish_alive--;
+  return;
+}
+
 
 short Fish::getm_num_fish_alive()
 {
   return m_num_fish_alive;
 }
+
 

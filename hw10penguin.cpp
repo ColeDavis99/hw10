@@ -190,8 +190,37 @@ short Penguin::distToMove()
   else
   {
     //The penguin doesn't move, no energy.
-    distToMove = PENG_MOVE_Max0;
+    distToMove = PENG_MOVE_MAX0;
   }
 
   return distToMove;
+}
+
+void Penguin::eat(Sea Arctic, Fish fishArr[])
+{
+  bool fishInArrFound = false;
+  short counter = 0;
+  short fishAlive;
+  short fishPosX;
+  short fishPosY;
+
+  if (Arctic.getActor(m_posX, m_posY) == FISH_CHAR)
+  {
+    while (fishInArrFound == false)
+    {
+      fishPosX = fishArr[counter].getFishPosX();
+      fishPosY = fishArr[counter].getFishPosY();
+      if (m_posX == fishPosX && m_posY == fishPosY)
+      {
+        m_energy = fishArr[counter].getFoodWorth();
+        fishArr[counter].decramentFishAlive();
+        fishAlive = fishArr[counter].getm_num_fish_alive();
+        swap(fishArr[counter], fishArr[fishAlive]);
+        fishInArrFound = true;
+      }
+
+      counter++;
+    }
+  }  
+  return;
 }
