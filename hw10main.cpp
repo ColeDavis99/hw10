@@ -22,6 +22,7 @@ int main()
   short fishMoveAttempts; //counter
 
   bool pengHasMoved = false;
+  bool pengFoundTarget = false;
   short pengNumAlive;
   short pengDistToMove;
   short pengMoveAttempts;
@@ -57,10 +58,13 @@ int main()
     {
       pengMoveAttempts = 0;
       pengHasMoved = false;
+      pengFoundTarget = false;
+      pengDistToMove = penguinArr[peng].distToMove();
+
+      pengFoundTarget = penguinArr[peng].pengFoundTarget(Arctic);
       do
       {
-        pengDistToMove = penguinArr[peng].distToMove();
-        penguinArr[peng].move(pengDistToMove);
+        pengHasMoved = penguinArr[peng].move(pengDistToMove, Arctic, pengFoundTarget);
         pengMoveAttempts++;
       } while ( pengHasMoved == false && pengMoveAttempts < PENG_MAX_MOVE_TRY);
 

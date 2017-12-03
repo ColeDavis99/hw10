@@ -27,15 +27,31 @@ Penguin::Penguin()
 /*==================
     FUNCTIONALITY
 ==================*/
-bool Penguin::move(short distToMove)
+bool Penguin::move(short distToMove, Fish & fishArr, Sea & seaGrid, const bool hasTarget)
 {
 
-  short moveAmmount = 0;
   bool can_move = false;// Assume penguin is going to move to an invalid
                         // location (either occupied or out of bounds)
 
 
+  for (short cycle = distToMove; cycle > 0; cycle--)
+  {
 
+    switch (hasTarget)
+    {
+    case true:
+      break;
+    case false:
+      break;
+    default:
+      cout << "ERROR, Penguin Tartet not true or false" endl;
+    }
+
+
+
+
+
+  }
   return can_move;
 }//End of Penguin::move()
 
