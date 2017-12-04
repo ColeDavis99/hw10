@@ -82,9 +82,9 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
   //Number of times can move
   while (counter < distToMove && caughtFish == false && moveAttemptsThisMove < PENG_MAX_MOVE_TRY)
   {
+
     lastPosX = m_posX;
     lastPosY = m_posY;
-
 
       switch (quad)
       {
@@ -251,6 +251,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
       if (moveSuccessful == true)
       {
         counter++;
+        moveAttemptsThisMove = 0;
       }
       else
       {
