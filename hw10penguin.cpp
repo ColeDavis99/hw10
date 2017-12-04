@@ -80,7 +80,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
   }
 
   //Number of times can move
-  while (distToMove > counter && caughtFish == false)
+  while (counter < distToMove && caughtFish == false && moveAttemptsThisMove < PENG_MAX_MOVE_TRY)
   {
     lastPosX = m_posX;
     lastPosY = m_posY;
@@ -254,6 +254,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
       }
       else
       {
+        moveAttemptsThisMove++;
         quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
       }
  
