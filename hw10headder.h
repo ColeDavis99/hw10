@@ -18,6 +18,7 @@ const short PLAYABLE_SPACE = 17;
 const short SIMULATION_ITTERATIONS = 10000;
 const short RAND_DIR_UPPR = 7;
 const short RAND_DIR_LOWR = 0;
+const short RAND_DIR_LOWR_ONE = 1;
 const short ZERO = 0;
 const char SPACE_EMPTY = ' ';
 const short ADVANCE_ACTOR_MOVE = 1;
@@ -51,6 +52,7 @@ const short PENG_MOVE_MAX3 = 3;
 const short PENG_MOVE_MAX2 = 2;
 const short PENG_MOVE_MAX1 = 1;
 const short PENG_MOVE_MAX0 = 0;
+const short PENG_MOVE_COST = 1;
 
 const short PENG_MAX_MOVE_TRY = 7;
 
