@@ -18,7 +18,7 @@ float calcDist(const short x1, const short y1, const short x2, const short y2)
 short superPosition(short sourcePosX, short sourcePosY,
   short targetPosX, short targetPosY)
 {
-  short superPosQuad;
+  short superPosQuad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
 
   if (targetPosX > sourcePosX && targetPosY > sourcePosY)
   {

@@ -17,6 +17,7 @@ const short SEA_PLAYABLE_MAX = 25;
 const short PLAYABLE_SPACE = 17;
 const short SIMULATION_ITTERATIONS = 10000;
 const short RAND_DIR_UPPR = 7;
+const short RAND_DIR_UPPR_EGHT = 8;
 const short RAND_DIR_LOWR = 0;
 const short RAND_DIR_LOWR_ONE = 1;
 const short ZERO = 0;

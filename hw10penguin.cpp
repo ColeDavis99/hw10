@@ -45,7 +45,6 @@ bool Penguin::eat(Sea & Arctic, Fish fishArr[])
         swap(fishArr[counter], fishArr[fishAlive]);
         fishInArrFound = true;
       }
-
       counter++;
     }
   }
@@ -59,6 +58,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
 {
   bool moveSuccessful = false;// Assume penguin isn't going to be able to move
   bool caughtFish = false;
+  bool searchNewTarget = !hasTarget;
   short counter = 0;
   short moveAttemptsThisMove = 0;
   short quad;
@@ -68,30 +68,24 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
   short moveToPosY;
   short randDirection;
 
+ 
   //Get the quadrant the target is in. quad is used in the switch case below
-  if (hasTarget == true)
+  if (searchNewTarget == false)
   {
     quad = superPosition(m_posX, m_posY, m_targetX, m_targetY);
   }
   else
   {
-    quad = 9;
+    quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
   }
 
   //Number of times can move
   while (distToMove > counter && caughtFish == false)
   {
-    moveSuccessful = false;
     lastPosX = m_posX;
     lastPosY = m_posY;
-    moveAttemptsThisMove = 0;
 
-    cout << "Outer While Loop Pengion" << endl;
 
-    while (moveAttemptsThisMove < PENG_MAX_MOVE_TRY && moveSuccessful == false)
-    {
-
-      cout << "INNER!!!!" << endl;
       switch (quad)
       {
       case 1:
@@ -109,9 +103,9 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          caughtFish = this->eat(arctic, fishArr);
+          caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          m_energy -= PENG_MOVE_COST;
+          //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -133,7 +127,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
           m_posY = moveToPosY;
           caughtFish = this->eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          m_energy -= PENG_MOVE_COST;
+          //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -155,7 +149,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
           m_posY = moveToPosY;
           caughtFish = this->eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          m_energy -= PENG_MOVE_COST;
+          //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -173,7 +167,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
           m_posY = moveToPosY;
           caughtFish = this->eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          m_energy -= PENG_MOVE_COST;
+          //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -191,7 +185,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
           m_posY = moveToPosY;
           caughtFish = this->eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          m_energy -= PENG_MOVE_COST;
+          //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -209,7 +203,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
           m_posY = moveToPosY;
           caughtFish = this->eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          m_energy -= PENG_MOVE_COST;
+          //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -227,7 +221,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
           m_posY = moveToPosY;
           caughtFish = this->eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          m_energy -= PENG_MOVE_COST;
+          //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -245,20 +239,26 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
           m_posY = moveToPosY;
           caughtFish = this->eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          m_energy -= PENG_MOVE_COST;
+          //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
       default:
-        quad = randomNumberGen(RAND_DIR_UPPR, RAND_DIR_LOWR_ONE);
+        cout << "ERROR IN PENGUIN DIRECTION LOGIC !!!!!" << endl;
         break;
       }//End of switch
-      moveAttemptsThisMove++;
-    }
 
-    if(moveSuccessful == true)
-      counter++;
-  }
+      if (moveSuccessful == true)
+      {
+        counter++;
+      }
+      else
+      {
+        quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
+      }
+ 
+  }//End of While Loop
+
   return moveSuccessful;
 }//End of Penguin::move()
 
