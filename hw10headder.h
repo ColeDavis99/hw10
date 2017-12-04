@@ -74,7 +74,7 @@ const bool SET_FISH_LIVING = false;
 //Whales
 const short MAX_WHALES = 2;
 const short WHALE_SPAWN_NUM = 2;
-const char WHALE_CHAR = 'W';
+const char WHALE_CHAR = 'w';
 
 
 

@@ -20,8 +20,13 @@ class Penguin
 
     //
     //Pre:
+    //Post:
+    bool eat(Sea & Arctic, Fish fishArr[]);
+
+    //
+    //Pre:
     //Post: Returns
-    bool move(short distToMove, Fish fishArr[], Sea S, const bool hasTarget);
+    bool move(short distToMove, Fish fishArr[], Sea & arctic, const bool hasTarget);
 
     //
     //pre:
@@ -71,10 +76,7 @@ class Penguin
     //Post:
     short distToMove();
 
-    //
-    //Pre:
-    //Post:
-    void eat(Sea Arctic, Fish fishArr[]);
+
 
 
 };

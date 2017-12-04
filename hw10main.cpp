@@ -18,6 +18,7 @@ int main()
   srand(time(NULL));
 
   bool fishHasMoved = false;
+  bool printSea = false;
   short fishNumAlive;
   short fishMoveAttempts; //counter
 
@@ -37,6 +38,8 @@ int main()
 
   cout<<"Fish alive: "<<fishArr[4].getm_num_fish_alive()<<endl<<endl;
 
+  cout << "Do you want to Print the Sea? (1 for yes / 0 for no) : ";
+  cin >> printSea;
   for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
   {
     fishNumAlive = fishArr[0].getm_num_fish_alive();
@@ -54,7 +57,7 @@ int main()
 
     }
 
-    for (short peng = 0; peng < pengNumAlive; peng++)
+    for (short peng = 0; peng < 20; peng++)
     {
       pengMoveAttempts = 0;
       pengHasMoved = false;
@@ -67,7 +70,10 @@ int main()
 
 
     usleep(200000);
-    cout << Arctic;
+    if (printSea == true)
+    {
+      cout << Arctic;
+    }
   }
 
 

@@ -23,91 +23,230 @@ Penguin::Penguin()
 
 }
 
+bool Penguin::eat(Sea & Arctic, Fish fishArr[])
+{
+  bool fishInArrFound = false;
+  short counter = 0;
+  short fishAlive;
+  short fishPosX;
+  short fishPosY;
+
+  if (Arctic.getActor(m_posX, m_posY) == FISH_CHAR)
+  {
+    while (fishInArrFound == false)
+    {
+      fishPosX = fishArr[counter].getFishPosX();
+      fishPosY = fishArr[counter].getFishPosY();
+      if (m_posX == fishPosX && m_posY == fishPosY)
+      {
+        m_energy = fishArr[counter].getFoodWorth();
+        fishArr[counter].decramentFishAlive();
+        fishAlive = fishArr[counter].getm_num_fish_alive();
+        swap(fishArr[counter], fishArr[fishAlive]);
+        fishInArrFound = true;
+      }
+
+      counter++;
+    }
+  }
+  return fishInArrFound;
+}
 
 /*==================
     FUNCTIONALITY
 ==================*/
-bool Penguin::move(short distToMove, Fish fishArr[], Sea S, const bool hasTarget)
+bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool hasTarget)
 {
-  bool did_move = false;// Assume penguin isn't going to be able to move
+  bool moveSuccessful = false;// Assume penguin isn't going to be able to move
+  bool caughtFish = false;
+  short counter = 0;
   short quad;
+  short lastPosX;
+  short lastPosY;
+  short moveToPosX;
+  short moveToPosY;
+  short randDirection;
 
   //Get the quadrant the target is in. quad is used in the switch case below
-  if(hasTarget == true)
+  if (hasTarget == true)
+  {
     quad = superPosition(m_posX, m_posY, m_targetX, m_targetY);
-
+  }
   else
+  {
     quad = 9;
-
+  }
 
   //Number of times can move
-  for (short cycle = distToMove; cycle > 0; cycle--)
+  while (distToMove > counter && caughtFish == false)
   {
-    switch (quad)
+    moveSuccessful = false;
+    lastPosX = m_posX;
+    lastPosY = m_posY;
+
+    if (hasTarget == true)
     {
+      switch (quad)
+      {
       case 1:
-      {
-        if(S.getActor(m_posX + ADVANCE_ACTOR_MOVE, m_posY + ADVANCE_ACTOR_MOVE
-          == SPACE_EMPTY) || S.getActor(m_posX + ADVANCE_ACTOR_MOVE, m_posY
-            + ADVANCE_ACTOR_MOVE == FISH_CHAR))
+        moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
+        if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
         {
-          m_posX += ADVANCE_ACTOR_MOVE;
-          m_posY += ADVANCE_ACTOR_MOVE;
+          moveToPosY = MAX_MOVABLE_BOUNDARY;
         }
-
-        else if(S.getActor(m_posX + ADVANCE_ACTOR_MOVE, m_posY) == SPACE_EMPTY
-          || S.getActor(m_posX + ADVANCE_ACTOR_MOVE, m_posY) == FISH_CHAR)
-            m_posX += ADVANCE_ACTOR_MOVE;
-
-        else if(S.getActor(m_posX, m_posY + ADVANCE_ACTOR_MOVE) == SPACE_EMPTY
-          || S.getActor(m_posX, m_posY + ADVANCE_ACTOR_MOVE) == FISH_CHAR)
-            m_posY += ADVANCE_ACTOR_MOVE;
-
+        if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MAX_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          this->eat(arctic, fishArr);
+          arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          moveSuccessful = true;
+        }
         break;
-      }
-
       case 2:
-      {
+        moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
 
+        if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MAX_MOVABLE_BOUNDARY;
+        }
+        if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          this->eat(arctic, fishArr);
+          arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          moveSuccessful = true;
+        }
         break;
-      }
       case 3:
-      {
+        moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
 
+        if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MIN_MOVABLE_BOUNDARY;
+        }
+        if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          this->eat(arctic, fishArr);
+          arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          moveSuccessful = true;
+        }
         break;
-      }
       case 4:
-      {
+        moveToPosX = m_posX;
+        moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
 
+        if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          this->eat(arctic, fishArr);
+          arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          moveSuccessful = true;
+        }
         break;
-      }
       case 5:
-      {
+        moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY;
 
+        if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MAX_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          this->eat(arctic, fishArr);
+          arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          moveSuccessful = true;
+        }
         break;
-      }
       case 6:
-      {
+        moveToPosX = m_posX;
+        moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
 
+        if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MAX_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          this->eat(arctic, fishArr);
+          arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          moveSuccessful = true;
+        }
         break;
-      }
       case 7:
-      {
+        moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY;
 
+        if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          this->eat(arctic, fishArr);
+          arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          moveSuccessful = true;
+        }
         break;
-      }
       case 8:
-      {
+        moveToPosX = m_posX;
+        moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
 
+        if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          this->eat(arctic, fishArr);
+          arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          moveSuccessful = true;
+        }
         break;
-      }
-      default:
-      {
 
-      }
-    }//End of switch
+
+      default:
+        randDirection = randomNumberGen(RAND_DIR_UPPR, RAND_DIR_LOWR);
+        
+        break;
+      }//End of switch
+    }
+
+    counter++;
   }
-  return did_move;
+  return moveSuccessful;
 }//End of Penguin::move()
 
 
@@ -138,21 +277,21 @@ bool Penguin::pengFoundTarget(const Sea S)
     (start X&Y, end X&Y variables are set to acceptable values)
   */
   short startX = m_posX - PENG_VISION_RANGE;    //Starting X
-  if(startX < MIN_MOVABLE_BOUNDARY)
-     startX = MIN_MOVABLE_BOUNDARY;
+  if (startX < MIN_MOVABLE_BOUNDARY)
+    startX = MIN_MOVABLE_BOUNDARY;
 
   short endX = m_posX + PENG_VISION_RANGE;      //Ending X
-  if(endX > MAX_MOVABLE_BOUNDARY)
+  if (endX > MAX_MOVABLE_BOUNDARY)
     endX = MAX_MOVABLE_BOUNDARY;
 
 
   short startY = m_posY + PENG_VISION_RANGE;    //Starting Y
-  if(startY > MAX_MOVABLE_BOUNDARY)
-     startY = MAX_MOVABLE_BOUNDARY;
+  if (startY > MAX_MOVABLE_BOUNDARY)
+    startY = MAX_MOVABLE_BOUNDARY;
 
   short endY = m_posY - PENG_VISION_RANGE;      //Ending Y
-   if(endY < MIN_MOVABLE_BOUNDARY)
-      endY = MIN_MOVABLE_BOUNDARY;
+  if (endY < MIN_MOVABLE_BOUNDARY)
+    endY = MIN_MOVABLE_BOUNDARY;
 
 
   /*
@@ -165,21 +304,21 @@ bool Penguin::pengFoundTarget(const Sea S)
 
   for (short y = startY; y >= endY; y--)
   {
-     for ( short x = startX; x <= endX; x++)
-     {
-       temp = S.getActor(x,y);//Get character in grid.
-       if(temp == FISH_CHAR)
-       {
-         dist = calcDist(m_posX, m_posY, x, y);
-         if(dist < target_dist)
-         {
-           found_target = true;
-           target_dist = dist;
-           m_targetX = x;
-           m_targetY = y;
-         }
-       }
-     }
+    for (short x = startX; x <= endX; x++)
+    {
+      temp = S.getActor(x, y);//Get character in grid.
+      if (temp == FISH_CHAR)
+      {
+        dist = calcDist(m_posX, m_posY, x, y);
+        if (dist < target_dist)
+        {
+          found_target = true;
+          target_dist = dist;
+          m_targetX = x;
+          m_targetY = y;
+        }
+      }
+    }
   }
   return found_target;
 }//End of pengFoundTarget()
@@ -208,8 +347,8 @@ void Penguin::setPengPos(const short posX, const short posY)
 void Penguin::incrementPengAlive()
 {
   m_num_pengs_alive++;
-  cout<<"NUMBER OF PENGUINS ALIVE: ";
-  cout<<m_num_pengs_alive<<endl;
+  cout << "NUMBER OF PENGUINS ALIVE: ";
+  cout << m_num_pengs_alive << endl;
   return;
 }
 
@@ -251,31 +390,3 @@ short Penguin::distToMove()
   return distToMove;
 }
 
-void Penguin::eat(Sea Arctic, Fish fishArr[])
-{
-  bool fishInArrFound = false;
-  short counter = 0;
-  short fishAlive;
-  short fishPosX;
-  short fishPosY;
-
-  if (Arctic.getActor(m_posX, m_posY) == FISH_CHAR)
-  {
-    while (fishInArrFound == false)
-    {
-      fishPosX = fishArr[counter].getFishPosX();
-      fishPosY = fishArr[counter].getFishPosY();
-      if (m_posX == fishPosX && m_posY == fishPosY)
-      {
-        m_energy = fishArr[counter].getFoodWorth();
-        fishArr[counter].decramentFishAlive();
-        fishAlive = fishArr[counter].getm_num_fish_alive();
-        swap(fishArr[counter], fishArr[fishAlive]);
-        fishInArrFound = true;
-      }
-
-      counter++;
-    }
-  }  
-  return;
-}
