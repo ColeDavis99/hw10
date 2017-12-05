@@ -120,8 +120,8 @@ const short MIN_MOVABLE_BOUNDARY = 1;
 const short MAX_MOVABLE_BOUNDARY = PLAYABLE_SPACE;
 const short DOUBLE_VISION = 2;
 
-const char YES = 1;
-const char NO = 0;
+const char YES = '1';
+const char NO = '0';
 
 
 /*========================
