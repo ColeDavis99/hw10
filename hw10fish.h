@@ -60,7 +60,7 @@ public:
   // returns m_foodWorth
   //Pre: none
   //Post: returns m_foodWorth
-  short getFoodWorth()const {return m_foodWorth;}
+  short getFoodWorth()const { return m_foodWorth; }
 
 };
 

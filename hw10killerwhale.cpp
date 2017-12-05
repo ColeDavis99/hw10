@@ -34,6 +34,7 @@ bool Whale::eat(Sea & Arctic, Fish fishArr[], Penguin pengArr[])
       {
         pengArr[counter].decramentPengAlive();
         pengAlive = pengArr[counter].getm_num_pengs_alive();
+        pengArr[counter].setPengPos(PENG_START_X, PENG_START_Y);
         swap(pengArr[counter], pengArr[pengAlive]);
         pengInArrFound = true;
         m_penguinKilledCount++;
@@ -47,11 +48,11 @@ bool Whale::eat(Sea & Arctic, Fish fishArr[], Penguin pengArr[])
 /*==================
 FUNCTIONALITY
 ==================*/
-bool Whale::move(Fish fishArr[], Penguin pengArr[], Sea & arctic, const bool hasTarget)
+bool Whale::move(Fish fishArr[], Penguin pengArr[], Sea & arctic)
 {
   bool moveSuccessful = false;// Assume whale isn't going to be able to move
   bool caughtPeng = false;
-  bool searchNewTarget = !hasTarget;
+  bool hasPengTarget = false;
   short counter = 0;
   short moveAttemptsThisMove = 0;
   short quad;
@@ -61,183 +62,184 @@ bool Whale::move(Fish fishArr[], Penguin pengArr[], Sea & arctic, const bool has
   short moveToPosY;
 
 
-  //Get the quadrant the target is in. quad is used in the switch case below
-  if (searchNewTarget == false)
-  {
-    quad = superPosition(m_posX, m_posY, m_targetX, m_targetY);
-  }
-  else
-  {
-    quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
-  }
-
   //Number of times can move
-  while (counter < WHALE_MOVE_PER_TURN && caughtPeng == false && moveAttemptsThisMove < PENG_MAX_MOVE_TRY)
+  while (counter < WHALE_MOVE_PER_TURN && caughtPeng == false && moveAttemptsThisMove < MAX_MOVE_ATTMPTS)
   {
 
     lastPosX = m_posX;
     lastPosY = m_posY;
 
+    hasPengTarget = whaleFindTarget(arctic);
+
+    if (hasPengTarget == true)
+    {
+      quad = superPosition(m_posX, m_posY, m_targetX, m_targetY);
+    }
+    else
+    {
+      quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
+    }
+
     switch (quad)
     {
-    case 1:
-      moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
-      moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
-      if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
-      {
-        moveToPosY = MAX_MOVABLE_BOUNDARY;
-      }
-      if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
-      {
-        moveToPosX = MAX_MOVABLE_BOUNDARY;
-      }
-      if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
-      {
-        m_posX = moveToPosX;
-        m_posY = moveToPosY;
-        caughtPeng = eat(arctic, fishArr, pengArr);
-        arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-        //m_energy -= PENG_MOVE_COST;
-        moveSuccessful = true;
-      }
-      break;
-    case 2:
-      moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
-      moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
+      case 1:
+        moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
+        if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MAX_MOVABLE_BOUNDARY;
+        }
+        if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MAX_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          caughtPeng = eat(arctic, fishArr, pengArr);
+          arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          //m_energy -= PENG_MOVE_COST;
+          moveSuccessful = true;
+        }
+        break;
+      case 2:
+        moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
 
-      if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
-      {
-        moveToPosY = MAX_MOVABLE_BOUNDARY;
-      }
-      if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
-      {
-        moveToPosX = MIN_MOVABLE_BOUNDARY;
-      }
-      if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
-      {
-        m_posX = moveToPosX;
-        m_posY = moveToPosY;
-        caughtPeng = eat(arctic, fishArr, pengArr);
-        arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-        //m_energy -= PENG_MOVE_COST;
-        moveSuccessful = true;
-      }
-      break;
-    case 3:
-      moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
-      moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
+        if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MAX_MOVABLE_BOUNDARY;
+        }
+        if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          caughtPeng = eat(arctic, fishArr, pengArr);
+          arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          //m_energy -= PENG_MOVE_COST;
+          moveSuccessful = true;
+        }
+        break;
+      case 3:
+        moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
 
-      if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
-      {
-        moveToPosY = MIN_MOVABLE_BOUNDARY;
-      }
-      if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
-      {
-        moveToPosX = MIN_MOVABLE_BOUNDARY;
-      }
-      if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
-      {
-        m_posX = moveToPosX;
-        m_posY = moveToPosY;
-        caughtPeng = eat(arctic, fishArr, pengArr);
-        arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-        //m_energy -= PENG_MOVE_COST;
-        moveSuccessful = true;
-      }
-      break;
-    case 4:
-      moveToPosX = m_posX;
-      moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
+        if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MIN_MOVABLE_BOUNDARY;
+        }
+        if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          caughtPeng = eat(arctic, fishArr, pengArr);
+          arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          //m_energy -= PENG_MOVE_COST;
+          moveSuccessful = true;
+        }
+        break;
+      case 4:
+        moveToPosX = m_posX;
+        moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
 
-      if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
-      {
-        moveToPosY = MIN_MOVABLE_BOUNDARY;
-      }
-      if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
-      {
-        m_posX = moveToPosX;
-        m_posY = moveToPosY;
-        caughtPeng = eat(arctic, fishArr, pengArr);
-        arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-        //m_energy -= PENG_MOVE_COST;
-        moveSuccessful = true;
-      }
-      break;
-    case 5:
-      moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
-      moveToPosY = m_posY;
+        if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          caughtPeng = eat(arctic, fishArr, pengArr);
+          arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          //m_energy -= PENG_MOVE_COST;
+          moveSuccessful = true;
+        }
+        break;
+      case 5:
+        moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY;
 
-      if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
-      {
-        moveToPosX = MAX_MOVABLE_BOUNDARY;
-      }
-      if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
-      {
-        m_posX = moveToPosX;
-        m_posY = moveToPosY;
-        caughtPeng = eat(arctic, fishArr, pengArr);
-        arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-        //m_energy -= PENG_MOVE_COST;
-        moveSuccessful = true;
-      }
-      break;
-    case 6:
-      moveToPosX = m_posX;
-      moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
+        if (moveToPosX >= MAX_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MAX_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          caughtPeng = eat(arctic, fishArr, pengArr);
+          arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          //m_energy -= PENG_MOVE_COST;
+          moveSuccessful = true;
+        }
+        break;
+      case 6:
+        moveToPosX = m_posX;
+        moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
 
-      if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
-      {
-        moveToPosY = MAX_MOVABLE_BOUNDARY;
-      }
-      if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
-      {
-        m_posX = moveToPosX;
-        m_posY = moveToPosY;
-        caughtPeng = eat(arctic, fishArr, pengArr);
-        arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-        //m_energy -= PENG_MOVE_COST;
-        moveSuccessful = true;
-      }
-      break;
-    case 7:
-      moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
-      moveToPosY = m_posY;
+        if (moveToPosY >= MAX_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MAX_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          caughtPeng = eat(arctic, fishArr, pengArr);
+          arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          //m_energy -= PENG_MOVE_COST;
+          moveSuccessful = true;
+        }
+        break;
+      case 7:
+        moveToPosX = m_posX - ADVANCE_ACTOR_MOVE;
+        moveToPosY = m_posY;
 
-      if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
-      {
-        moveToPosX = MIN_MOVABLE_BOUNDARY;
-      }
-      if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
-      {
-        m_posX = moveToPosX;
-        m_posY = moveToPosY;
-        caughtPeng = eat(arctic, fishArr, pengArr);
-        arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-        //m_energy -= PENG_MOVE_COST;
-        moveSuccessful = true;
-      }
-      break;
-    case 8:
-      moveToPosX = m_posX;
-      moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
+        if (moveToPosX <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosX = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          caughtPeng = eat(arctic, fishArr, pengArr);
+          arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          //m_energy -= PENG_MOVE_COST;
+          moveSuccessful = true;
+        }
+        break;
+      case 8:
+        moveToPosX = m_posX;
+        moveToPosY = m_posY - ADVANCE_ACTOR_MOVE;
 
-      if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
-      {
-        moveToPosY = MIN_MOVABLE_BOUNDARY;
-      }
-      if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
-      {
-        m_posX = moveToPosX;
-        m_posY = moveToPosY;
-        caughtPeng = eat(arctic, fishArr, pengArr);
-        arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-        //m_energy -= PENG_MOVE_COST;
-        moveSuccessful = true;
-      }
-      break;
-    default:
-      cout << "ERROR IN WHALE DIRECTION LOGIC !!!!!" << endl;
-      break;
+        if (moveToPosY <= MIN_MOVABLE_BOUNDARY)
+        {
+          moveToPosY = MIN_MOVABLE_BOUNDARY;
+        }
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY || arctic.getActor(moveToPosX, moveToPosY) == PENG_CHAR)
+        {
+          m_posX = moveToPosX;
+          m_posY = moveToPosY;
+          caughtPeng = eat(arctic, fishArr, pengArr);
+          arctic.setActor(m_posX, m_posY, WHALE_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          //m_energy -= PENG_MOVE_COST;
+          moveSuccessful = true;
+        }
+        break;
+      default:
+        cout << "ERROR IN WHALE DIRECTION LOGIC !!!!!" << endl;
+        break;
     }//End of switch
 
     if (moveSuccessful == true)
@@ -252,7 +254,11 @@ bool Whale::move(Fish fishArr[], Penguin pengArr[], Sea & arctic, const bool has
     }
 
   }//End of While Loop
-
+  if (WHALE_DEBUG)
+  {
+    usleep(200000);
+    cout << arctic;
+  }
   return moveSuccessful;
 }//End of Whale::move()
 
@@ -272,7 +278,7 @@ short Whale::getWhalePosY()const
 }
 
 
-bool Whale::whaleFoundTarget(const Sea & S)
+bool Whale::whaleFindTarget(const Sea & S)
 {
   /*
   Make sure looping doesn't start outside of the array
@@ -302,7 +308,7 @@ bool Whale::whaleFoundTarget(const Sea & S)
   bool found_target = false;
   char temp;
   float dist;
-  float target_dist = WHALE_VISION_RANGE;//One larger than Penguin's vision range
+  float target_dist = WHALE_VISION_RANGE;
 
   for (short y = startY; y >= endY; y--)
   {

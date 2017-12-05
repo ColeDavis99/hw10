@@ -6,60 +6,63 @@ class Fish;
 class Sea;
 class Whale
 {
-  private:
-    bool m_alive;
-    short m_energy;
-    short m_posX;
-    short m_posY;
-    short m_targetX;
-    short m_targetY;
-    static short m_num_whale_alive;
+private:
+  bool m_alive;
+  short m_energy;
+  short m_posX;
+  short m_posY;
+  short m_targetX;
+  short m_targetY;
+  static short m_num_whale_alive;
 
-    //Kill tally
-    short m_penguinKilledCount;
+  //Kill tally
+  short m_penguinKilledCount;
 
-  public:
+  //Eat the penguin
+  //Pre: none
+  //Post:Penguin is removed from m_seaGrid[][] and set to dead.
+  bool eat(Sea & Arctic, Fish fishArr[], Penguin pengArr[]);
 
-    //Creates Whale Object
-    //Pre: none
-    //Post: Whale Object is Created
-    Whale();
+  // Sets the targetX & targetY member vars = to target's x&y
+  //Pre: none
+  //Post:Sets the targetX & targetY member vars = to target's x&y
+  bool whaleFindTarget(const Sea & S);
 
-    //Returns m_penguinKilledCount
-    //Pre: none
-    //Post:Returns m_penguinKilledCount
-    short getPenguinKillCount();
+public:
 
-    //Eat the penguin
-    //Pre: none
-    //Post:Penguin is removed from m_seaGrid[][] and set to dead.
-    bool eat(Sea & Arctic, Fish fishArr[], Penguin pengArr[]);
+  //Creates Whale Object
+  //Pre: none
+  //Post: Whale Object is Created
+  Whale();
 
-    //Move the killer whale towards penguin and call eat()
-    //Pre: none
-    //Post: killer whale moves towards penguin
-    bool move(Fish fishArr[], Penguin pengArr[],
-              Sea & arctic, const bool hasTarget);
+  //Returns m_penguinKilledCount
+  //Pre: none
+  //Post:Returns m_penguinKilledCount
+  short getPenguinKillCount();
 
-    //Sets whale's m_posX and m_posY variable
-    //Pre: none
-    //Post:Sets whale's m_posX and m_posY variable
-    void setWhalePos(const short posX, const short posY);
 
-    //Returns whale's m_posX variable
-    //pre: none
-    //Post:Returns whale's m_posX variable
-    short getWhalePosX()const;
 
-    //Returns whale's m_posY variable
-    //pre: none
-    //Post:Returns whale's m_posY variable
-    short getWhalePosY()const;
+  //Move the killer whale towards penguin and call eat()
+  //Pre: none
+  //Post: killer whale moves towards penguin
+  bool move(Fish fishArr[], Penguin pengArr[], Sea & arctic);
 
-    // Sets the targetX & targetY member vars = to target's x&y
-    //Pre: none
-    //Post:Sets the targetX & targetY member vars = to target's x&y
-    bool whaleFoundTarget(const Sea & S);
+  //Sets whale's m_posX and m_posY variable
+  //Pre: none
+  //Post:Sets whale's m_posX and m_posY variable
+  void setWhalePos(const short posX, const short posY);
+
+  //Returns whale's m_posX variable
+  //pre: none
+  //Post:Returns whale's m_posX variable
+  short getWhalePosX()const;
+
+  //Returns whale's m_posY variable
+  //pre: none
+  //Post:Returns whale's m_posY variable
+  short getWhalePosY()const;
+
+
 
 
 };

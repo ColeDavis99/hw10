@@ -16,36 +16,45 @@
 int main()
 {
   srand(time(NULL));
-
+  short turn = 0;
   bool fishHasMoved = false;
   bool printSea = false;
+  char answer = ' ';
   short fishNumAlive;
   short fishMoveAttempts; //counter
 
-  bool pengHasMoved = false;
-  bool pengFoundTarget = false;
+  //Penguin variables
   short pengNumAlive;
-  short pengDistToMove;
-  short pengMoveAttempts;
+  bool pengAllDead = false;
 
-  bool whaleHasMoved = false;
-  bool whaleFoundTarget;
-  short whaleMoveAttempts;
 
 
   //Create arrays of all actors
   Penguin penguinArr[MAX_PENGUINS];
   Fish fishArr[MAX_FISH];
   Whale whaleArr[MAX_WHALES];
-
   Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
 
-  cout<<"Fish alive: "<<fishArr[4].getm_num_fish_alive()<<endl<<endl;
-
-  cout << "Do you want to Print the Sea? (1 for yes / 0 for no) : ";
-  cin >> printSea;
-  for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
+  //User Promped for Printing Sea to screen
+  do
   {
+    cout << "Do you want to Print the Sea? (1 for yes / 0 for no) : ";
+    cin >> answer;
+    if (answer != '1' && answer != '0')
+      cout << "INVALID INPUT: ENTER 1 OR 0" << endl;
+  } while (answer != '1' && answer != '0');
+
+  if (answer == YES)
+    printSea = true;
+  else
+    printSea = false;
+
+  //for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
+
+  while( turn < SIMULATION_ITTERATIONS && pengAllDead == false)
+  {
+    //sets the fish and penguin loops to only loop through the
+    //objects that are still alive.
     fishNumAlive = fishArr[0].getm_num_fish_alive();
     pengNumAlive = penguinArr[0].getm_num_pengs_alive();
 
@@ -63,31 +72,37 @@ int main()
 
     for (short peng = 0; peng < pengNumAlive; peng++)
     {
-      pengMoveAttempts = 0;
-      pengHasMoved = false;
-      pengFoundTarget = false;
-      pengDistToMove = penguinArr[peng].distToMove();
-
-      pengFoundTarget = penguinArr[peng].pengFoundTarget(Arctic);
-      pengHasMoved = penguinArr[peng].move(pengDistToMove, fishArr, Arctic, pengFoundTarget);
+      penguinArr[peng].move(fishArr, Arctic);
+      penguinArr[peng].getm_num_pengs_alive();
     }
 
     for (short whale = 0; whale < MAX_WHALES; whale++)
     {
-      whaleMoveAttempts = 0;
-      whaleHasMoved = false;
-      whaleFoundTarget = false;
-
-      whaleFoundTarget = whaleArr[whale].whaleFoundTarget(Arctic);
-      whaleHasMoved = whaleArr[whale].move(fishArr, penguinArr, Arctic, whaleFoundTarget);
+      whaleArr[whale].move(fishArr, penguinArr, Arctic);
     }
 
-    usleep(200000);
+
     if (printSea == true)
     {
+      usleep(200000);
       cout << Arctic;
     }
+
+    if (pengNumAlive == 0)
+    {
+      pengAllDead = true;
+    }
+
+    turn++;
+  }//End of While Loop
+
+  cout << "Simulation Made: " << turn << " cyclees." << endl;
+  if (pengAllDead == false)
+  {
+    cout << "Penguins Survived: " << pengNumAlive << endl;
   }
+  cout << "Whale One Kill Count: " << whaleArr[0].getPenguinKillCount() << endl;
+  cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount() << endl;
 
 
   return 0;

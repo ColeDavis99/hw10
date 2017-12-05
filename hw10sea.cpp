@@ -8,9 +8,9 @@
     CONSTRUCTOR
 ==================*/
 Sea::Sea(Penguin penguinArr[],
-         Fish fishArr[],
-         Whale whaleArr[],
-         const short seaspace)
+  Fish fishArr[],
+  Whale whaleArr[],
+  const short seaspace)
 {
   m_seaSpace = seaspace;//Default argument of SEA_MAX
 
@@ -31,9 +31,9 @@ Sea::Sea(Penguin penguinArr[],
 
 void Sea::drawBorder()
 {
-  for(short i = m_seaSpace+1; i >= 0; i--)
+  for (short i = m_seaSpace + 1; i >= 0; i--)
   {
-    for(short q = 0; q <=m_seaSpace+1; q++)
+    for (short q = 0; q <= m_seaSpace + 1; q++)
     {
       m_seaGrid[i][q] = 'x';
     }
@@ -43,9 +43,9 @@ void Sea::drawBorder()
 
 void Sea::clear()
 {
-  for(short i = m_seaSpace; i > 0; i--)
+  for (short i = m_seaSpace; i > 0; i--)
   {
-    for(short q = 1; q <=m_seaSpace; q++)
+    for (short q = 1; q <= m_seaSpace; q++)
     {
       m_seaGrid[i][q] = SPACE_EMPTY;
     }
@@ -55,8 +55,8 @@ void Sea::clear()
 
 
 void Sea::populate(Penguin penguinArr[],
-                   Fish fishArr[],
-                   Whale whaleArr[])
+  Fish fishArr[],
+  Whale whaleArr[])
 {
   //Randomly generate penguin's valid x&y values and set their member vars.
   bool is_space;
@@ -65,7 +65,7 @@ void Sea::populate(Penguin penguinArr[],
 
 
   //loop 1 of 3
-  for(short i=0; i<FISH_SPAWN_NUM; i++)
+  for (short i = 0; i < FISH_SPAWN_NUM; i++)
   {
     is_space = false;
     do
@@ -73,11 +73,13 @@ void Sea::populate(Penguin penguinArr[],
       //Generate random number between 1 & 17 inclusive
       new_x = rand() % m_seaSpace + 1;
       new_y = rand() % m_seaSpace + 1;
-      cout<<"Fish's Random X: "<<new_x<<endl;
-      cout<<"Fish's Random Y: "<<new_y<<endl<<endl;
+      if (FISH_DEBUG == true)
+      {
+        cout << "Fish's Random X: " << new_x << endl;
+        cout << "Fish's Random Y: " << new_y << endl << endl;
+      }
 
-
-      if(m_seaGrid[new_y][new_x] == SPACE_EMPTY)
+      if (m_seaGrid[new_y][new_x] == SPACE_EMPTY)
       {
         is_space = true;
 
@@ -91,14 +93,17 @@ void Sea::populate(Penguin penguinArr[],
         //Make member 'alive' variable to true
         fishArr[i].setFishAliveState(true);
       }
-      else{
-        cout<<"^CONFLICT^"<<endl<<endl<<endl;
+      else {
+        if (FISH_DEBUG == true)
+        {
+          cout << "^CONFLICT^" << endl << endl << endl;
+        }
       }
-    } while(!is_space);
+    } while (!is_space);
   }//End of fish Loop
 
   //loop 2 of 3
-  for(short i=0; i<PENG_SPAWN_NUM; i++)
+  for (short i = 0; i < PENG_SPAWN_NUM; i++)
   {
     is_space = false;
     do
@@ -106,11 +111,14 @@ void Sea::populate(Penguin penguinArr[],
       //Generate random number between 1 & 17 inclusive
       new_x = rand() % m_seaSpace + 1;
       new_y = rand() % m_seaSpace + 1;
-      cout<<"Penguin's Random X: "<<new_x<<endl;
-      cout<<"Penguin's Random Y: "<<new_y<<endl<<endl;
+      if (PENG_DEBUG == true)
+      {
+        cout << "Penguin's Random X: " << new_x << endl;
+        cout << "Penguin's Random Y: " << new_y << endl;
+        cout << "My Health: " << penguinArr[i].getPengEnergy() << endl << endl;
+      }
 
-
-      if(m_seaGrid[new_y][new_x] == SPACE_EMPTY)
+      if (m_seaGrid[new_y][new_x] == SPACE_EMPTY)
       {
         is_space = true;
         penguinArr[i].incrementPengAlive();
@@ -124,38 +132,46 @@ void Sea::populate(Penguin penguinArr[],
         //Make member 'alive' variable to true
         penguinArr[i].setPengAliveState(true);
       }
-      else{
-        cout<<"^CONFLICT^"<<endl<<endl<<endl;
+      else {
+        if (PENG_DEBUG == true)
+        {
+          cout << "^CONFLICT^" << endl << endl << endl;
+        }
       }
-    } while(!is_space);
+    } while (!is_space);
   }//End of Penguin Loop
 
    //loop 3 of 3
-   for(short i=0; i<WHALE_SPAWN_NUM; i++)
-   {
-     is_space = false;
-     do
-     {
-       //Generate random number between 1 & 17 inclusive
-       new_x = rand() % m_seaSpace + 1;
-       new_y = rand() % m_seaSpace + 1;
-       cout<<"Whale's Random X: "<<new_x<<endl;
-       cout<<"Whale's Random Y: "<<new_y<<endl<<endl;
-  
-  
-       if(m_seaGrid[new_y][new_x] == SPACE_EMPTY)
-       {
-         is_space = true;
-         m_seaGrid[new_y][new_x] = WHALE_CHAR;
-  
-         //Set member x&y variables
-         whaleArr[i].setWhalePos(new_x, new_y);
-       }
-       else{
-         cout<<"^CONFLICT^"<<endl<<endl<<endl;
-       }
-     } while(!is_space);
-   }//End of Whale Loop
+  for (short i = 0; i < WHALE_SPAWN_NUM; i++)
+  {
+    is_space = false;
+    do
+    {
+      //Generate random number between 1 & 17 inclusive
+      new_x = rand() % m_seaSpace + 1;
+      new_y = rand() % m_seaSpace + 1;
+      if (WHALE_DEBUG == true)
+      {
+        cout << "Whale's Random X: " << new_x << endl;
+        cout << "Whale's Random Y: " << new_y << endl << endl;
+      }
+
+      if (m_seaGrid[new_y][new_x] == SPACE_EMPTY)
+      {
+        is_space = true;
+        m_seaGrid[new_y][new_x] = WHALE_CHAR;
+
+        //Set member x&y variables
+        whaleArr[i].setWhalePos(new_x, new_y);
+      }
+      else {
+        if (WHALE_DEBUG == true)
+        {
+          cout << "^CONFLICT^" << endl << endl << endl;
+        }
+      }
+    } while (!is_space);
+  }//End of Whale Loop
 
 }//End of Sea::populate()
 
@@ -174,11 +190,11 @@ void Sea::addToGrid(T actor)
 
 
   //Ignore 'true', it's just here so everything compiles
-  if(/*is a penguin*/true)
+  if (/*is a penguin*/true)
     actor_type = 'P';
-  else if(/*is a killer whale*/true)
+  else if (/*is a killer whale*/true)
     actor_type = 'K';
-  else if(/*is a fish*/true)
+  else if (/*is a fish*/true)
     actor_type = 'F';
 
 
@@ -194,13 +210,13 @@ void Sea::addToGrid(T actor)
 
 ostream & operator <<(ostream &os, const Sea &sea)
 {
-  for(short i = sea.m_seaSpace+1; i >= 0; i--)
+  for (short i = sea.m_seaSpace + 1; i >= 0; i--)
   {
-    for(short q = 0; q <=sea.m_seaSpace+1; q++)
+    for (short q = 0; q <= sea.m_seaSpace + 1; q++)
     {
-      os<<' '<<sea.m_seaGrid[i][q]<<' ';
+      os << ' ' << sea.m_seaGrid[i][q] << ' ';
     }
-    os<<endl;
+    os << endl;
   }
   return os;
 }

@@ -2,6 +2,7 @@
 #include "hw10penguin.h"
 #include "hw10sea.h"
 
+
 short Penguin::m_num_pengs_alive = 0;//Represent number of pengs in grid
 
 
@@ -12,7 +13,6 @@ Penguin::Penguin()
 {
   //Calculate starting energy level;
   m_energy = randomNumberGen(PENG_HEALTH_MAX, PENG_HEALTH_MIN);
-
 
   //Penguins spawn "dead" (Instructions said to)
   m_alive = false;
@@ -39,9 +39,10 @@ bool Penguin::eat(Sea & Arctic, Fish fishArr[])
       fishPosY = fishArr[counter].getFishPosY();
       if (m_posX == fishPosX && m_posY == fishPosY)
       {
-        m_energy = fishArr[counter].getFoodWorth();
+        m_energy += fishArr[counter].getFoodWorth();
         fishArr[counter].decramentFishAlive();
         fishAlive = fishArr[counter].getm_num_fish_alive();
+        fishArr[counter].setFishPos(FISH_START_X, FISH_START_Y);
         swap(fishArr[counter], fishArr[fishAlive]);
         fishInArrFound = true;
       }
@@ -54,11 +55,13 @@ bool Penguin::eat(Sea & Arctic, Fish fishArr[])
 /*==================
     FUNCTIONALITY
 ==================*/
-bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool hasTarget)
+bool Penguin::move(Fish fishArr[], Sea & arctic)
 {
   bool moveSuccessful = false;// Assume penguin isn't going to be able to move
   bool caughtFish = false;
-  bool searchNewTarget = !hasTarget;
+  bool hasFishTarget = false;
+  bool hasWhaleTarget = false;
+  short turns;
   short counter = 0;
   short moveAttemptsThisMove = 0;
   short quad;
@@ -66,28 +69,46 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
   short lastPosY;
   short moveToPosX;
   short moveToPosY;
-  short randDirection;
 
- 
-  //Get the quadrant the target is in. quad is used in the switch case below
-  if (searchNewTarget == false)
+  //Gathering needed information for moving the penguin
+  turns = distToMove();
+
+  if (PENG_DEBUG)
   {
-    quad = superPosition(m_posX, m_posY, m_targetX, m_targetY);
-  }
-  else
-  {
-    quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
+    cout << "\nAttempting to move: " << turns << endl;
+    cout << "My Helth: " << getPengEnergy() << endl;
+    usleep(500000);
   }
 
   //Number of times can move
-  while (counter < distToMove && caughtFish == false && moveAttemptsThisMove < PENG_MAX_MOVE_TRY)
+  while (counter < turns && caughtFish == false && moveAttemptsThisMove < MAX_MOVE_ATTMPTS)
   {
-
     lastPosX = m_posX;
     lastPosY = m_posY;
 
-      switch (quad)
-      {
+    hasFishTarget = pengFindTarget(arctic, FISH_CHAR);
+    if (hasFishTarget == false)
+    {
+      hasWhaleTarget = pengFindTarget(arctic, WHALE_CHAR);
+    }
+    //Get the quadrant the target is in. quad is used in the switch case below
+    if (hasFishTarget == true && hasWhaleTarget == false)
+    {
+      quad = superPosition(m_posX, m_posY, m_targetX, m_targetY);
+    }
+    else if (hasFishTarget == false && hasWhaleTarget == true)
+    {
+      quad = superPosition(m_posX, m_posY, m_targetX, m_targetY);
+      quad = avoidWhaleQuadAdjust(quad);
+    }
+    else
+    {
+      quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
+    }
+
+
+    switch (quad)
+    {
       case 1:
         moveToPosX = m_posX + ADVANCE_ACTOR_MOVE;
         moveToPosY = m_posY + ADVANCE_ACTOR_MOVE;
@@ -125,7 +146,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          caughtFish = this->eat(arctic, fishArr);
+          caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
           //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -147,7 +168,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          caughtFish = this->eat(arctic, fishArr);
+          caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
           //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -165,7 +186,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          caughtFish = this->eat(arctic, fishArr);
+          caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
           //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -183,7 +204,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          caughtFish = this->eat(arctic, fishArr);
+          caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
           //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -201,7 +222,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          caughtFish = this->eat(arctic, fishArr);
+          caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
           //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -219,7 +240,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          caughtFish = this->eat(arctic, fishArr);
+          caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
           //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -237,7 +258,7 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          caughtFish = this->eat(arctic, fishArr);
+          caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
           //m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -246,24 +267,38 @@ bool Penguin::move(short distToMove, Fish fishArr[], Sea & arctic, const bool ha
       default:
         cout << "ERROR IN PENGUIN DIRECTION LOGIC !!!!!" << endl;
         break;
-      }//End of switch
+    }//End of switch
 
-      if (moveSuccessful == true)
-      {
-        counter++;
-        moveAttemptsThisMove = 0;
-      }
-      else
-      {
-        moveAttemptsThisMove++;
-        quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
-      }
- 
+    if (moveSuccessful == true)
+    {
+      counter++;
+      moveAttemptsThisMove = 0;
+    }
+    else
+    {
+      moveAttemptsThisMove++;
+      quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
+    }
+
+    if (PENG_DEBUG == true)
+    {
+      cout << arctic;
+      usleep(500000);
+    }
   }//End of While Loop
+
+
+  if (PENG_DEBUG == true)
+  {
+    cout << "I moved: " << counter << endl;
+    cout << "Cought fish: " << caughtFish << endl;
+    cout << arctic;
+    usleep(500000);
+  }
+
 
   return moveSuccessful;
 }//End of Penguin::move()
-
 
 
 /*================
@@ -285,7 +320,7 @@ bool Penguin::getAliveState()const
 }
 
 
-bool Penguin::pengFoundTarget(const Sea S)
+bool Penguin::pengFindTarget(const Sea & S, const char targetType)
 {
   /*
     Make sure looping doesn't start outside of the array
@@ -317,24 +352,47 @@ bool Penguin::pengFoundTarget(const Sea S)
   float dist;
   float target_dist = PENG_TARGET_DEF;//One larger than Penguin's vision range
 
-  for (short y = startY; y >= endY; y--)
-  {
-    for (short x = startX; x <= endX; x++)
+  if (targetType == FISH_CHAR)
+    for (short y = startY; y >= endY; y--)
     {
-      temp = S.getActor(x, y);//Get character in grid.
-      if (temp == FISH_CHAR)
+      for (short x = startX; x <= endX; x++)
       {
-        dist = calcDist(m_posX, m_posY, x, y);
-        if (dist < target_dist)
+        temp = S.getActor(x, y);//Get character in grid.
+        if (temp == FISH_CHAR)
         {
-          found_target = true;
-          target_dist = dist;
-          m_targetX = x;
-          m_targetY = y;
+          dist = calcDist(m_posX, m_posY, x, y);
+          if (dist < target_dist)
+          {
+            found_target = true;
+            target_dist = dist;
+            m_targetX = x;
+            m_targetY = y;
+          }
         }
       }
     }
-  }
+
+  if (targetType == WHALE_CHAR)
+    for (short y = startY; y >= endY; y--)
+    {
+      for (short x = startX; x <= endX; x++)
+      {
+        temp = S.getActor(x, y);//Get character in grid.
+        if (temp == FISH_CHAR)
+        {
+          dist = calcDist(m_posX, m_posY, x, y);
+          if (dist < target_dist)
+          {
+            found_target = true;
+            target_dist = dist;
+            m_targetX = x;
+            m_targetY = y;
+          }
+        }
+      }
+    }
+
+
   return found_target;
 }//End of pengFoundTarget()
 
@@ -365,8 +423,11 @@ void Penguin::setPengPos(const short posX, const short posY)
 void Penguin::incrementPengAlive()
 {
   m_num_pengs_alive++;
-  cout << "NUMBER OF PENGUINS ALIVE: ";
-  cout << m_num_pengs_alive << endl;
+  if (PENG_DEBUG == true)
+  {
+    cout << "NUMBER OF PENGUINS ALIVE: ";
+    cout << m_num_pengs_alive << endl;
+  }
   return;
 }
 
