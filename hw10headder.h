@@ -122,6 +122,8 @@ const short DOUBLE_VISION = 2;
 
 const char YES = '1';
 const char NO = '0';
+const bool ALIVE = 1;
+const bool DEAD = 0;
 
 
 /*========================

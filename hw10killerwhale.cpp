@@ -33,6 +33,7 @@ bool Whale::eat(Sea & Arctic, Fish fishArr[], Penguin pengArr[])
       if (m_posX == pengPosX && m_posY == pengPosY)
       {
         pengArr[counter].decramentPengAlive();
+        pengArr[counter].setPengAliveState(DEAD);
         pengAlive = pengArr[counter].getm_num_pengs_alive();
         pengArr[counter].setPengPos(PENG_START_X, PENG_START_Y);
         swap(pengArr[counter], pengArr[pengAlive]);

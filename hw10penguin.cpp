@@ -40,6 +40,7 @@ bool Penguin::eat(Sea & Arctic, Fish fishArr[])
       if (m_posX == fishPosX && m_posY == fishPosY)
       {
         m_energy += fishArr[counter].getFoodWorth();
+        fishArr[counter].setFishAliveState(DEAD);
         fishArr[counter].decramentFishAlive();
         fishAlive = fishArr[counter].getm_num_fish_alive();
         fishArr[counter].setFishPos(FISH_START_X, FISH_START_Y);
