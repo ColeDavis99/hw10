@@ -1,6 +1,7 @@
 #ifndef HW10PENGUIN_H
 #define HW10PENGUIN_H
 #include "hw10fish.h"
+#include "hw10killerwhale.h"
 
 class Sea;
 class Penguin
@@ -64,12 +65,17 @@ class Penguin
     //
     //Pre:
     //Post:
-    static short getm_num_pengs_alive(){return m_num_pengs_alive;}
+    void incrementPengAlive();
 
     //
     //Pre:
     //Post:
-    void incrementPengAlive();
+    void decramentPengAlive();
+
+    //
+    //Pre:
+    //Post:
+    static short getm_num_pengs_alive();
 
     //
     //Pre:

@@ -28,6 +28,11 @@ int main()
   short pengDistToMove;
   short pengMoveAttempts;
 
+  bool whaleHasMoved = false;
+  bool whaleFoundTarget;
+  short whaleDistToMove;
+  short whaleMoveAttempts;
+
 
   //Create arrays of all actors
   Penguin penguinArr[MAX_PENGUINS];
@@ -57,7 +62,7 @@ int main()
 
     }
 
-    for (short peng = 0; peng < 20; peng++)
+    for (short peng = 0; peng < pengNumAlive; peng++)
     {
       pengMoveAttempts = 0;
       pengHasMoved = false;
@@ -68,6 +73,16 @@ int main()
       pengHasMoved = penguinArr[peng].move(pengDistToMove, fishArr, Arctic, pengFoundTarget);
     }
 
+    for (short whale = 0; whale < MAX_WHALES; whale++)
+    {
+      whaleMoveAttempts = 0;
+      whaleHasMoved = false;
+      whaleFoundTarget = false;
+      whaleDistToMove = whaleArr[whale].distToMove();
+
+      whaleFoundTarget = whaleArr[whale].whaleFoundTarget(Arctic);
+      whaleHasMoved = whaleArr[whale].move(whaleDistToMove, fishArr, penguinArr, Arctic, whaleFoundTarget);
+    }
 
     usleep(200000);
     if (printSea == true)

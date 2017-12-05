@@ -359,12 +359,26 @@ void Penguin::setPengPos(const short posX, const short posY)
   return;
 }
 
+
+
+
 void Penguin::incrementPengAlive()
 {
   m_num_pengs_alive++;
   cout << "NUMBER OF PENGUINS ALIVE: ";
   cout << m_num_pengs_alive << endl;
   return;
+}
+
+void Penguin::decramentPengAlive()
+{
+  m_num_pengs_alive--;
+  return;
+}
+
+short Penguin::getm_num_pengs_alive()
+{
+  return m_num_pengs_alive;
 }
 
 short Penguin::distToMove()
