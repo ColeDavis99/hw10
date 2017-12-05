@@ -45,14 +45,14 @@ class Sea
     template <typename T>
     void addToGrid(T actor);
 
-    //
-    //Pre:
-    //Post:
+    // Outputs the calling sea object's contents.
+    //Pre:Sea object is declared.
+    //Post: Sea object is output
     friend ostream & operator <<(ostream &os, const Sea &sea);
 
-    //
-    //Pre:
-    //Post:
+    //Returns character in specified indeces
+    //Pre: Passed characters can't be out of the array's max indexes
+    //Post: A character is returned
     char getActor(const short posX, const short posY)const;
 
     //Adds new character and removes old character to m_seaGrid[][]

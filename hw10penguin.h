@@ -19,67 +19,69 @@ class Penguin
   public:
     Penguin();
 
-    //
-    //Pre:
-    //Post:
+    //Penguin eats a fish
+    //Pre: Penguin shares a space in m_seaGrid[][] with a fish
+    //Post:Penguin gains health of fish and replaces fish character in seagrid
     bool eat(Sea & Arctic, Fish fishArr[]);
 
-    //
-    //Pre:
-    //Post: Returns
-    bool move(short distToMove, Fish fishArr[], Sea & arctic, const bool hasTarget);
+    //Penguin moves towards fish
+    //Pre:fish must be within penguin's max vision range
+    //Post: Penguin moves towards the fish target and eats if applicable
+    bool move(short distToMove, Fish fishArr[], Sea & arctic,
+                                        const bool hasTarget);
 
-    //
-    //pre:
-    //Post:
+    //Change value of m_alive
+    //pre: none
+    //Post:m_alive is set to p_state
     void setPengAliveState(const bool p_state);
 
-    //
-    //Pre:
-    //Post:
+    //Change value of m_posX and m_posY
+    //Pre: posX and posY must be within PLAYABLE_SPACE
+    //Post:Change value of m_posX and m_posY
     void setPengPos(const short posX, const short posY);
 
-    //
-    //pre:
+    // Returns m_posX
+    //pre: none
+    // Returns m_posX
     //Post:
     short getPengPosX()const;
 
-    //
-    //pre:
-    //Post:
+    //Returns m_posY
+    //pre: none
+    //Post:Returns m_posY
     short getPengPosY()const;
 
 
-    //
-    //Pre:
-    //Post:
+    // Returns m_alive
+    //Pre: none
+    //Post:Returns m_alive
     bool getAliveState()const;
 
 
     // Returns bool representing whether or not there is a fish to chase.
     // Also sets the targetX & targetY member vars = to target's x&y
-    //Pre:
-    //Post:
+    //Pre: none
+    //Post: Returns true if there is a fish in range
     bool pengFoundTarget(const Sea S);
 
-    //
-    //Pre:
-    //Post:
+    //Increments penguin class's m_num_pengs_alive
+    //Pre: none
+    //Post: Increments penguin class's m_num_pengs_alive
     void incrementPengAlive();
 
-    //
-    //Pre:
-    //Post:
+    //Decrements penguin class's m_num_pengs_alive
+    //Pre: none
+    //Post: Decrements penguin class's m_num_pengs_alive
     void decramentPengAlive();
 
-    //
-    //Pre:
-    //Post:
+    // Returns penguin class's static variable m_num_pengs_alive
+    //Pre: none
+    //Post:Returns penguin class's static variable m_num_pengs_alive
     static short getm_num_pengs_alive();
 
-    //
-    //Pre:
-    //Post:
+    // Returns short representing number of spaces peng can move
+    //Pre: none
+    //Post: Returns short representing number of spaces peng can move
     short distToMove();
 
 

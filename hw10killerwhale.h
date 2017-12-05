@@ -20,65 +20,47 @@ class Whale
 
   public:
 
-    //
-    //Pre:
-    //Post:
+    //Creates Whale Object
+    //Pre: none
+    //Post: Whale Object is Created
     Whale();
 
-    //
-    //Pre:
-    //Post:
+    //Returns m_penguinKilledCount
+    //Pre: none
+    //Post:Returns m_penguinKilledCount
     short getPenguinKillCount();
 
+    //Eat the penguin
+    //Pre: none
+    //Post:Penguin is removed from m_seaGrid[][] and set to dead.
     bool eat(Sea & Arctic, Fish fishArr[], Penguin pengArr[]);
 
-    //
-    //Pre:
-    //Post:
-    bool move(short distToMove, Fish fishArr[], Penguin pengArr[], Sea & arctic, const bool hasTarget);
+    //Move the killer whale towards penguin and call eat()
+    //Pre: none
+    //Post: killer whale moves towards penguin
+    bool move(short distToMove, Fish fishArr[], Penguin pengArr[],
+              Sea & arctic, const bool hasTarget);
 
-    //
-    //pre:
-    //Post:
-    void setWhaleAliveState(const bool p_state);
-
-
-
-    //
-    //Pre:
-    //Post:
+    //Sets whale's m_posX and m_posY variable
+    //Pre: none
+    //Post:Sets whale's m_posX and m_posY variable
     void setWhalePos(const short posX, const short posY);
 
-    //
-    //pre:
-    //Post:
+    //Returns whale's m_posX variable
+    //pre: none
+    //Post:Returns whale's m_posX variable
     short getWhalePosX()const;
 
-    //
-    //pre:
-    //Post:
+    //Returns whale's m_posY variable
+    //pre: none
+    //Post:Returns whale's m_posY variable
     short getWhalePosY()const;
 
-
-    //
-    //Pre:
-    //Post:
-    bool getAliveState()const;
-
-
-    // Returns bool representing whether or not there is a fish to chase.
-    // Also sets the targetX & targetY member vars = to target's x&y
-    //Pre:
-    //Post:
+    // Sets the targetX & targetY member vars = to target's x&y
+    //Pre: none
+    //Post:Sets the targetX & targetY member vars = to target's x&y
     bool whaleFoundTarget(const Sea & S);
 
-
-    ////
-    ////Pre:
-    ////Post:
-    //void incrementWhaleAlive();
-
-  
 
     //
     //Pre:

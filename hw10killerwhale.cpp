@@ -271,11 +271,6 @@ short Whale::getWhalePosY()const
   return m_posY;
 }
 
-bool Whale::getAliveState()const
-{
-  return m_alive;
-}
-
 
 bool Whale::whaleFoundTarget(const Sea & S)
 {
@@ -336,13 +331,8 @@ bool Whale::whaleFoundTarget(const Sea & S)
 
 
  /*================
- SETTERS
+    SETTERS
  ================*/
-void Whale::setWhaleAliveState(const bool p_state)
-{
-  m_alive = p_state;
-  return;
-}
 
 void Whale::setWhalePos(const short posX, const short posY)
 {
@@ -399,4 +389,3 @@ short Whale::distToMove()
 
   return distToMove;
 }
-

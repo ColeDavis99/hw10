@@ -85,21 +85,21 @@ const char WHALE_CHAR = 'w';
 
 //Functions
 
-//Generates a random number between the upper and lower boundry thats 
+//Generates a random number between the upper and lower boundry thats
 //passed to it
 //Pre: None
 //Post: Returns a random generated number.
 short randomNumberGen(const short upperBound, const short lowerBound);
 
 //calculated the distance between the calling object and targets location
-//Pre:
+//Pre: All arguments are within bounds of PLAYABLE_SPACE
 //Post: returns the distance to target.
 float calcDist(const short x1, const short y1, const short x2, const short y2);
 
 //Determins the Quadrent of the target by the super possition of the source object
 //Pre: Source and Target  object must exist in SeaGrid
 //Post: Returns what Quadrent the target is in.
-short superPosition(short sourcePosX, short sourcePosY, 
+short superPosition(short sourcePosX, short sourcePosY,
   short targetPosX, short targetPosY);
 
 #endif

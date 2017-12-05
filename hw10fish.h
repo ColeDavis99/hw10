@@ -18,49 +18,49 @@ public:
   Fish();
 
   //Allows the fish to move inside the sea grid
-  //Pre:
+  //Pre: none
   //Post: The calling objects location variables will have been changed
   bool move(Sea & artic);
 
-  //
-  //Pre:
-  //Post:
+  //Updates fish's x&y member variables
+  //Pre: x&y must be within PLAYABLE_SPACE
+  //Post:Updates fish's x&y member variables are updated
   void setFishPos(const short posX, const short posY);
 
-  //
-  //Pre:
-  //Post:
+  //Returns fish's m_posX member variable
+  //Pre: Fish must exist
+  //Post: Returns fish's m_posX member variable
   short getFishPosX()const;
 
-  //
-  //Pre:
-  //Post:
+  //Returns fish's m_posY member variable
+  //Pre: none
+  //Post: Returns fish's m_posY member variable
   short getFishPosY()const;
 
-  //
-  //Pre:
-  //Post:
+  //Sets fish's m_alive variable to p_state
+  //Pre: none
+  //Post: fish's m_alive is set to p_state
   void setFishAliveState(const bool p_state);
 
-  //
-  //Pre:
-  //Post:
+  //Increases Fish class's static m_num_fish_alive variable by 1
+  //Pre: none
+  //Post: Fish class's static m_num_fish_alive variable increased by 1
   void incrementFishAlive();
 
-  //
-  //Pre:
-  //Post:
+  //Decreases Fish class's static m_num_fish_alive variable by 1
+  //Pre: none
+  //Post: Fish class's static m_num_fish_alive variable decreased by 1
   void decramentFishAlive();
 
-  //
-  //Pre:
-  //Post:
+  //Returns fish object's m_num_fish_alive variable
+  //Pre: none
+  //Post: REturns fish object's m_num_fish_alive variable
   static short getm_num_fish_alive();
 
-  //
-  //Pre:
-  //
-  short getFoodWorth()const { return m_foodWorth; }
+  // returns m_foodWorth
+  //Pre: none
+  //Post: returns m_foodWorth
+  short getFoodWorth()const {return m_foodWorth;}
 
 };
 
