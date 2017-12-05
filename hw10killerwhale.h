@@ -38,7 +38,7 @@ class Whale
     //Move the killer whale towards penguin and call eat()
     //Pre: none
     //Post: killer whale moves towards penguin
-    bool move(short distToMove, Fish fishArr[], Penguin pengArr[],
+    bool move(Fish fishArr[], Penguin pengArr[],
               Sea & arctic, const bool hasTarget);
 
     //Sets whale's m_posX and m_posY variable
@@ -62,10 +62,6 @@ class Whale
     bool whaleFoundTarget(const Sea & S);
 
 
-    //
-    //Pre:
-    //Post:
-    short distToMove();
 };
 
 #endif

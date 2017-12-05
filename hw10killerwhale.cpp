@@ -47,9 +47,9 @@ bool Whale::eat(Sea & Arctic, Fish fishArr[], Penguin pengArr[])
 /*==================
 FUNCTIONALITY
 ==================*/
-bool Whale::move(short distToMove, Fish fishArr[], Penguin pengArr[], Sea & arctic, const bool hasTarget)
+bool Whale::move(Fish fishArr[], Penguin pengArr[], Sea & arctic, const bool hasTarget)
 {
-  bool moveSuccessful = false;// Assume penguin isn't going to be able to move
+  bool moveSuccessful = false;// Assume whale isn't going to be able to move
   bool caughtPeng = false;
   bool searchNewTarget = !hasTarget;
   short counter = 0;
@@ -72,7 +72,7 @@ bool Whale::move(short distToMove, Fish fishArr[], Penguin pengArr[], Sea & arct
   }
 
   //Number of times can move
-  while (counter < distToMove && caughtPeng == false && moveAttemptsThisMove < PENG_MAX_MOVE_TRY)
+  while (counter < WHALE_MOVE_PER_TURN && caughtPeng == false && moveAttemptsThisMove < PENG_MAX_MOVE_TRY)
   {
 
     lastPosX = m_posX;
@@ -278,20 +278,20 @@ bool Whale::whaleFoundTarget(const Sea & S)
   Make sure looping doesn't start outside of the array
   (start X&Y, end X&Y variables are set to acceptable values)
   */
-  short startX = m_posX - PENG_VISION_RANGE;    //Starting X
+  short startX = m_posX - WHALE_VISION_RANGE;    //Starting X
   if (startX < MIN_MOVABLE_BOUNDARY)
     startX = MIN_MOVABLE_BOUNDARY;
 
-  short endX = m_posX + PENG_VISION_RANGE;      //Ending X
+  short endX = m_posX + WHALE_VISION_RANGE;      //Ending X
   if (endX > MAX_MOVABLE_BOUNDARY)
     endX = MAX_MOVABLE_BOUNDARY;
 
 
-  short startY = m_posY + PENG_VISION_RANGE;    //Starting Y
+  short startY = m_posY + WHALE_VISION_RANGE;    //Starting Y
   if (startY > MAX_MOVABLE_BOUNDARY)
     startY = MAX_MOVABLE_BOUNDARY;
 
-  short endY = m_posY - PENG_VISION_RANGE;      //Ending Y
+  short endY = m_posY - WHALE_VISION_RANGE;      //Ending Y
   if (endY < MIN_MOVABLE_BOUNDARY)
     endY = MIN_MOVABLE_BOUNDARY;
 
@@ -302,7 +302,7 @@ bool Whale::whaleFoundTarget(const Sea & S)
   bool found_target = false;
   char temp;
   float dist;
-  float target_dist = PENG_TARGET_DEF;//One larger than Penguin's vision range
+  float target_dist = WHALE_VISION_RANGE;//One larger than Penguin's vision range
 
   for (short y = startY; y >= endY; y--)
   {
@@ -339,53 +339,4 @@ void Whale::setWhalePos(const short posX, const short posY)
   m_posX = posX;
   m_posY = posY;
   return;
-}
-
-
-//
-//void Whale::incrementWhaleAlive()
-//{
-//  m_num_whale_alive++;
-//  cout << "NUMBER OF WHALE ALIVE: ";
-//  cout << m_num_whale_alive << endl;
-//  return;
-//}
-
-
-short Whale::distToMove()
-{
-  short distToMove = 0;
-
-  if (m_energy > PENG_HEALTH_4)
-  {
-    //Move 5 spaces
-    distToMove = PENG_MOVE_MAX5;
-  }
-  else if (m_energy > PENG_HEALTH_3)
-  {
-    //Move 4 spaces
-    distToMove = PENG_MOVE_MAX4;
-  }
-  else if (m_energy > PENG_HEALTH_2)
-  {
-    //Move 3 Spaces
-    distToMove = PENG_MOVE_MAX3;
-  }
-  else if (m_energy > PENG_HEALTH_1)
-  {
-    //Move 2 spaces
-    distToMove = PENG_MOVE_MAX2;
-  }
-  else if (m_energy >= PENG_HEALTH_0)
-  {
-    //Move 1 space
-    distToMove = PENG_MOVE_MAX1;
-  }
-  else
-  {
-    //The penguin doesn't move, no energy.
-    distToMove = PENG_MOVE_MAX0;
-  }
-
-  return distToMove;
 }

@@ -30,7 +30,6 @@ int main()
 
   bool whaleHasMoved = false;
   bool whaleFoundTarget;
-  short whaleDistToMove;
   short whaleMoveAttempts;
 
 
@@ -78,10 +77,9 @@ int main()
       whaleMoveAttempts = 0;
       whaleHasMoved = false;
       whaleFoundTarget = false;
-      whaleDistToMove = whaleArr[whale].distToMove();
 
       whaleFoundTarget = whaleArr[whale].whaleFoundTarget(Arctic);
-      whaleHasMoved = whaleArr[whale].move(whaleDistToMove, fishArr, penguinArr, Arctic, whaleFoundTarget);
+      whaleHasMoved = whaleArr[whale].move(fishArr, penguinArr, Arctic, whaleFoundTarget);
     }
 
     usleep(200000);

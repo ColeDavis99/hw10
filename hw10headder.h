@@ -79,6 +79,7 @@ const short MAX_WHALES = 2;
 const short WHALE_SPAWN_NUM = 2;
 const short WHALE_MOVE_PER_TURN = 3;
 const char WHALE_CHAR = 'w';
+const short WHALE_VISION_RANGE = PLAYABLE_SPACE;
 
 
 
