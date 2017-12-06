@@ -241,10 +241,9 @@ void Fish::reincarnateFish(Sea & S, Fish fishArr[])
           fishArr[m_num_fish_alive].setm_foodworth(randomNumberGen(FOOD_VAL_UPPR, FOOD_VAL_LOWR));
 
           //Make member 'alive' variable to true
-          fishArr[m_num_fish_alive].setFishAliveState(true);
-
+          fishArr[m_num_fish_alive].setFishAliveState(ALIVE);
           fishArr[m_num_fish_alive].incrementFishAlive();
-          cout << "Number of Fish Array: " << m_num_fish_alive << endl;
+     
         }
         ctr++;
       } while (!is_space && ctr < ATTEMPTS_CTR);
