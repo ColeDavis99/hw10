@@ -313,6 +313,7 @@ void Penguin::reincarnatePeng(Sea & S, Penguin penguinArr[])
     is_space = false;
     short new_x;
     short new_y;
+    short counter = 0;
     m_energy = m_energy/2;//Parent's health is cut in half.
     do
     {
@@ -338,9 +339,9 @@ void Penguin::reincarnatePeng(Sea & S, Penguin penguinArr[])
         penguinArr[m_num_pengs_alive].setPengAliveState(true);
 
         penguinArr[m_num_pengs_alive].incrementPengAlive();
-
+        counter++;
       }
-    } while (!is_space);
+    } while (!is_space && counter < ATTEMPTS_CTR);
   //Add a penguin to the m_seaGrid[][] from m_num_pengs_alive index of penguins[]
 
 
