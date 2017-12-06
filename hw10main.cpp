@@ -121,18 +121,20 @@ int main()
   /*======================================================
           OUTPUT AFTER SIMULATION TERMINATION
   ======================================================*/
-  cout << "Simulation Made: " << turn << " cycles." << endl;
+
   if (pengAllDead == false)
   {
+    cout << "Simulation successful!!!!" << endl;
     cout << "Penguins Survived: " << pengNumAlive << endl;
   }
   else
   {
-    cout << "All Penguins died on Simulation cycle: " << turn << endl;
+    cout << "Simulation failed on cycle: " << turn << endl;
   }
+  cout << "Number of Fish still alive: " << fishNumAlive << endl;
   cout << "Whale One Kill Count: " << whaleArr[0].getPenguinKillCount()
-    << endl;
+    << " Penguins" <<endl;
   cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount()
-    << endl << endl;
+    << " Penguins"<< endl;
   return 0;
 }
