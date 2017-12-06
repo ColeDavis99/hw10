@@ -102,7 +102,10 @@ int main()
     ======================================================*/
 
     //Calling fish spawn
-    fishArr[ZERO].reincarnateFish(Arctic, fishArr);
+    if (turn % DEVISOR = 0)
+    {
+      fishArr[ZERO].reincarnateFish(Arctic, fishArr);
+    }
     turn++;
 
   }//End of While Loop

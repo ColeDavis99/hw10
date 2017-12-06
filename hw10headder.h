@@ -70,7 +70,7 @@ const char FISH_CHAR = 'f';
 const short FISH_MAX_MOVE_TRY = 7;
 const bool SET_FISH_LIVING = false;
 const short ATTEMPTS_CTR = PLAYABLE_SPACE * PLAYABLE_SPACE;
-const short FISH_MULTIPLIER = 1;
+const short FISH_MULTIPLIER = 8;
 
 /*========================
      WHALE SETTINGS
@@ -127,6 +127,7 @@ const char YES = '1';
 const char NO = '0';
 const bool ALIVE = 1;
 const bool DEAD = 0;
+const short DEVISOR = 1;
 
 
 /*========================
