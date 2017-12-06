@@ -32,6 +32,7 @@ private:
   short distToMove();
 
 
+
 public:
 
 
@@ -44,6 +45,13 @@ public:
   */
   bool move(Fish fishArr[], Sea & arctic);
 
+
+  //Adds a new penguin to m_seaGrid[][]
+  //Pre: Penguin's parent penguin must have health > 70
+  //Post: Penguin is added to m_seaGrid[][] if there is free space.
+  void reincarnatePeng(Sea & S, Penguin penguinArr[]);
+
+
   /*
   Description: Sets the penguin object to be either alive or dead
   pre: none
@@ -55,6 +63,13 @@ public:
   //Pre: posX and posY must be within PLAYABLE_SPACE
   //Post:Change value of m_posX and m_posY
   void setPengPos(const short posX, const short posY);
+
+
+  //Sets the value of m_energy to energy (used in reincarnation)
+  //Pre: none
+  //Post: Penguin's m_energy is energy
+  void setPengEnergy(const short energy);
+
 
   // Returns m_posX
   //pre: none

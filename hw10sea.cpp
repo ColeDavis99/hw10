@@ -238,3 +238,10 @@ void Sea::setActor(const short newPosX, const short newPosY,
   m_seaGrid[newPosY][newPosX] = newActor;
   return;
 }
+
+
+void Sea::addActor(const short x, const short y, const char actor_char)
+{
+  m_seaGrid[y][x] = actor_char;
+  return;
+}

@@ -34,6 +34,8 @@ int main()
   Fish fishArr[MAX_FISH];
   Whale whaleArr[MAX_WHALES];
   Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
+  cout<<"FIRST FRAME BELOW"<<endl;
+  cout<<Arctic<<endl<<endl<<endl<<endl;
 
   //User Promped for Printing Sea to screen
   do
@@ -73,7 +75,7 @@ int main()
     for (short peng = 0; peng < pengNumAlive; peng++)
     {
       penguinArr[peng].move(fishArr, Arctic);
-      penguinArr[peng].getm_num_pengs_alive();
+      penguinArr[peng].reincarnatePeng(Arctic, penguinArr);//Pop a new penguin from the m_num_pengs_alive index, THEN increment m_num_pengs_alive
     }
 
     for (short whale = 0; whale < MAX_WHALES; whale++)
@@ -92,6 +94,7 @@ int main()
     {
       pengAllDead = true;
     }
+    cout<<"NUMBER OF PENGUINS ALIVE: "<<penguinArr[0].getm_num_pengs_alive()<<endl;
 
     turn++;
   }//End of While Loop

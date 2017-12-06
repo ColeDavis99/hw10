@@ -127,7 +127,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          //m_energy -= PENG_MOVE_COST;
+          m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -149,7 +149,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          //m_energy -= PENG_MOVE_COST;
+          m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -171,7 +171,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          //m_energy -= PENG_MOVE_COST;
+          m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -189,7 +189,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          //m_energy -= PENG_MOVE_COST;
+          m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -207,7 +207,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          //m_energy -= PENG_MOVE_COST;
+          m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -225,7 +225,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          //m_energy -= PENG_MOVE_COST;
+          m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -243,7 +243,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          //m_energy -= PENG_MOVE_COST;
+          m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -261,7 +261,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
           arctic.setActor(m_posX, m_posY, PENG_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
-          //m_energy -= PENG_MOVE_COST;
+          m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
         }
         break;
@@ -292,7 +292,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
   if (PENG_DEBUG == true)
   {
     cout << "I moved: " << counter << endl;
-    cout << "Cought fish: " << caughtFish << endl;
+    cout << "Caught fish: " << caughtFish << endl;
     cout << arctic;
     usleep(500000);
   }
@@ -300,6 +300,56 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
 
   return moveSuccessful;
 }//End of Penguin::move()
+
+
+
+void Penguin::reincarnatePeng(Sea & S, Penguin penguinArr[])
+{
+  static short num_calls = 0;
+  if(m_energy > PENG_HEALTH_SPAWN_MIN && m_num_pengs_alive < MAX_PENGUINS)
+  {
+    num_calls ++;
+    bool is_space;
+    is_space = false;
+    short new_x;
+    short new_y;
+    m_energy = m_energy/2;//Parent's health is cut in half.
+    do
+    {
+      //Generate random number between 1 & 17 inclusive
+      new_x = rand() % PLAYABLE_SPACE;
+      new_y = rand() % PLAYABLE_SPACE;
+
+
+      if (S.getActor(new_x,new_y) == SPACE_EMPTY)
+      {
+        is_space = true;
+
+        //Update m_seaGrid[][]
+        S.addActor(new_x, new_y, PENG_CHAR);
+
+        //Set member x&y variables
+        penguinArr[m_num_pengs_alive].setPengPos(new_x, new_y);
+
+        //Generate penguin's health anywhere between 100 and 0
+        penguinArr[m_num_pengs_alive].setPengEnergy(randomNumberGen(PENG_HEALTH_4, PENG_HEALTH_1));
+
+        //Make member 'alive' variable to true
+        penguinArr[m_num_pengs_alive].setPengAliveState(true);
+
+        penguinArr[m_num_pengs_alive].incrementPengAlive();
+
+      }
+    } while (!is_space);
+  //Add a penguin to the m_seaGrid[][] from m_num_pengs_alive index of penguins[]
+
+
+    //Increase m_num_pengs_alive
+
+  }
+}
+
+
 
 
 /*================
@@ -418,6 +468,13 @@ void Penguin::setPengPos(const short posX, const short posY)
   return;
 }
 
+void Penguin::setPengEnergy(const short energy)
+{
+  m_energy = energy;
+  return;
+}
+
+
 
 
 
@@ -480,4 +537,3 @@ short Penguin::distToMove()
 
   return distToMove;
 }
-

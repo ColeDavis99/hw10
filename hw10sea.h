@@ -64,6 +64,12 @@ public:
     short lastPosX,
     short lastPosY,
     char clearActor);
+
+
+  //Adds a new character to the seagrid
+  //Pre: None
+  //Post: New character is succesfully added to seagrid.
+  void addActor(const short x, const short y, const char actor_char);
 };
 
 #endif

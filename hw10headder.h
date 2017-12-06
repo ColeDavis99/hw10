@@ -50,6 +50,7 @@ const short PENG_MOVE_MAX2 = 2;
 const short PENG_MOVE_MAX1 = 1;
 const short PENG_MOVE_MAX0 = 0;
 const short PENG_MOVE_COST = 1;
+const short PENG_HEALTH_SPAWN_MIN = 70;
 
 const short PENG_VISION_RANGE = 8;
 const short PENG_TARGET_DEF = PENG_VISION_RANGE + 1;
