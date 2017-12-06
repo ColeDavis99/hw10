@@ -138,6 +138,5 @@ int main()
     << " Penguins" <<endl;
   cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount()
     << " Penguins"<< endl;
->>>>>>> cdd2999d343746858be26728b923c6534b5d68e2
   return 0;
 }
