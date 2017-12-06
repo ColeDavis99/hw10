@@ -79,7 +79,6 @@ public:
   //Pre: none
   //Post: returns m_foodWorth
   short getFoodWorth()const { return m_foodWorth; }
-
 };
 
 #endif

@@ -28,13 +28,13 @@ int main()
   short pengNumAlive;
   bool pengAllDead = false;
 
-
-
   //Create arrays of all actors
+
   Penguin penguinArr[MAX_PENGUINS];
   Fish fishArr[MAX_FISH];
   Whale whaleArr[MAX_WHALES];
   Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
+
 
 
   //User Promped for Printing Sea to screen
@@ -46,6 +46,10 @@ int main()
       cout << "INVALID INPUT: ENTER 1 OR 0" << endl;
   } while (answer != '1' && answer != '0');
 
+  pengAllDead = false;
+  fishHasMoved = false;
+  turn = 0;
+
   if (answer == YES)
     printSea = true;
   else
@@ -53,7 +57,7 @@ int main()
 
 
 
-  while( turn < SIMULATION_ITTERATIONS && pengAllDead == false)
+  while (turn < SIMULATION_ITTERATIONS && pengAllDead == false)
   {
     //sets the fish and penguin loops to only loop through the
     //objects that are still alive.
@@ -82,14 +86,14 @@ int main()
 
     for (short whale = 0; whale < MAX_WHALES; whale++)
     {
-      whaleArr[whale].move(fishArr, penguinArr, Arctic);
+      whaleArr[whale].move(penguinArr, Arctic);
     }
 
 
     if (printSea == true)
     {
-      usleep(200000);
       cout << Arctic;
+      usleep(200000);
     }
 
     if (pengNumAlive == 0)
@@ -118,18 +122,22 @@ int main()
   /*======================================================
           OUTPUT AFTER SIMULATION TERMINATION
   ======================================================*/
-  cout << "Simulation Made: " << turn << " cycles." << endl;
+
   if (pengAllDead == false)
   {
+    cout << "Simulation successful!!!!" << endl;
     cout << "Penguins Survived: " << pengNumAlive << endl;
   }
   else
   {
-    cout << "All Penguins died on Simulation cycle: " << turn << endl;
+    cout << "Simulation failed on cycle: " << turn << endl;
   }
-  cout<<endl<<endl;
-  cout << "Whale One Kill Count: " << whaleArr[0].getPenguinKillCount() << endl;
-  cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount() << endl;
 
+  cout << "Number of Fish still alive: " << fishNumAlive << endl;
+  cout << "Whale One Kill Count: " << whaleArr[0].getPenguinKillCount()
+    << " Penguins" <<endl;
+  cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount()
+    << " Penguins"<< endl;
+>>>>>>> cdd2999d343746858be26728b923c6534b5d68e2
   return 0;
 }

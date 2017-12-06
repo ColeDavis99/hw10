@@ -135,6 +135,7 @@ const char YES = '1';
 const char NO = '0';
 const bool ALIVE = 1;
 const bool DEAD = 0;
+//Variable spawn control by mod simulation cycle
 const short DEVISOR = 1;
 
 

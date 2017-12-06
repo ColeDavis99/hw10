@@ -29,7 +29,7 @@ private:
   //Eat the penguin
   //Pre: none
   //Post:Penguin is removed from m_seaGrid[][] and set to dead.
-  bool eat(Sea & Arctic, Fish fishArr[], Penguin pengArr[]);
+  bool eat(Sea & Arctic, Penguin pengArr[]);
 
   // Sets the targetX & targetY member vars = to target's x&y
   //Pre: none
@@ -46,14 +46,12 @@ public:
   //Returns m_penguinKilledCount
   //Pre: none
   //Post:Returns m_penguinKilledCount
-  short getPenguinKillCount();
-
-
+  short getPenguinKillCount()const;
 
   //Move the killer whale towards penguin and call eat()
   //Pre: none
   //Post: killer whale moves towards penguin
-  bool move(Fish fishArr[], Penguin pengArr[], Sea & arctic);
+  bool move(Penguin pengArr[], Sea & arctic);
 
   //Sets whale's m_posX and m_posY variable
   //Pre: none
@@ -69,9 +67,6 @@ public:
   //pre: none
   //Post:Returns whale's m_posY variable
   short getWhalePosY()const;
-
-
-
 
 };
 

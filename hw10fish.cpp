@@ -193,7 +193,7 @@ bool Fish::move(Sea & arctic)
         }
         break;
       default:
-        //cout << "Fish not moving" << endl;
+        direction = randomNumberGen(RAND_DIR_UPPR, RAND_DIR_LOWR);
         break;
     }//End of Switch
 
@@ -245,7 +245,8 @@ void Fish::reincarnateFish(Sea & S, Fish fishArr[])
           fishArr[m_num_fish_alive].setFishPos(new_x, new_y);
 
           //Generate penguin's health anywhere between 100 and 0
-          fishArr[m_num_fish_alive].setm_foodworth(randomNumberGen(FOOD_VAL_UPPR, FOOD_VAL_LOWR));
+          fishArr[m_num_fish_alive].setm_foodworth
+          (randomNumberGen(FOOD_VAL_UPPR, FOOD_VAL_LOWR));
 
           //Make member 'alive' variable to true
           fishArr[m_num_fish_alive].setFishAliveState(ALIVE);

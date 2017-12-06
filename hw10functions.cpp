@@ -18,12 +18,14 @@ short randomNumberGen(const short upperBound, const short lowerBound)
 float calcDist(const short x1, const short y1, const short x2, const short y2)
 {
   float dist;
-  dist = pow(x2 - x1, 2) + pow(y2 - y1, 2);       //calculating Euclidean distance
+  //calculating Euclidean distance
+  dist = pow(x2 - x1, 2) + pow(y2 - y1, 2);
   dist = sqrt(dist);
   return dist;
 }
 
-short randQuad(const short directOne, const short directTwo, const short directThree)
+short randQuad(const short directOne, const short directTwo,
+  const short directThree)
 {
   short direction;
   short quad;
@@ -56,7 +58,7 @@ short superPosition(short sourcePosX, short sourcePosY,
 
   if (targetPosX > sourcePosX && targetPosY > sourcePosY)
   {
-    superPosQuad = QUAD_ONE; //Does not need to be constant as it will never change
+    superPosQuad = QUAD_ONE;
   }
   else if (targetPosX < sourcePosX  && targetPosY > sourcePosX)
   {
