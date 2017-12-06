@@ -107,7 +107,7 @@ public:
   short getPengEnergy() { return m_energy; }
 
 
-
+  static void resetPengAlive() { m_num_pengs_alive = 0; }
 
 };
 

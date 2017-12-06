@@ -58,12 +58,8 @@ public:
   //Adds new character and removes old character to m_seaGrid[][]
   //Pre:
   //Post:
-  void setActor(const short newPosX,
-    const short newPosY,
-    char newActor,
-    short lastPosX,
-    short lastPosY,
-    char clearActor);
+  void setActor(const short newPosX, const short newPosY, char newActor,
+    short lastPosX, short lastPosY, char clearActor);
 
 
   //Adds a new character to the seagrid

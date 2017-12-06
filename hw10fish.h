@@ -72,6 +72,8 @@ public:
   //Post: returns m_foodWorth
   short getFoodWorth()const { return m_foodWorth; }
 
+  //remove befor submit
+  static void resetFishAlive() { m_num_fish_alive = 0; }
 };
 
 #endif

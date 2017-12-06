@@ -70,7 +70,9 @@ const char FISH_CHAR = 'f';
 const short FISH_MAX_MOVE_TRY = 7;
 const bool SET_FISH_LIVING = false;
 const short ATTEMPTS_CTR = PLAYABLE_SPACE * PLAYABLE_SPACE;
-const short FISH_MULTIPLIER = 13;
+
+//How many fish to spawn at an instance
+const short FISH_MULTIPLIER = 16;
 
 /*========================
      WHALE SETTINGS
@@ -127,6 +129,7 @@ const char YES = '1';
 const char NO = '0';
 const bool ALIVE = 1;
 const bool DEAD = 0;
+//Variable spawn control by mod simulation cycle
 const short DEVISOR = 1;
 
 
