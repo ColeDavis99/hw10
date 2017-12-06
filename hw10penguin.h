@@ -104,11 +104,10 @@ public:
   //Post:Returns penguin class's static variable m_num_pengs_alive
   static short getm_num_pengs_alive();
 
-  short getPengEnergy() { return m_energy; }
-
-
-  static void resetPengAlive() { m_num_pengs_alive = 0; }
-
+  //Returns the ammount of Health the penguin has
+  //Pre: must be called from Penguin object
+  //Post: Returns the health value aka energy.
+  short getPengEnergy()const { return m_energy; }
 };
 
 #endif

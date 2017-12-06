@@ -23,16 +23,20 @@ int main()
   short fishNumAlive;
   short fishMoveAttempts; //counter
 
-  long total = 0;
-  float avrage = 0;
-
   //Penguin variables
   short pengNumAlive;
   bool pengAllDead = false;
 
   //Create arrays of all actors
 
+  Penguin penguinArr[MAX_PENGUINS];
+  Fish fishArr[MAX_FISH];
+  Whale whaleArr[MAX_WHALES];
+  Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
 
+
+
+  //User Promped for Printing Sea to screen
   do
   {
     cout << "Do you want to Print the Sea? (1 for yes / 0 for no) : ";
@@ -41,117 +45,94 @@ int main()
       cout << "INVALID INPUT: ENTER 1 OR 0" << endl;
   } while (answer != '1' && answer != '0');
 
+  pengAllDead = false;
+  fishHasMoved = false;
+  turn = 0;
 
-  for (int i = 0; i < 30; i++)
+  if (answer == YES)
+    printSea = true;
+  else
+    printSea = false;
+
+
+
+  while (turn < SIMULATION_ITTERATIONS && pengAllDead == false)
   {
+    //sets the fish and penguin loops to only loop through the
+    //objects that are still alive.
+    fishNumAlive = fishArr[0].getm_num_fish_alive();
+    pengNumAlive = penguinArr[0].getm_num_pengs_alive();
 
-    Penguin penguinArr[MAX_PENGUINS];
-    Fish fishArr[MAX_FISH];
-    Whale whaleArr[MAX_WHALES];
-    Sea Arctic(penguinArr, fishArr, whaleArr, PLAYABLE_SPACE);
-
-    //User Promped for Printing Sea to screen
-
-
-    pengAllDead = false;
-    fishHasMoved = false;
-    turn = 0;
-
-    if (answer == YES)
-      printSea = true;
-    else
-      printSea = false;
-
-
-
-    while (turn < SIMULATION_ITTERATIONS && pengAllDead == false)
+    for (short fish = 0; fish < fishNumAlive; fish++)
     {
-      //sets the fish and penguin loops to only loop through the
-      //objects that are still alive.
-      fishNumAlive = fishArr[0].getm_num_fish_alive();
-      pengNumAlive = penguinArr[0].getm_num_pengs_alive();
-
-      for (short fish = 0; fish < fishNumAlive; fish++)
+      fishMoveAttempts = 0;
+      fishHasMoved = false;
+      do
       {
-        fishMoveAttempts = 0;
-        fishHasMoved = false;
-        do
-        {
-          fishHasMoved = fishArr[fish].move(Arctic);
-          //
-          fishMoveAttempts++;
-        } while (fishHasMoved == false && fishMoveAttempts < FISH_MAX_MOVE_TRY);
-      }
+        fishHasMoved = fishArr[fish].move(Arctic);
+        //
+        fishMoveAttempts++;
+      } while (fishHasMoved == false && fishMoveAttempts < FISH_MAX_MOVE_TRY);
+    }
 
-      for (short peng = 0; peng < pengNumAlive; peng++)
-      {
-        penguinArr[peng].move(fishArr, Arctic);
-        //Pop a new penguin from the m_num_pengs_alive index, 
-        //THEN increment m_num_pengs_alive
-        penguinArr[peng].reincarnatePeng(Arctic, penguinArr);
-      }
+    for (short peng = 0; peng < pengNumAlive; peng++)
+    {
+      penguinArr[peng].move(fishArr, Arctic);
+      //Pop a new penguin from the m_num_pengs_alive index, 
+      //THEN increment m_num_pengs_alive
+      penguinArr[peng].reincarnatePeng(Arctic, penguinArr);
+    }
 
-      for (short whale = 0; whale < MAX_WHALES; whale++)
-      {
-        whaleArr[whale].move(penguinArr, Arctic);
-      }
+    for (short whale = 0; whale < MAX_WHALES; whale++)
+    {
+      whaleArr[whale].move(penguinArr, Arctic);
+    }
 
 
-      if (printSea == true)
-      {
-        cout << Arctic;
-        usleep(200000);
-      }
+    if (printSea == true)
+    {
+      cout << Arctic;
+      usleep(200000);
+    }
 
-      if (pengNumAlive == 0)
-      {
-        pengAllDead = true;
-      }
-
-
-      /*======================================================
-                OUTPUT AFTER SINGLE LOOP
-      ======================================================*/
-
-      //Calling fish spawn
-      if (turn % DEVISOR == 0)
-      {
-        fishArr[ZERO].reincarnateFish(Arctic, fishArr);
-      }
-      turn++;
-
-    }//End of While Loop
-
-
-
+    if (pengNumAlive == 0)
+    {
+      pengAllDead = true;
+    }
 
 
     /*======================================================
-            OUTPUT AFTER SIMULATION TERMINATION
+              OUTPUT AFTER SINGLE LOOP
     ======================================================*/
-    cout << "Simulation Made: " << turn << " cycles." << endl;
-    if (pengAllDead == false)
-    {
-      cout << "Penguins Survived: " << pengNumAlive << endl;
-    }
-    else
-    {
-      cout << "All Penguins died on Simulation cycle: " << turn << endl;
-    }
-    cout << "Whale One Kill Count: " << whaleArr[0].getPenguinKillCount() 
-      << endl;
-    cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount() 
-      << endl << endl;
-    total += turn;
-    cout << total << endl;
-    //Delete befor turning in.
-    penguinArr[0].resetPengAlive();
-    fishArr[0].resetFishAlive();
 
+    //Calling fish spawn
+    if (turn % DEVISOR == 0)
+    {
+      fishArr[ZERO].reincarnateFish(Arctic, fishArr);
+    }
+    turn++;
+
+  }//End of While Loop
+
+
+
+
+
+  /*======================================================
+          OUTPUT AFTER SIMULATION TERMINATION
+  ======================================================*/
+  cout << "Simulation Made: " << turn << " cycles." << endl;
+  if (pengAllDead == false)
+  {
+    cout << "Penguins Survived: " << pengNumAlive << endl;
   }
-
-  avrage = total / 30.0;
-
-  cout << "Avrage Simulation Reached: " << avrage << endl;
+  else
+  {
+    cout << "All Penguins died on Simulation cycle: " << turn << endl;
+  }
+  cout << "Whale One Kill Count: " << whaleArr[0].getPenguinKillCount()
+    << endl;
+  cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount()
+    << endl << endl;
   return 0;
 }

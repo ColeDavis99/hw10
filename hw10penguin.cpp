@@ -485,10 +485,6 @@ void Penguin::setPengEnergy(const short energy)
   return;
 }
 
-
-
-
-
 void Penguin::incrementPengAlive()
 {
   m_num_pengs_alive++;
