@@ -1,11 +1,3 @@
-/*========================================================================
- *Programmers: Matthew Stroble & Cole Davis
- *Date: 12-7-2017
- *Class: CS1570 Section A
- *File: hw10penguin.cpp
- *Purpose: Implementation file for class Penguin
-========================================================================*/
-
 #include "hw10headder.h"
 #include "hw10penguin.h"
 #include "hw10sea.h"
@@ -338,7 +330,8 @@ void Penguin::reincarnatePeng(Sea & S, Penguin penguinArr[])
     short new_x;
     short new_y;
     short counter = 0;
-    m_energy = m_energy / 2;//Parent's health is cut in half.
+    //short spawnedHealth;
+    m_energy = static_cast<float>(static_cast<float>(m_energy) / 2);//Parent's health is cut in half.
     do
     {
       //Generate random number between 1 & 17 inclusive
@@ -357,8 +350,10 @@ void Penguin::reincarnatePeng(Sea & S, Penguin penguinArr[])
 
         //Generate penguin's health anywhere between 100 and 0
         penguinArr[m_num_pengs_alive].setPengEnergy
-        (randomNumberGen(PENG_HEALTH_4, PENG_HEALTH_1));
+        (randomNumberGen(PENG_HEALTH_MAX, PENG_HEALTH_MIN));
 
+
+        //penguinArr[m_num_pengs_alive].setPengEnergy(spawnedHealth);
         //Make member 'alive' variable to true
         penguinArr[m_num_pengs_alive].setPengAliveState(true);
 
@@ -492,6 +487,10 @@ void Penguin::setPengEnergy(const short energy)
   m_energy = energy;
   return;
 }
+
+
+
+
 
 void Penguin::incrementPengAlive()
 {

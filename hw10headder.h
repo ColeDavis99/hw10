@@ -42,7 +42,7 @@ const short SIMULATION_ITTERATIONS = 10000;
 ========================*/
 const short MAX_PENGUINS = 50;
 const short PENG_SPAWN_NUM = 20;
-const short PENG_HEALTH_MIN = 70;
+const short PENG_HEALTH_MIN = 60;
 const short PENG_HEALTH_MAX = 80;
 const short PENG_START_X = -1;
 const short PENG_START_Y = -1;
@@ -78,7 +78,7 @@ const char FISH_CHAR = 'f';
 const short FISH_MAX_MOVE_TRY = 7;
 const bool SET_FISH_LIVING = false;
 const short ATTEMPTS_CTR = PLAYABLE_SPACE * PLAYABLE_SPACE;
-const short FISH_MULTIPLIER = 16;
+const short FISH_MULTIPLIER = 10;
 
 /*========================
      WHALE SETTINGS
