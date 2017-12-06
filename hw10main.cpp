@@ -67,9 +67,9 @@ int main()
       do
       {
         fishHasMoved = fishArr[fish].move(Arctic);
+        //
         fishMoveAttempts++;
       } while (fishHasMoved == false && fishMoveAttempts < FISH_MAX_MOVE_TRY);
-
     }
 
     for (short peng = 0; peng < pengNumAlive; peng++)
@@ -94,12 +94,25 @@ int main()
     {
       pengAllDead = true;
     }
-    cout<<"NUMBER OF PENGUINS ALIVE: "<<penguinArr[0].getm_num_pengs_alive()<<endl;
 
+
+    /*======================================================
+              OUTPUT AFTER SINGLE LOOP
+    ======================================================*/
+    cout<<"NUMBER OF PENGUINS ALIVE: "<<penguinArr[0].getm_num_pengs_alive()<<endl;
+    fishArr[ZERO].reincarnateFish(Arctic, fishArr);
     turn++;
+
   }//End of While Loop
 
-  cout << "Simulation Made: " << turn << " cyclees." << endl;
+
+
+
+
+  /*======================================================
+          OUTPUT AFTER SIMULATION TERMINATION
+  ======================================================*/
+  cout << "Simulation Made: " << turn << " cycles." << endl;
   if (pengAllDead == false)
   {
     cout << "Penguins Survived: " << pengNumAlive << endl;

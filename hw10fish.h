@@ -27,6 +27,16 @@ public:
   //Post:Updates fish's x&y member variables are updated
   void setFishPos(const short posX, const short posY);
 
+  //Sets the m_foodWorth variable
+  //Pre: none
+  //Post: m_foodWorth is equal to foodworth
+  void setm_foodworth(const short foodworth);
+
+  //Adds fish into Sea.m_seaGrid[][]
+  //Pre: none
+  //Post: Adds fish to seagrid
+  void reincarnateFish(Sea & S, Fish fishArr[]);
+
   //Returns fish's m_posX member variable
   //Pre: Fish must exist
   //Post: Returns fish's m_posX member variable

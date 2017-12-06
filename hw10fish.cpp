@@ -205,6 +205,51 @@ bool Fish::move(Sea & arctic)
 }
 
 
+
+
+
+void Fish::reincarnateFish(Sea & S, Fish fishArr[])
+{
+  bool is_space;
+  short new_x;
+  short new_y;
+  short ctr = 0;
+
+  for(short i=0; i<FISH_MULTIPLIER; i++)
+  {
+    is_space = false;
+    ctr = 0;
+    do
+    {
+      //Generate random number between 1 & 17 inclusive
+      new_x = rand() % PLAYABLE_SPACE;
+      new_y = rand() % PLAYABLE_SPACE;
+
+      if (S.getActor(new_x,new_y) == SPACE_EMPTY)
+      {
+        is_space = true;
+
+        //Update m_seaGrid[][]
+        S.addActor(new_x, new_y, FISH_CHAR);
+
+        //Set member x&y variables
+        fishArr[m_num_fish_alive].setFishPos(new_x, new_y);
+
+        //Generate penguin's health anywhere between 100 and 0
+        fishArr[m_num_fish_alive].setm_foodworth(randomNumberGen(FOOD_VAL_UPPR,FOOD_VAL_LOWR));
+
+        //Make member 'alive' variable to true
+        fishArr[m_num_fish_alive].setFishAliveState(true);
+
+        fishArr[m_num_fish_alive].incrementFishAlive();
+
+      }
+      ctr++;
+    } while (!is_space && ctr<ATTEMPTS_CTR);
+  }
+}
+
+
 /*============
     GETTERS
 ============*/
@@ -256,9 +301,8 @@ void Fish::decramentFishAlive()
 }
 
 
-short Fish::getm_num_fish_alive()
+void Fish::setm_foodworth(const short foodworth)
 {
-  return m_num_fish_alive;
+  m_foodWorth = foodworth;
+  return;
 }
-
-

@@ -320,7 +320,6 @@ void Penguin::reincarnatePeng(Sea & S, Penguin penguinArr[])
       new_x = rand() % PLAYABLE_SPACE;
       new_y = rand() % PLAYABLE_SPACE;
 
-
       if (S.getActor(new_x,new_y) == SPACE_EMPTY)
       {
         is_space = true;
@@ -329,7 +328,7 @@ void Penguin::reincarnatePeng(Sea & S, Penguin penguinArr[])
         S.addActor(new_x, new_y, PENG_CHAR);
 
         //Set member x&y variables
-        penguinArr[m_num_pengs_alive].setPengPos(new_x, new_y);
+          penguinArr[m_num_pengs_alive].setPengPos(new_x, new_y);
 
         //Generate penguin's health anywhere between 100 and 0
         penguinArr[m_num_pengs_alive].setPengEnergy(randomNumberGen(PENG_HEALTH_4, PENG_HEALTH_1));
