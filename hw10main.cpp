@@ -100,7 +100,6 @@ int main()
     /*======================================================
               OUTPUT AFTER SINGLE LOOP
     ======================================================*/
-    cout<<"NUMBER OF PENGUINS ALIVE: "<<penguinArr[0].getm_num_pengs_alive()<<endl;
 
     //Calling fish spawn
     fishArr[ZERO].reincarnateFish(Arctic, fishArr);
