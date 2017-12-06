@@ -266,7 +266,7 @@ bool Whale::move(Penguin pengArr[], Sea & arctic)
         break;
       default:
         quad = randomNumberGen(RAND_DIR_UPPR_EGHT, RAND_DIR_LOWR_ONE);
-        break;
+      break;
     }//End of switch
 
     if (moveSuccessful == true)

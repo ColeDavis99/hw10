@@ -39,8 +39,6 @@ private:
   //Post: Returns short representing number of spaces peng can move
   short distToMove();
 
-
-
 public:
 
 

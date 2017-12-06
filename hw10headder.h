@@ -78,7 +78,9 @@ const char FISH_CHAR = 'f';
 const short FISH_MAX_MOVE_TRY = 7;
 const bool SET_FISH_LIVING = false;
 const short ATTEMPTS_CTR = PLAYABLE_SPACE * PLAYABLE_SPACE;
-const short FISH_MULTIPLIER = 10;
+
+//Spawns ammount of fish per cycle
+const short FISH_MULTIPLIER = 11;
 
 /*========================
      WHALE SETTINGS
@@ -98,7 +100,7 @@ const bool PENG_DEBUG = false;
 const bool WHALE_DEBUG = false;
 
 
-//DO NOT CHANGE ANYTHING BELOW THIS LINE!!! I WILL HUNT YOU DOWN IF YOU DO!!!!
+//DO NOT CHANGE ANYTHING BELOW THIS LINE!!! I WILL HUNT YOU DOWN IF YOU DO!!!
 
 /*========================
     GLOBAL CONSTANTS
@@ -152,7 +154,8 @@ short randomNumberGen(const short upperBound, const short lowerBound);
 //calculated the distance between the calling object and targets location
 //Pre: All arguments are within bounds of PLAYABLE_SPACE
 //Post: returns the distance to target.
-float calcDist(const short x1, const short y1, const short x2, const short y2);
+float calcDist(const short x1, const short y1, 
+  const short x2, const short y2);
 
 
 /*

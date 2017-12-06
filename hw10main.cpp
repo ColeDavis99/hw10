@@ -40,7 +40,7 @@ int main()
   //User Promped for Printing Sea to screen
   do
   {
-    cout << "Do you want to Print the Sea? (1 for yes / 0 for no) : ";
+    cout << "\nDo you want to Print the Sea? (1 for yes / 0 for no) : ";
     cin >> answer;
     if (answer != '1' && answer != '0')
       cout << "INVALID INPUT: ENTER 1 OR 0" << endl;
@@ -125,18 +125,20 @@ int main()
 
   if (pengAllDead == false)
   {
-    cout << "Simulation successful!!!!" << endl;
+    cout << "\nSimulation successful!!!!" << endl;
     cout << "Penguins Survived: " << pengNumAlive << endl;
   }
   else
   {
-    cout << "Simulation failed on cycle: " << turn << endl;
+    cout << "\nSimulation failed on cycle: " << turn << endl;
   }
 
   cout << "Number of Fish still alive: " << fishNumAlive << endl;
   cout << "Whale One Kill Count: " << whaleArr[0].getPenguinKillCount()
-    << " Penguins" <<endl;
+    << " Penguins" << endl;
   cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount()
-    << " Penguins"<< endl;
+    << " Penguins" << endl;
+  cout << "\nFish Spawned per simulation cycle: "
+    << FISH_MULTIPLIER << endl << endl;
   return 0;
 }

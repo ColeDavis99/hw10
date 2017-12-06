@@ -123,7 +123,7 @@ void Sea::populate(Penguin penguinArr[],
       {
         cout << "Penguin's Random X: " << new_x << endl;
         cout << "Penguin's Random Y: " << new_y << endl;
-        cout << "My Health: " << penguinArr[i].getPengEnergy() << endl << endl;
+        cout << "My Health: " << penguinArr[i].getPengEnergy() << endl<< endl;
       }
 
       if (m_seaGrid[new_y][new_x] == SPACE_EMPTY)
@@ -240,8 +240,6 @@ char Sea::getActor(const short posX, const short posY)const
 void Sea::setActor(const short newPosX, const short newPosY,
   char newActor, short lastPosX, short lastPosY, char clearActor)
 {
-  //cout << "Last PosX: " << lastPosX << " Last PosY: " << lastPosY << endl;
-  //cout << "New PosX: " << newPosX << " New PosY: " << newPosY << endl;
   m_seaGrid[lastPosY][lastPosX] = clearActor;
   m_seaGrid[newPosY][newPosX] = newActor;
   return;

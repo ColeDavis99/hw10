@@ -60,7 +60,8 @@ bool Fish::move(Sea & arctic)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          arctic.setActor(m_posX, m_posY, FISH_CHAR, 
+            lastPosX, lastPosY, SPACE_EMPTY);
           moveSuccessful = true;
         }
         break;
@@ -80,7 +81,8 @@ bool Fish::move(Sea & arctic)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          arctic.setActor(m_posX, m_posY, FISH_CHAR, 
+            lastPosX, lastPosY, SPACE_EMPTY);
           moveSuccessful = true;
         }
         break;
@@ -96,7 +98,8 @@ bool Fish::move(Sea & arctic)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          arctic.setActor(m_posX, m_posY, FISH_CHAR, 
+            lastPosX, lastPosY, SPACE_EMPTY);
           moveSuccessful = true;
         }
         break;
@@ -116,7 +119,8 @@ bool Fish::move(Sea & arctic)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          arctic.setActor(m_posX, m_posY, FISH_CHAR, 
+            lastPosX, lastPosY, SPACE_EMPTY);
           moveSuccessful = true;
         }
         break;
@@ -132,7 +136,8 @@ bool Fish::move(Sea & arctic)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          arctic.setActor(m_posX, m_posY, FISH_CHAR, 
+            lastPosX, lastPosY, SPACE_EMPTY);
           moveSuccessful = true;
         }
         break;
@@ -152,7 +157,8 @@ bool Fish::move(Sea & arctic)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          arctic.setActor(m_posX, m_posY, FISH_CHAR, 
+            lastPosX, lastPosY, SPACE_EMPTY);
           moveSuccessful = true;
         }
         break;
@@ -168,7 +174,8 @@ bool Fish::move(Sea & arctic)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          arctic.setActor(m_posX, m_posY, FISH_CHAR, 
+            lastPosX, lastPosY, SPACE_EMPTY);
           moveSuccessful = true;
         }
         break;
@@ -188,7 +195,8 @@ bool Fish::move(Sea & arctic)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
-          arctic.setActor(m_posX, m_posY, FISH_CHAR, lastPosX, lastPosY, SPACE_EMPTY);
+          arctic.setActor(m_posX, m_posY, FISH_CHAR, 
+            lastPosX, lastPosY, SPACE_EMPTY);
           moveSuccessful = true;
         }
         break;

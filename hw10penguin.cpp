@@ -1,3 +1,10 @@
+/*========================================================================
+*Programmers: Matthew Stroble & Cole Davis
+*Date: 12-7-2017
+*Class: CS1570 Section A
+*File: hw10penguin.cpp
+*Purpose: Definition file for class Penguin
+========================================================================*/
 #include "hw10headder.h"
 #include "hw10penguin.h"
 #include "hw10sea.h"
@@ -82,7 +89,8 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
   }
 
   //Number of times can move
-  while (counter < turns && caughtFish == false && moveAttemptsThisMove < MAX_MOVE_ATTMPTS)
+  while (counter < turns && caughtFish == false
+    && moveAttemptsThisMove < MAX_MOVE_ATTMPTS)
   {
     lastPosX = m_posX;
     lastPosY = m_posY;
@@ -121,13 +129,13 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
         {
           moveToPosX = MAX_MOVABLE_BOUNDARY;
         }
-        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY 
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY
           || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
-          arctic.setActor(m_posX, m_posY, PENG_CHAR, 
+          arctic.setActor(m_posX, m_posY, PENG_CHAR,
             lastPosX, lastPosY, SPACE_EMPTY);
           m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -145,7 +153,7 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
         {
           moveToPosX = MIN_MOVABLE_BOUNDARY;
         }
-        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY 
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY
           || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
         {
           m_posX = moveToPosX;
@@ -169,13 +177,13 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
         {
           moveToPosX = MIN_MOVABLE_BOUNDARY;
         }
-        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY 
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY
           || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
-          arctic.setActor(m_posX, m_posY, PENG_CHAR, 
+          arctic.setActor(m_posX, m_posY, PENG_CHAR,
             lastPosX, lastPosY, SPACE_EMPTY);
           m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -189,13 +197,13 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
         {
           moveToPosY = MIN_MOVABLE_BOUNDARY;
         }
-        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY 
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY
           || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
-          arctic.setActor(m_posX, m_posY, PENG_CHAR, 
+          arctic.setActor(m_posX, m_posY, PENG_CHAR,
             lastPosX, lastPosY, SPACE_EMPTY);
           m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -209,13 +217,13 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
         {
           moveToPosX = MAX_MOVABLE_BOUNDARY;
         }
-        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY 
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY
           || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
-          arctic.setActor(m_posX, m_posY, PENG_CHAR, 
+          arctic.setActor(m_posX, m_posY, PENG_CHAR,
             lastPosX, lastPosY, SPACE_EMPTY);
           m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -229,13 +237,13 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
         {
           moveToPosY = MAX_MOVABLE_BOUNDARY;
         }
-        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY 
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY
           || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
-          arctic.setActor(m_posX, m_posY, PENG_CHAR, 
+          arctic.setActor(m_posX, m_posY, PENG_CHAR,
             lastPosX, lastPosY, SPACE_EMPTY);
           m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -249,13 +257,13 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
         {
           moveToPosX = MIN_MOVABLE_BOUNDARY;
         }
-        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY 
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY
           || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
-          arctic.setActor(m_posX, m_posY, PENG_CHAR, 
+          arctic.setActor(m_posX, m_posY, PENG_CHAR,
             lastPosX, lastPosY, SPACE_EMPTY);
           m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -269,13 +277,13 @@ bool Penguin::move(Fish fishArr[], Sea & arctic)
         {
           moveToPosY = MIN_MOVABLE_BOUNDARY;
         }
-        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY 
+        if (arctic.getActor(moveToPosX, moveToPosY) == SPACE_EMPTY
           || arctic.getActor(moveToPosX, moveToPosY) == FISH_CHAR)
         {
           m_posX = moveToPosX;
           m_posY = moveToPosY;
           caughtFish = eat(arctic, fishArr);
-          arctic.setActor(m_posX, m_posY, PENG_CHAR, 
+          arctic.setActor(m_posX, m_posY, PENG_CHAR,
             lastPosX, lastPosY, SPACE_EMPTY);
           m_energy -= PENG_MOVE_COST;
           moveSuccessful = true;
@@ -330,8 +338,8 @@ void Penguin::reincarnatePeng(Sea & S, Penguin penguinArr[])
     short new_x;
     short new_y;
     short counter = 0;
-    //short spawnedHealth;
-    m_energy = static_cast<float>(static_cast<float>(m_energy) / 2);//Parent's health is cut in half.
+    //Parent's health is cut in half.
+    m_energy = static_cast<short>(static_cast<float>(m_energy) / 2);
     do
     {
       //Generate random number between 1 & 17 inclusive
