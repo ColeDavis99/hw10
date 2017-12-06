@@ -1,3 +1,10 @@
+/*========================================================================
+ *Programmers: Matthew Stroble & Cole Davis
+ *Date: 12-7-2017
+ *Class: CS1570 Section A
+ *File: hw10fish.cpp
+ *Purpose: Implementation file for class Fish
+========================================================================*/
 #include "hw10headder.h"
 #include "hw10fish.h"
 #include "hw10sea.h"
@@ -243,7 +250,7 @@ void Fish::reincarnateFish(Sea & S, Fish fishArr[])
           //Make member 'alive' variable to true
           fishArr[m_num_fish_alive].setFishAliveState(ALIVE);
           fishArr[m_num_fish_alive].incrementFishAlive();
-     
+
         }
         ctr++;
       } while (!is_space && ctr < ATTEMPTS_CTR);

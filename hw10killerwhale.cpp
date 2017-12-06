@@ -1,3 +1,11 @@
+/*========================================================================
+ *Programmers: Matthew Stroble & Cole Davis
+ *Date: 12-7-2017
+ *Class: CS1570 Section A
+ *File: hw10killerwhale.cpp
+ *Purpose: Implementation file for class Whale
+========================================================================*/
+
 #include "hw10headder.h"
 #include "hw10killerwhale.h"
 #include "hw10sea.h"

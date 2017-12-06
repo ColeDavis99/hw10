@@ -1,3 +1,11 @@
+/*========================================================================
+ *Programmers: Matthew Stroble & Cole Davis
+ *Date: 12-7-2017
+ *Class: CS1570 Section A
+ *File: hw10sea.h
+ *Purpose: Definition file for class Sea
+========================================================================*/
+
 #ifndef HW10SEA_H
 #define HW10SEA_H
 #include "hw10headder.h"

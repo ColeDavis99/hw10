@@ -1,3 +1,11 @@
+/*========================================================================
+ *Programmers: Matthew Stroble & Cole Davis
+ *Date: 12-7-2017
+ *Class: CS1570 Section A
+ *File: hw10functions.cpp
+ *Purpose: Implementation file for global functions
+========================================================================*/
+
 #include "hw10headder.h"
 
 short randomNumberGen(const short upperBound, const short lowerBound)
@@ -116,4 +124,3 @@ short avoidWhaleQuadAdjust(short quad)
 
   return quad;
 }
-

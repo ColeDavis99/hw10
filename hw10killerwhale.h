@@ -1,3 +1,11 @@
+/*========================================================================
+ *Programmers: Matthew Stroble & Cole Davis
+ *Date: 12-7-2017
+ *Class: CS1570 Section A
+ *File: hw10killerwhale.h
+ *Purpose: Definition file for class Whale
+========================================================================*/
+
 #ifndef HW10KILLERWHALE_H
 #define HW10KILLERWHALE_H
 

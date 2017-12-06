@@ -1,3 +1,11 @@
+/*========================================================================
+ *Programmers: Matthew Stroble & Cole Davis
+ *Date: 12-7-2017
+ *Class: CS1570 Section A
+ *File: hw10headder.h
+ *Purpose: Define global constants and prototype global functions
+========================================================================*/
+
 #ifndef HW10HEADDER_H
 #define HW10HEADDER_H
 
@@ -70,7 +78,7 @@ const char FISH_CHAR = 'f';
 const short FISH_MAX_MOVE_TRY = 7;
 const bool SET_FISH_LIVING = false;
 const short ATTEMPTS_CTR = PLAYABLE_SPACE * PLAYABLE_SPACE;
-const short FISH_MULTIPLIER = 13;
+const short FISH_MULTIPLIER = 16;
 
 /*========================
      WHALE SETTINGS

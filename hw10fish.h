@@ -1,3 +1,11 @@
+/*========================================================================
+ *Programmers: Matthew Stroble & Cole Davis
+ *Date: 12-7-2017
+ *Class: CS1570 Section A
+ *File: hw10fish.h
+ *Purpose: Definition file for class Fish
+========================================================================*/
+
 #ifndef HW10FISH_H
 #define HW10FISH_H
 #include "hw10killerwhale.h"

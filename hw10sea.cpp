@@ -1,3 +1,11 @@
+/*========================================================================
+ *Programmers: Matthew Stroble & Cole Davis
+ *Date: 12-7-2017
+ *Class: CS1570 Section A
+ *File: hw10sea.cpp
+ *Purpose: Implementation file for class Sea
+========================================================================*/
+
 #include "hw10sea.h"
 #include "hw10penguin.h"
 #include "hw10fish.h"

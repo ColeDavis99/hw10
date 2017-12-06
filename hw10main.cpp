@@ -1,8 +1,9 @@
 /*========================================================================
- *Programmers: Cole Davis & Matthew Stroble
+ *Programmers: Matthew Stroble & Cole Davis
  *Date: 12-7-2017
  *Class: CS1570 Section A
- *Purpose: Simulate Antarctic Waters
+ *File: hw10main.cpp
+ *Purpose: Act as a driver to simulate Antarctic Waters
 ========================================================================*/
 #include "hw10headder.h"
 #include "hw10sea.h"
@@ -50,7 +51,7 @@ int main()
   else
     printSea = false;
 
-  //for (short turn = 0; turn < SIMULATION_ITTERATIONS; turn++)
+
 
   while( turn < SIMULATION_ITTERATIONS && pengAllDead == false)
   {
@@ -98,7 +99,7 @@ int main()
 
 
     /*======================================================
-              OUTPUT AFTER SINGLE LOOP
+                OUTPUT AFTER SINGLE LOOP
     ======================================================*/
 
     //Calling fish spawn
@@ -126,9 +127,9 @@ int main()
   {
     cout << "All Penguins died on Simulation cycle: " << turn << endl;
   }
+  cout<<endl<<endl;
   cout << "Whale One Kill Count: " << whaleArr[0].getPenguinKillCount() << endl;
   cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount() << endl;
 
-  cout<<"THIS IS THE LAST LINE IN THE PROGRAM"<<endl;
   return 0;
 }

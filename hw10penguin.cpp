@@ -1,3 +1,11 @@
+/*========================================================================
+ *Programmers: Matthew Stroble & Cole Davis
+ *Date: 12-7-2017
+ *Class: CS1570 Section A
+ *File: hw10penguin.cpp
+ *Purpose: Implementation file for class Penguin
+========================================================================*/
+
 #include "hw10headder.h"
 #include "hw10penguin.h"
 #include "hw10sea.h"
