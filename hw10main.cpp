@@ -102,7 +102,10 @@ int main()
     ======================================================*/
 
     //Calling fish spawn
-    fishArr[ZERO].reincarnateFish(Arctic, fishArr);
+    if (turn % DEVISOR == 0)
+    {
+      fishArr[ZERO].reincarnateFish(Arctic, fishArr);
+    }
     turn++;
 
   }//End of While Loop
@@ -126,6 +129,6 @@ int main()
   cout << "Whale One Kill Count: " << whaleArr[0].getPenguinKillCount() << endl;
   cout << "Whale Two Kill Count: " << whaleArr[1].getPenguinKillCount() << endl;
 
-
+  cout<<"THIS IS THE LAST LINE IN THE PROGRAM"<<endl;
   return 0;
 }
