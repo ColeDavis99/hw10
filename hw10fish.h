@@ -65,7 +65,7 @@ public:
   //Returns fish object's m_num_fish_alive variable
   //Pre: none
   //Post: REturns fish object's m_num_fish_alive variable
-  static short getm_num_fish_alive(){return m_num_fish_alive;};
+  static short getm_num_fish_alive() { return m_num_fish_alive; }
 
   // returns m_foodWorth
   //Pre: none
