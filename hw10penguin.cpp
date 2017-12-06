@@ -338,6 +338,7 @@ void Penguin::reincarnatePeng(Sea & S, Penguin penguinArr[])
         penguinArr[m_num_pengs_alive].setPengAliveState(true);
 
         penguinArr[m_num_pengs_alive].incrementPengAlive();
+        //cout << "Penguin Alive: " << m_num_pengs_alive << endl;
         counter++;
       }
     } while (!is_space && counter < ATTEMPTS_CTR);

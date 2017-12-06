@@ -102,7 +102,7 @@ int main()
     ======================================================*/
 
     //Calling fish spawn
-    if (turn % DEVISOR = 0)
+    if (turn % DEVISOR == 0)
     {
       fishArr[ZERO].reincarnateFish(Arctic, fishArr);
     }

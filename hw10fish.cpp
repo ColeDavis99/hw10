@@ -215,37 +215,40 @@ void Fish::reincarnateFish(Sea & S, Fish fishArr[])
   short new_y;
   short ctr = 0;
 
-  for(short i=0; i<FISH_MULTIPLIER; i++)
+  for (short i = 0; i < FISH_MULTIPLIER; i++)
   {
     is_space = false;
     ctr = 0;
-    do
+    if (m_num_fish_alive < MAX_FISH)
     {
-      //Generate random number between 1 & 17 inclusive
-      new_x = rand() % PLAYABLE_SPACE;
-      new_y = rand() % PLAYABLE_SPACE;
-
-      if (S.getActor(new_x,new_y) == SPACE_EMPTY)
+      do
       {
-        is_space = true;
+        //Generate random number between 1 & 17 inclusive
+        new_x = rand() % PLAYABLE_SPACE;
+        new_y = rand() % PLAYABLE_SPACE;
 
-        //Update m_seaGrid[][]
-        S.addActor(new_x, new_y, FISH_CHAR);
+        if (S.getActor(new_x, new_y) == SPACE_EMPTY)
+        {
+          is_space = true;
 
-        //Set member x&y variables
-        fishArr[m_num_fish_alive].setFishPos(new_x, new_y);
+          //Update m_seaGrid[][]
+          S.addActor(new_x, new_y, FISH_CHAR);
 
-        //Generate penguin's health anywhere between 100 and 0
-        fishArr[m_num_fish_alive].setm_foodworth(randomNumberGen(FOOD_VAL_UPPR,FOOD_VAL_LOWR));
+          //Set member x&y variables
+          fishArr[m_num_fish_alive].setFishPos(new_x, new_y);
 
-        //Make member 'alive' variable to true
-        fishArr[m_num_fish_alive].setFishAliveState(true);
+          //Generate penguin's health anywhere between 100 and 0
+          fishArr[m_num_fish_alive].setm_foodworth(randomNumberGen(FOOD_VAL_UPPR, FOOD_VAL_LOWR));
 
-        fishArr[m_num_fish_alive].incrementFishAlive();
+          //Make member 'alive' variable to true
+          fishArr[m_num_fish_alive].setFishAliveState(true);
 
-      }
-      ctr++;
-    } while (!is_space && ctr<ATTEMPTS_CTR);
+          fishArr[m_num_fish_alive].incrementFishAlive();
+          cout << "Number of Fish Array: " << m_num_fish_alive << endl;
+        }
+        ctr++;
+      } while (!is_space && ctr < ATTEMPTS_CTR);
+    }
   }
 }
 
