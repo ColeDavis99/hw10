@@ -263,7 +263,6 @@ short Fish::getFishPosY()const
   return m_posY;
 }
 
-
 /*============
     SETTERS
 ============*/

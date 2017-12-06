@@ -56,8 +56,8 @@ int main()
   {
     //sets the fish and penguin loops to only loop through the
     //objects that are still alive.
-    fishNumAlive = fishArr[0].getm_num_fish_alive();
-    pengNumAlive = penguinArr[0].getm_num_pengs_alive();
+    fishNumAlive = fishArr[ZERO].getm_num_fish_alive();
+    pengNumAlive = penguinArr[ZERO].getm_num_pengs_alive();
 
     for (short fish = 0; fish < fishNumAlive; fish++)
     {
@@ -74,7 +74,7 @@ int main()
     for (short peng = 0; peng < pengNumAlive; peng++)
     {
       penguinArr[peng].move(fishArr, Arctic);
-      //Pop a new penguin from the m_num_pengs_alive index, 
+      //Pop a new penguin from the m_num_pengs_alive index,
       //THEN increment m_num_pengs_alive
       penguinArr[peng].reincarnatePeng(Arctic, penguinArr);
     }
@@ -100,7 +100,7 @@ int main()
     /*======================================================
               OUTPUT AFTER SINGLE LOOP
     ======================================================*/
-    cout<<"NUMBER OF PENGUINS ALIVE: "<<penguinArr[0].getm_num_pengs_alive()<<endl;
+    cout<<"NUMBER OF PENGUINS ALIVE: "<<penguinArr[ZERO].getm_num_pengs_alive()<<endl;
 
     //Calling fish spawn
     fishArr[ZERO].reincarnateFish(Arctic, fishArr);
